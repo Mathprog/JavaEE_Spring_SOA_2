@@ -1,0 +1,665 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://biblio.io/api/biblio-web-service"
+           targetNamespace="http://biblio.io/api/biblio-web-service" elementFormDefault="qualified"
+           xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+
+
+    <!--
+    ============== User ===================
+     -->
+
+    <xs:complexType name="usagerWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" nillable="true"/>
+            <xs:element name="email" type="xs:string" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!--
+    ============== OUVRAGE ===================
+    -->
+
+
+    <xs:complexType name="ouvrageWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="titre" type="xs:string"/>
+            <xs:element name="auteur" type="xs:string"/>
+            <xs:element name="resume" type="xs:string"/>
+            <xs:element name="date" type="xs:date" nillable="true"/>
+            <xs:element name="imageb" type="xs:base64Binary" nillable="true"/>
+            <xs:element name="ImageBase64DataString" type="xs:string" nillable="true"/>
+            <xs:element name="nbDispo" type="xs:long" minOccurs="0" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--
+       ============== EXEMPLAIRE ===================
+        -->
+
+    <xs:complexType name="exemplaireWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="ouvrage" type="tns:ouvrageWS"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="exemplaireWSAlone">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--
+   ============== PRET ===================
+    -->
+
+    <xs:complexType name="pretWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="exemplaire" type="tns:exemplaireWS" />
+            <xs:element name="ouvrage" type="tns:ouvrageWS" />
+            <xs:element name="relance" type="tns:relanceWS" />
+            <xs:element name="datePret" type="xs:date" />
+            <xs:element name="dateFin" type="xs:date" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pretWSAlone">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="datePret" type="xs:date" />
+            <xs:element name="dateFin" type="xs:date" />
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!--
+   ============== RELANCE ===================
+    -->
+
+
+    <xs:complexType name="relanceWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="pret" type="tns:pretWS"/>
+            <xs:element name="dateFin" type="xs:date" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="relanceWSAlone">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" nillable="true"/>
+            <xs:element name="dateFin" type="xs:date" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!--
+    ==============================================================
+      ================= USAGER METHOD ============================
+      =============================================================
+      -->
+
+    <xs:element name="getUsagerByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUsagerByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usagerWS" type="tns:usagerWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+     ============== GET ALL USERS ===================
+     -->
+
+    <xs:element name="getUsagerRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getUsagerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usagerWS" type="tns:usagerWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== CREATE USER ===================
+    -->
+
+    <xs:element name="getUsagerCreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="email" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUsagerCreateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usagerWS" type="tns:usagerWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+    ============== GET USER BY EMAIL ===================
+    -->
+
+    <xs:element name="getUsagerByEmailRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="email" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUsagerByEmailResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usagerWS" type="tns:usagerWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== GET USER BY PRET DATE ===================
+    -->
+
+    <xs:element name="getUsagerByPretDateRequest">
+        <xs:complexType/>
+
+    </xs:element>
+
+    <xs:element name="getUsagerByPretDateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usagerWS" type="tns:usagerWS" maxOccurs="unbounded" nillable="true"
+                />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== GET USER BY RELANCE DATE ===================
+    -->
+    <xs:element name="getUsagerByRelanceDateRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getUsagerByRelanceDateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usagerWS" type="tns:usagerWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+    ======================================================
+    ================== OUVRAGE METHODS ===================
+    ======================================================
+    -->
+
+    <!--
+     ============== GET OUVRAGE BY ID ===================
+     -->
+
+    <xs:element name="getOuvrageByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOuvrageByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ouvrageWS" type="tns:ouvrageWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+     ============== GET ALL OUVRAGES ===================
+     -->
+
+    <xs:element name="getOuvrageRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getOuvrageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ouvrageWS" type="tns:ouvrageWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== CREATE OUVRAGE ===================
+    -->
+
+    <xs:element name="getOuvrageCreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titre" type="xs:string"/>
+                <xs:element name="auteur" type="xs:string"/>
+                <xs:element name="resume" type="xs:string"/>
+                <xs:element name="date" type="xs:date"/>
+                <xs:element name="ImageName" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOuvrageCreateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ouvrageWS" type="tns:ouvrageWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+    ============== GET OUVRAGE BY TITRE ===================
+    -->
+
+    <xs:element name="getOuvrageByTitreRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="titre" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOuvrageByTitreResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ouvrageWS" type="tns:ouvrageWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== GET OUVRAGE BY DISPO ===================
+    -->
+
+    <xs:element name="getOuvrageByDispoRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getOuvrageByDispoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ouvrageWS" type="tns:ouvrageWS" maxOccurs="unbounded" nillable="true" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== GET OUVRAGE BY NO DISPO ===================
+    -->
+
+    <xs:element name="getOuvrageByNoDispoRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getOuvrageByNoDispoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ouvrageWS" type="tns:ouvrageWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    =======================================================================
+    ======================== EXEMPLAIRES METHODES =========================
+    =======================================================================
+    -->
+
+    <!--
+    ============== GET EXEMPLAIRE BY ID ===================
+    -->
+
+    <xs:element name="getExemplaireByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getExemplaireByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireWS" type="tns:exemplaireWS" nillable="true"  />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+     ============== GET EXEMPLAIRE BY BOOK ===================
+     -->
+
+    <xs:element name="getExemplaireByBookRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="book" type="tns:ouvrageWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getExemplaireByBookResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireWS" type="tns:exemplaireWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+     ============== GET EXEMPLAIRE BY USAGER ===================
+     -->
+
+    <xs:element name="getExemplaireByUsagerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getExemplaireByUsagerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireWS" type="tns:exemplaireWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+     ============== GET EXEMPLAIRE BY PRET ===================
+     -->
+
+    <xs:element name="getExemplaireByPretRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getExemplaireByPretResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireWS" type="tns:exemplaireWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+     ============== GET ALL EXEMPLAIRES ===================
+     -->
+
+    <xs:element name="getExemplaireRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getExemplaireResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireWS" type="tns:exemplaireWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== CREATE EXEMPLAIRE ===================
+    -->
+
+    <xs:element name="getExemplaireCreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ouvrage" type="tns:ouvrageWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getExemplaireCreateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaireWS" type="tns:exemplaireWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ==================================================================
+        ======================= PRET METHODS ======================
+        ===========================================================
+    -->
+
+
+    <!--
+ ============== GET PRET BY ID ===================
+ -->
+
+    <xs:element name="getPretByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPretByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+     ============== GET ALL PRETS ===================
+     -->
+
+    <xs:element name="getPretsRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getPretsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== CREATE PRET ===================
+    -->
+
+    <xs:element name="getPretCreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+                <xs:element name="exemplaire" type="tns:exemplaireWS"/>
+                <xs:element name="datePret" type="xs:date"/>
+                <xs:element name="dateFin" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPretCreateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+    ============== GET PRET BY EXEMPLAIRE ===================
+    -->
+
+    <xs:element name="getPretByExemplaireRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaire" type="tns:exemplaireWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPretByExemplaireResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== GET PRET BY USAGER ===================
+    -->
+
+    <xs:element name="getPretByUsagerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPretByUsagerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+    =====================================================================
+        ====================== RELANCE METHODE ======================
+        ================================================================
+    -->
+
+    <!--
+ ============== GET RELANCE BY ID ===================
+ -->
+
+    <xs:element name="getRelanceByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRelanceByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+     ============== GET ALL RELANCE ===================
+     -->
+
+    <xs:element name="getRelanceRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getRelanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== CREATE RELANCE ===================
+    -->
+
+    <xs:element name="getRelanceCreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS"/>
+                <xs:element name="dateFin" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRelanceCreateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+    ============== GET RELANCE BY PRET ===================
+    -->
+
+    <xs:element name="getRelanceByPretRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRelanceByPretResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+   ============== GET RELANCE BY USAGER ===================
+   -->
+
+    <xs:element name="getRelanceByUsagerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRelanceByUsagerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

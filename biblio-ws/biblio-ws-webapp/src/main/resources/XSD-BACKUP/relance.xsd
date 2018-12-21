@@ -1,0 +1,25 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://biblio.io/api/biblio-web-service"
+           targetNamespace="http://biblio.io/api/biblio-web-service" elementFormDefault="qualified">
+
+ <xs:include schemaLocation="pret.xsd"/>
+    <!--
+    ============== RELANCE ===================
+     -->
+
+
+    <xs:complexType name="relanceWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="pret" type="tns:pretWS" minOccurs="0"/>
+            <xs:element name="dateFin" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="relanceWSAlone">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="dateFin" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

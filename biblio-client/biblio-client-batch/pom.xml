@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>oc.projet.biblio.client</groupId>
+    <artifactId>biblio-client</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>oc.projet.biblio.client</groupId>
+  <artifactId>biblio-client-batch</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>biblio-client-batch</name>
+  <url>http://maven.apache.org</url>
+    <packaging>jar</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+
+      <dependency>
+          <groupId>oc.projet.biblio.client</groupId>
+          <artifactId>biblio-client-business</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>oc.projet.biblio.client</groupId>
+          <artifactId>biblio-client-consumer</artifactId>
+      </dependency>
+
+
+      <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter</artifactId>
+      </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>spring-boot</classifier>
+                            <mainClass>
+                                oc.projet.biblio.client.batch.App
+                            </mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>oc.projet.biblio.client.batch.App</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+<!--
+
+
+-->

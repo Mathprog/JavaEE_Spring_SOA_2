@@ -1,0 +1,29 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://biblio.io/api/biblio-web-service"
+           targetNamespace="http://biblio.io/api/biblio-web-service" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="exemplaire.xsd"/>
+    <xs:include schemaLocation="usager.xsd"/>
+
+    <!--
+    ============== PRET ===================
+     -->
+
+    <xs:complexType name="pretWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="exemplaire" type="tns:exemplaireWS" minOccurs="0"/>
+            <xs:element name="ouvrage" type="tns:ouvrageWS" minOccurs="0"/>
+            <xs:element name="datePret" type="xs:date" />
+            <xs:element name="dateFin" type="xs:date" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pretWSAlone">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="datePret" type="xs:date" />
+            <xs:element name="dateFin" type="xs:date" />
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

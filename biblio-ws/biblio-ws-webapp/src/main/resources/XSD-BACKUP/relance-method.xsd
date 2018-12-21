@@ -1,0 +1,104 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://biblio.io/api/biblio-web-service"
+           targetNamespace="http://biblio.io/api/biblio-web-service" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="relance.xsd"/>
+
+    <!--
+     ============== GET RELANCE BY ID ===================
+     -->
+
+    <xs:element name="getRelanceByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRelanceByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+     ============== GET ALL RELANCE ===================
+     -->
+
+    <xs:element name="getRelanceRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getRelanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== CREATE RELANCE ===================
+    -->
+
+    <xs:element name="getRelanceCreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS"/>
+                <xs:element name="dateFin" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRelanceCreateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+    ============== GET RELANCE BY PRET ===================
+    -->
+
+    <xs:element name="getRelanceByPretRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRelanceByPretResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+   ============== GET RELANCE BY USAGER ===================
+   -->
+
+    <xs:element name="getRelanceByUsagerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getRelanceByUsagerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="relance" type="tns:relanceWS" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

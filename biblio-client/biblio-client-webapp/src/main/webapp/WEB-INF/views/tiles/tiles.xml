@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="template-def"
+                template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">
+        <put-attribute name="title" value="" cascade="true"/>
+        <put-attribute name="secondtitle" value="" cascade="true"/>
+        <put-attribute name="description" value="" cascade="true"/>
+        <put-attribute name="header"
+                       value="/WEB-INF/views/tiles/templates/defaultHeader.jsp" />
+        <put-attribute name="menu"
+                       value="/WEB-INF/views/tiles/templates/defaultMenu.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer"
+                       value="/WEB-INF/views/tiles/templates/defaultFooter.jsp" />
+    </definition>
+
+    <definition name="home" extends="template-def">
+        <put-attribute name="title" value="Welcome" />
+        <put-attribute name="secondtitle" value="Bienvenue sur la Bibliothèque du futur." cascade="true"/>
+        <put-attribute name="description" value="Vous trouverez forcément le livre qu'il vous faut. Celui qui saura vous transporter au delà de la réalité." cascade="true"/>
+        <put-attribute name="body"
+                       value="/WEB-INF/views/pages/home.jsp" />
+    </definition>
+
+    <definition name="prets" extends="template-def">
+        <put-attribute name="title" value="Accéder à mes prets" />
+        <put-attribute name="secondtitle" value="Voir mes prêts en cours." cascade="true"/>
+        <put-attribute name="description" value="Veuillez remplir le formulaire afin que vous puissiez voir vos prêts." cascade="true"/>
+        <put-attribute name="body"
+                       value="/WEB-INF/views/pages/prets.jsp" />
+    </definition>
+
+    <definition name="ouvrages" extends="template-def">
+        <put-attribute name="title" value="Tous les livres ! " />
+        <put-attribute name="secondtitle" value="Les voilà, ils sont là !." cascade="true"/>
+        <put-attribute name="description" value="Naviguez, chercher votre bonheur nous l'avons." cascade="true"/>
+        <put-attribute name="body"
+                       value="/WEB-INF/views/pages/ouvrages.jsp" />
+    </definition>
+
+    <definition name="pretsDetails" extends="template-def">
+        <put-attribute name="title" value="Mes prets en cours" />
+        <put-attribute name="secondtitle" value="Voici vos prêts !." cascade="true"/>
+        <put-attribute name="description" value="N'hésitez pas à effectuer une relance si jamais vous trouvez que la date de fin de prêt est trop proche." cascade="true" />
+        <put-attribute name="body"
+                       value="/WEB-INF/views/pages/pretsDetails.jsp" />
+    </definition>
+
+    <definition name="relance" extends="template-def">
+        <put-attribute name="title" value="Etat de ma relance" cascade="true"/>
+        <put-attribute name="secondtitle" value="Création de ma relance." cascade="true"/>
+        <put-attribute name="description" value="" />
+        <put-attribute name="body"
+                       value="/WEB-INF/views/pages/relance.jsp" />
+    </definition>
+    <definition name="recherche" extends="template-def">
+        <put-attribute name="title" value="Recherche de livres" />
+        <put-attribute name="secondtitle" value="Notre puissant moteur de recherche :" cascade="true"/>
+        <put-attribute name="description" value="Vous trouverez forcément le livre qu'il vous faut. Celui qui saura vous transporter au delà de la réalité." cascade="true" />
+        <put-attribute name="body"
+                       value="/WEB-INF/views/pages/recherche.jsp" />
+    </definition>
+
+    <definition name="recherche_res" extends="template-def">
+        <put-attribute name="title" value="Résultats de la recherche" />
+        <put-attribute name="secondtitle" value="Et voilà le résultat !" cascade="true"/>
+        <put-attribute name="description" value="" cascade="true"/>
+        <put-attribute name="body"
+                       value="/WEB-INF/views/pages/recherche_res.jsp" />
+    </definition>
+</tiles-definitions>

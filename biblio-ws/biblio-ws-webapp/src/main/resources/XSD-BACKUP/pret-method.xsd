@@ -1,0 +1,105 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://biblio.io/api/biblio-web-service"
+           targetNamespace="http://biblio.io/api/biblio-web-service" elementFormDefault="qualified">
+
+    <xs:include schemaLocation="pret.xsd"/>
+
+    <!--
+     ============== GET PRET BY ID ===================
+     -->
+
+    <xs:element name="getPretByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPretByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+     ============== GET ALL PRETS ===================
+     -->
+
+    <xs:element name="getPretsRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getPretsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== CREATE PRET ===================
+    -->
+
+    <xs:element name="getPretCreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+                <xs:element name="exemplaire" type="tns:exemplaireWS"/>
+                <xs:element name="datePret" type="xs:date"/>
+                <xs:element name="dateFin" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPretCreateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--
+    ============== GET PRET BY EXEMPLAIRE ===================
+    -->
+
+    <xs:element name="getPretByExemplaireRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="exemplaire" type="tns:exemplaireWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPretByExemplaireResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+    ============== GET PRET BY USAGER ===================
+    -->
+
+    <xs:element name="getPretByUsagerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPretByUsagerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pret" type="tns:pretWS" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

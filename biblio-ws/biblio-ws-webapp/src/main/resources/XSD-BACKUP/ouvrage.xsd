@@ -1,0 +1,17 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="http://biblio.io/api/biblio-web-service" elementFormDefault="qualified">
+
+
+    <!--
+    ============== OUVRAGE ===================
+     -->
+
+
+    <xs:complexType name="ouvrageWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="titre" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

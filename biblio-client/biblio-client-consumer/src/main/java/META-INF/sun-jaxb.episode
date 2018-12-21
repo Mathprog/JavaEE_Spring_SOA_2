@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+  <!--
+
+Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
+Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2018.12.14 à 04:45:04 PM CET 
+
+  -->
+  <bindings xmlns:tns="http://biblio.io/api/biblio-web-service" if-exists="true" scd="x-schema::tns">
+    <schemaBindings map="false">
+      <package name="oc.projet.biblio.client.consumer.generated"/>
+    </schemaBindings>
+    <bindings if-exists="true" scd="tns:getUsagerByIdRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerByIdResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:usagerWS">
+      <class ref="oc.projet.biblio.client.consumer.generated.UsagerWS"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerCreateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerCreateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerCreateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerCreateResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerByEmailRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByEmailRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerByEmailResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByEmailResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerByPretDateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByPretDateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerByPretDateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByPretDateResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerByRelanceDateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByRelanceDateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerByRelanceDateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByRelanceDateResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageByIdRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageByIdResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:ouvrageWS">
+      <class ref="oc.projet.biblio.client.consumer.generated.OuvrageWS"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageCreateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageCreateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageCreateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageCreateResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageByTitreRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageByTitreRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageByTitreResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageByTitreResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageByDispoRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageByDispoRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageByDispoResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageByDispoResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageByNoDispoRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageByNoDispoRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getOuvrageByNoDispoResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageByNoDispoResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByIdRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByIdResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:exemplaireWS">
+      <class ref="oc.projet.biblio.client.consumer.generated.ExemplaireWS"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByBookRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireByBookRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByBookResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireByBookResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByUsagerRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireByUsagerRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByUsagerResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireByUsagerResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByPretRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireByPretRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:pretWS">
+      <class ref="oc.projet.biblio.client.consumer.generated.PretWS"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireByPretResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireByPretResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireCreateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireCreateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getExemplaireCreateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetExemplaireCreateResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretByIdRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretByIdResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretsRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretsRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretsResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretsResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretCreateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretCreateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretCreateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretCreateResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretByExemplaireRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretByExemplaireRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretByExemplaireResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretByExemplaireResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretByUsagerRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretByUsagerRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretByUsagerResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretByUsagerResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceByIdRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByIdRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceByIdResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByIdResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:relanceWS">
+      <class ref="oc.projet.biblio.client.consumer.generated.RelanceWS"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceCreateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceCreateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceCreateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceCreateResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceByPretRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByPretRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceByPretResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByPretResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceByUsagerRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByUsagerRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceByUsagerResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByUsagerResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:exemplaireWSAlone">
+      <class ref="oc.projet.biblio.client.consumer.generated.ExemplaireWSAlone"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:pretWSAlone">
+      <class ref="oc.projet.biblio.client.consumer.generated.PretWSAlone"/>
+    </bindings>
+    <bindings if-exists="true" scd="~tns:relanceWSAlone">
+      <class ref="oc.projet.biblio.client.consumer.generated.RelanceWSAlone"/>
+    </bindings>
+  </bindings>
+</bindings>
