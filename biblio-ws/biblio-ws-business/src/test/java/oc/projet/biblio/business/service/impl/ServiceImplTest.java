@@ -13,6 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,7 @@ import java.util.List;
 @SpringBootTest
 @Transactional(propagation = Propagation.REQUIRED)
 @ActiveProfiles("test")
+@Sql({"classpath:sql/javaee_test_structure.sql","classpath:sql/javaee_test_data.sql"})
 public class ServiceImplTest {
 
     @Autowired
