@@ -34,6 +34,8 @@ deploy:jdk8:
     - apt-get update -q && apt-get install -qqy --no-install-recommends mysql-client
   script:
     - cd biblio-ws
-    - mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -h localhost < GRANT ALL ON javaee_test.* TO '$MYSQL_USER'@'%';
+    - mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -h localhost
+    - GRANT ALL ON javaee_test.* TO '$MYSQL_USER'@'%';
+    - \q
     - 'mvn $MAVEN_CLI_OPTS -Ptest verify'
   image: maven:3.5.0-jdk-8
