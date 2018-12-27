@@ -28,8 +28,6 @@ CREATE TABLE `exemplaire` (
   `pret_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_ouvrage` (`ouvrage_id`),
-  KEY `FK5rofl5edwkj66au1e6bhvsmg1` (`pret_id`),
-  CONSTRAINT `FK5rofl5edwkj66au1e6bhvsmg1` FOREIGN KEY (`pret_id`) REFERENCES `pret` (`id`),
   CONSTRAINT `FK_ouvrage` FOREIGN KEY (`ouvrage_id`) REFERENCES `ouvrage` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -84,6 +82,9 @@ CREATE TABLE `pret` (
   CONSTRAINT `FK_pret_usager` FOREIGN KEY (`usager_id`) REFERENCES `usager` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+ALTER TABLE `exemplaire` ADD CONSTRAINT `FK5rofl5edwkj66au1e6bhvsmg1` FOREIGN KEY (`pret_id`) REFERENCES `pret` (`id`);
+
 
 --
 -- Table structure for table `relance`
