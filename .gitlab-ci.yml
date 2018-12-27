@@ -6,7 +6,7 @@ variables:
   # when running from the command line.
   # `installAtEnd` and `deployAtEnd`are only effective with recent version of the corresponding plugins.
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true -Djavax.xml.accessExternalSchema=all"
-  MYSQL_DB: javaee_test
+  MYSQL_DATABASE: javaee_test
   MYSQL_USER: Math
   MYSQL_PASSWORD: Math10081994
   MYSQL_ROOT_PASSWORD: Lineos10081994
