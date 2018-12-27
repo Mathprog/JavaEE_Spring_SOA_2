@@ -22,8 +22,8 @@
 --
 DROP TABLE IF EXISTS `relance`;
 UPDATE exemplaire set pret_id = NULL;
-DROP TABLE IF EXISTS `pret`;
 DROP TABLE IF EXISTS `exemplaire`;
+DROP TABLE IF EXISTS `pret`;
 DROP TABLE IF EXISTS `ouvrage`;
 DROP TABLE IF EXISTS `usager`;
 
