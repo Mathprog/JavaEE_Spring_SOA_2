@@ -29,7 +29,7 @@ validate:jdk8:
 deploy:jdk8:
   stage: test
   services:
-    - mysql:latest
+    - mysql:5.7
   before_script:
     - apt-get update -q && apt-get install -qqy --no-install-recommends mysql-client
   script:
