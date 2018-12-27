@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Profile;
  */
 
 @SpringBootApplication(scanBasePackages="oc.projet.biblio")
-@Profile("dev")
 public class App_business
     {
     public static void main( String[] args )
