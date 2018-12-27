@@ -20,6 +20,15 @@
 --
 -- Table structure for table `ouvrage`
 --
+DROP TABLE IF EXISTS `relance`;
+UPDATE exemplaire set pret_id = NULL;
+DROP TABLE IF EXISTS `pret`;
+DROP TABLE IF EXISTS `exemplaire`;
+DROP TABLE IF EXISTS `ouvrage`;
+DROP TABLE IF EXISTS `usager`;
+
+
+
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
@@ -37,6 +46,7 @@ CREATE TABLE `ouvrage` (
 --
 -- Table structure for table `usager`
 --
+
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
@@ -64,6 +74,7 @@ CREATE TABLE `usager` (
 -- Table structure for table `exemplaire`
 --
 
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `exemplaire` (
@@ -80,7 +91,7 @@ CREATE TABLE `exemplaire` (
 -- Table structure for table `hibernate_sequence`
 --
 
-
+DROP TABLE IF EXISTS `hibernate_sequence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `hibernate_sequence` (
@@ -92,6 +103,7 @@ CREATE TABLE `hibernate_sequence` (
 --
 -- Table structure for table `pret`
 --
+
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
