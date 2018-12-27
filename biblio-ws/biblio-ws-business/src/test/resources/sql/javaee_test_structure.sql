@@ -20,13 +20,14 @@
 --
 -- Table structure for table `ouvrage`
 --
+SET foreign_key_checks = 0;
 DROP TABLE IF EXISTS `relance`;
 UPDATE exemplaire set pret_id = NULL;
 DROP TABLE IF EXISTS `exemplaire`;
 DROP TABLE IF EXISTS `pret`;
 DROP TABLE IF EXISTS `ouvrage`;
 DROP TABLE IF EXISTS `usager`;
-
+SET foreign_key_checks = 1;
 
 
 

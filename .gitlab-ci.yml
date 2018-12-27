@@ -23,15 +23,13 @@ validate:jdk8:
   stage: build
   script:
     - cd biblio-ws
-    - 'mvn $MAVEN_CLI_OPTS test-compile'
+    - 'mvn $MAVEN_CLI_OPTS compile'
   image: maven:3.5.0-jdk-8
 
 deploy:jdk8:
   stage: test
   services:
     - mysql:8.0.13
-  before_script:
-    - apt-get update -q && apt-get install -qqy --no-install-recommends mysql-client
   script:
     - cd biblio-ws
     #- echo "GRANT ALL ON javaee_test.* TO 'Math'@'%';" | mysql -uroot -p"$MYSQL_ROOT_PASSWORD" -h mysql
