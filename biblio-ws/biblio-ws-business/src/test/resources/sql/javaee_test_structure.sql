@@ -21,7 +21,6 @@
 -- Table structure for table `ouvrage`
 --
 
-DROP TABLE IF EXISTS `ouvrage`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `ouvrage` (
@@ -39,7 +38,6 @@ CREATE TABLE `ouvrage` (
 -- Table structure for table `usager`
 --
 
-DROP TABLE IF EXISTS `usager`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `usager` (
@@ -66,7 +64,6 @@ CREATE TABLE `usager` (
 -- Table structure for table `exemplaire`
 --
 
-DROP TABLE IF EXISTS `exemplaire`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `exemplaire` (
@@ -83,7 +80,7 @@ CREATE TABLE `exemplaire` (
 -- Table structure for table `hibernate_sequence`
 --
 
-DROP TABLE IF EXISTS `hibernate_sequence`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `hibernate_sequence` (
@@ -96,7 +93,6 @@ CREATE TABLE `hibernate_sequence` (
 -- Table structure for table `pret`
 --
 
-DROP TABLE IF EXISTS `pret`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `pret` (
@@ -120,7 +116,7 @@ ALTER TABLE `exemplaire` ADD CONSTRAINT `FK5rofl5edwkj66au1e6bhvsmg1` FOREIGN KE
 -- Table structure for table `relance`
 --
 
-DROP TABLE IF EXISTS `relance`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `relance` (
