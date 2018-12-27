@@ -1,6 +1,7 @@
 package oc.projet.biblio.business;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Profile;
 
 /**
  * Hello world!
@@ -8,8 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication(scanBasePackages="oc.projet.biblio")
+@Profile("dev")
 public class App_business
-{
+    {
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );

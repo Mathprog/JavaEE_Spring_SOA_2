@@ -32,5 +32,5 @@ deploy:jdk8:
     - mysql:latest
   script:
     - cd biblio-ws
-    - 'mvn verify'
+    - 'mvn $MAVEN_CLI_OPTS -Ptest verify'
   image: maven:3.5.0-jdk-8
