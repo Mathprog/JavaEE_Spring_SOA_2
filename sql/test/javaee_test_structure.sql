@@ -15,42 +15,22 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `exemplaire`
---
 
-DROP TABLE IF EXISTS `exemplaire`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `exemplaire` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ouvrage_id` int(11) NOT NULL,
-  `pret_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_ouvrage` (`ouvrage_id`),
-  KEY `FK5rofl5edwkj66au1e6bhvsmg1` (`pret_id`),
-  CONSTRAINT `FK5rofl5edwkj66au1e6bhvsmg1` FOREIGN KEY (`pret_id`) REFERENCES `pret` (`id`),
-  CONSTRAINT `FK_ouvrage` FOREIGN KEY (`ouvrage_id`) REFERENCES `ouvrage` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `hibernate_sequence`
---
-
-DROP TABLE IF EXISTS `hibernate_sequence`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `ouvrage`
 --
-
+SET foreign_key_checks = 0;
+DROP TABLE IF EXISTS `relance`;
+UPDATE exemplaire set pret_id = NULL;
+DROP TABLE IF EXISTS `exemplaire`;
+DROP TABLE IF EXISTS `pret`;
 DROP TABLE IF EXISTS `ouvrage`;
+DROP TABLE IF EXISTS `usager`;
+SET foreign_key_checks = 1;
+
+
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `ouvrage` (
@@ -65,48 +45,10 @@ CREATE TABLE `ouvrage` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `pret`
---
-
-DROP TABLE IF EXISTS `pret`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `pret` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usager_id` int(11) NOT NULL,
-  `exemplaire_id` int(11) NOT NULL,
-  `date_pret` date NOT NULL,
-  `date_fin` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_pret_usager` (`usager_id`),
-  KEY `FK_pret_exemplaire` (`exemplaire_id`),
-  CONSTRAINT `FK_pret_exemplaire` FOREIGN KEY (`exemplaire_id`) REFERENCES `exemplaire` (`id`),
-  CONSTRAINT `FK_pret_usager` FOREIGN KEY (`usager_id`) REFERENCES `usager` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `relance`
---
-
-DROP TABLE IF EXISTS `relance`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `relance` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pret_id` int(11) NOT NULL,
-  `date_fin` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_relance_pret` (`pret_id`),
-  CONSTRAINT `FK_relance_pret` FOREIGN KEY (`pret_id`) REFERENCES `pret` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `usager`
 --
 
-DROP TABLE IF EXISTS `usager`;
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `usager` (
@@ -125,5 +67,79 @@ CREATE TABLE `usager` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+
+
+
+--
+-- Table structure for table `exemplaire`
+--
+
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `exemplaire` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ouvrage_id` int(11) NOT NULL,
+  `pret_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_ouvrage` (`ouvrage_id`),
+  CONSTRAINT `FK_ouvrage` FOREIGN KEY (`ouvrage_id`) REFERENCES `ouvrage` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `hibernate_sequence`
+--
+
+DROP TABLE IF EXISTS `hibernate_sequence`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `hibernate_sequence` (
+  `next_val` bigint(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+--
+-- Table structure for table `pret`
+--
+
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `pret` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usager_id` int(11) NOT NULL,
+  `exemplaire_id` int(11) NOT NULL,
+  `date_pret` date NOT NULL,
+  `date_fin` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_pret_usager` (`usager_id`),
+  KEY `FK_pret_exemplaire` (`exemplaire_id`),
+  CONSTRAINT `FK_pret_exemplaire` FOREIGN KEY (`exemplaire_id`) REFERENCES `exemplaire` (`id`),
+  CONSTRAINT `FK_pret_usager` FOREIGN KEY (`usager_id`) REFERENCES `usager` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+ALTER TABLE `exemplaire` ADD CONSTRAINT `FK5rofl5edwkj66au1e6bhvsmg1` FOREIGN KEY (`pret_id`) REFERENCES `pret` (`id`);
+
+
+--
+-- Table structure for table `relance`
+--
+
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `relance` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pret_id` int(11) NOT NULL,
+  `date_fin` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_relance_pret` (`pret_id`),
+  CONSTRAINT `FK_relance_pret` FOREIGN KEY (`pret_id`) REFERENCES `pret` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 -- Dump completed on 2018-12-21 22:47:36
