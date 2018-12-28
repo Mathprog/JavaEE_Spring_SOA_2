@@ -1,7 +1,5 @@
 package oc.projet.biblio.model.entity;
 
-package oc.projet.biblio.model.entity;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
