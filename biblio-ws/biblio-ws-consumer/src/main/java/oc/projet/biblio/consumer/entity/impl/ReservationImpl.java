@@ -29,8 +29,8 @@ import java.time.LocalDateTime;
                                 "AND r.dateLimite <= :date"),
                 @NamedQuery( name = ReservationImpl.QN.FIND_NEXT_RESA,
                         query = "SELECT r FROM ReservationImpl r " +
-                                "JOIN FETCH r.usager u" +
-                                "WHERE r.ouvrage = :ouvrage" +
+                                "JOIN FETCH r.usager u " +
+                                "WHERE r.ouvrage = :ouvrage " +
                                 "ORDER BY r.dateReservation DESC")
         }
 )
