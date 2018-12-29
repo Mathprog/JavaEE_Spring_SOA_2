@@ -23,9 +23,15 @@ import java.time.LocalDateTime;
                                 "WHERE r.ouvrage = :ouvrage " +
                                 "ORDER BY r.dateReservation DESC "),
                 @NamedQuery( name = ReservationImpl.QN.FIND_ALL_DISPOS,
-                        query = "SELECt r FROM ReservationImpl r " +
+                        query = "SELECT r FROM ReservationImpl r " +
+                                "JOIN FETCH r.usager u " +
                                 "WHERE r.dateLimite IS NOT NULL " +
-                                "AND r.dateLimite <= :date")
+                                "AND r.dateLimite <= :date"),
+                @NamedQuery( name = ReservationImpl.QN.FIND_NEXT_RESA,
+                        query = "SELECT r FROM ReservationImpl r " +
+                                "JOIN FETCH r.usager u" +
+                                "WHERE r.ouvrage = :ouvrage" +
+                                "ORDER BY r.dateReservation DESC")
         }
 )
 @Entity
@@ -39,6 +45,7 @@ public class ReservationImpl implements Reservation {
         public static final String FIND_ALL_BY_OUVRAGE = "ReservationImpl.findAllByOuvrage";
         public static final String FIND_LAST_BY_OUVRAGE = "ReservationImpl.findLastByOuvrage";
         public static final String FIND_ALL_DISPOS = "ReservationImpl.findAllByDispo";
+        public static final String FIND_NEXT_RESA = "ReservationImpl.findNextResa";
     }
 
     @Id
