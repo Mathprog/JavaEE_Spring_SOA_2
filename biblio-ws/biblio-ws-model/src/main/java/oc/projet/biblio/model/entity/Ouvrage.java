@@ -34,5 +34,13 @@ public interface Ouvrage {
 
     byte[] getImageb();
 
-    void setImageb(byte[] imageb);
+    abstract void setImageb(byte[] imageb);
+
+    Set<Reservation> getReservations();
+
+    void setReservations(Set<Reservation> reservations);
+
+    boolean isReservable();
+
+    void setReservable(boolean reservable);
 }

@@ -2,6 +2,8 @@ package oc.projet.biblio.consumer.entity.impl;
 
 import oc.projet.biblio.model.entity.Exemplaire;
 import oc.projet.biblio.model.entity.Ouvrage;
+import oc.projet.biblio.model.entity.Reservation;
+
 import javax.persistence.*;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -20,7 +22,8 @@ import java.util.Set;
                 name=OuvrageImpl.QN.FIND_ALL_DISPO,
                 query="SELECT o, COUNT(e)" +
                         "FROM OuvrageImpl o " +
-                        "JOIN o.exemplaires e " +
+                        "JOIN FETCH o.exemplaires e " +
+                        "JOIN FETCH o.reservations res " +
                         "WHERE e.pret IS NULL " +
                         "GROUP BY o "+
                         "HAVING COUNT(e) > 0"
@@ -29,7 +32,8 @@ import java.util.Set;
                 name=OuvrageImpl.QN.FIND_ALL_NOT_DISPO,
                 query="SELECT o " +
                         "FROM OuvrageImpl o " +
-                        "JOIN o.exemplaires e "+
+                        "JOIN FETCH o.exemplaires e " +
+                        "JOIN FETCH o.reservations res "+
                         "WHERE e.pret IS NOT NULL "+
                         "GROUP BY o " +
                         "HAVING COUNT(e) = ( " +
@@ -50,7 +54,8 @@ import java.util.Set;
                 name=OuvrageImpl.QN.FIND_ALL_DISPO_BY_RESEARCH,
                 query="SELECT o, COUNT(e)" +
                         "FROM OuvrageImpl o " +
-                        "JOIN o.exemplaires e " +
+                        "JOIN FETCH o.exemplaires e " +
+                        "JOIN FETCH o.reservations res " +
                         "WHERE e.pret IS NULL AND o.titre LIKE :liketitre " +
                         "GROUP BY o "+
                         "HAVING COUNT(e) > 0"
@@ -59,7 +64,8 @@ import java.util.Set;
                 name=OuvrageImpl.QN.FIND_ALL_NOT_DISPO_BY_RESEARCH,
                 query="SELECT o " +
                         "FROM OuvrageImpl o " +
-                        "JOIN o.exemplaires e "+
+                        "JOIN FETCH o.exemplaires e " +
+                        "JOIN FETCH o.reservations res "+
                         "WHERE e.pret IS NOT NULL AND o.titre LIKE :liketitre "+
                         "GROUP BY o " +
                         "HAVING COUNT(e) = ( " +
@@ -105,12 +111,18 @@ public class OuvrageImpl implements Ouvrage, Serializable {
     @Transient
     private Long nbDispo = 0L;
 
+    @Transient
+    private boolean isReservable;
+
     @Lob
     @Column(name = "imageb", columnDefinition="BLOB")
     private byte[] imageb;
 
     @OneToMany(mappedBy = "ouvrage", fetch = FetchType.LAZY, targetEntity = ExemplaireImpl.class)
     private Set<Exemplaire> exemplaires;
+
+    @OneToMany(mappedBy = "ouvrage", fetch = FetchType.LAZY, targetEntity = ReservationImpl.class)
+    private Set<Reservation> reservations;
 
     public OuvrageImpl() {
     }
@@ -201,5 +213,25 @@ public class OuvrageImpl implements Ouvrage, Serializable {
     @Override
     public void setImageb(byte[] imageb) {
         this.imageb = imageb;
+    }
+
+    @Override
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    @Override
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    @Override
+    public boolean isReservable() {
+        return isReservable;
+    }
+
+    @Override
+    public void setReservable(boolean reservable) {
+        isReservable = reservable;
     }
 }
