@@ -142,4 +142,8 @@ CREATE TABLE `relance` (
 ) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+<<<<<<< HEAD
 -- Dump completed on 2018-12-21 22:47:36
+=======
+-- Dump completed on 2018-12-21 22:47:36
+>>>>>>> 10c6671fd783512bc7ee03005606398d9a930a03

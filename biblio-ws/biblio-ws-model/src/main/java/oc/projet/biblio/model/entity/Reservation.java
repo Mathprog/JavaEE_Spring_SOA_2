@@ -24,4 +24,3 @@ public interface Reservation {
 
     void setDateLimite(LocalDate dateLimite);
 }
-
