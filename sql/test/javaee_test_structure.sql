@@ -41,7 +41,7 @@ CREATE TABLE `ouvrage` (
   `date` date DEFAULT NULL,
   `imageb` mediumblob,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,7 +56,7 @@ CREATE TABLE `usager` (
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -85,7 +85,7 @@ CREATE TABLE `exemplaire` (
   PRIMARY KEY (`id`),
   KEY `FK_ouvrage` (`ouvrage_id`),
   CONSTRAINT `FK_ouvrage` FOREIGN KEY (`ouvrage_id`) REFERENCES `ouvrage` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ DROP TABLE IF EXISTS `hibernate_sequence`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `hibernate_sequence` (
   `next_val` bigint(20) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
@@ -119,7 +119,7 @@ CREATE TABLE `pret` (
   KEY `FK_pret_exemplaire` (`exemplaire_id`),
   CONSTRAINT `FK_pret_exemplaire` FOREIGN KEY (`exemplaire_id`) REFERENCES `exemplaire` (`id`),
   CONSTRAINT `FK_pret_usager` FOREIGN KEY (`usager_id`) REFERENCES `usager` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 ALTER TABLE `exemplaire` ADD CONSTRAINT `FK5rofl5edwkj66au1e6bhvsmg1` FOREIGN KEY (`pret_id`) REFERENCES `pret` (`id`);
@@ -139,7 +139,7 @@ CREATE TABLE `relance` (
   PRIMARY KEY (`id`),
   KEY `FK_relance_pret` (`pret_id`),
   CONSTRAINT `FK_relance_pret` FOREIGN KEY (`pret_id`) REFERENCES `pret` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 <<<<<<< HEAD
