@@ -22,8 +22,7 @@ import java.util.Set;
                 name=OuvrageImpl.QN.FIND_ALL_DISPO,
                 query="SELECT o, COUNT(e)" +
                         "FROM OuvrageImpl o " +
-                        "JOIN FETCH o.exemplaires e " +
-                        "JOIN FETCH o.reservations res " +
+                        "JOIN o.exemplaires e " +
                         "WHERE e.pret IS NULL " +
                         "GROUP BY o "+
                         "HAVING COUNT(e) > 0"
@@ -32,8 +31,7 @@ import java.util.Set;
                 name=OuvrageImpl.QN.FIND_ALL_NOT_DISPO,
                 query="SELECT o " +
                         "FROM OuvrageImpl o " +
-                        "JOIN FETCH o.exemplaires e " +
-                        "JOIN FETCH o.reservations res "+
+                        "JOIN o.exemplaires e "+
                         "WHERE e.pret IS NOT NULL "+
                         "GROUP BY o " +
                         "HAVING COUNT(e) = ( " +
@@ -54,8 +52,7 @@ import java.util.Set;
                 name=OuvrageImpl.QN.FIND_ALL_DISPO_BY_RESEARCH,
                 query="SELECT o, COUNT(e)" +
                         "FROM OuvrageImpl o " +
-                        "JOIN FETCH o.exemplaires e " +
-                        "JOIN FETCH o.reservations res " +
+                        "JOIN o.exemplaires e " +
                         "WHERE e.pret IS NULL AND o.titre LIKE :liketitre " +
                         "GROUP BY o "+
                         "HAVING COUNT(e) > 0"
@@ -64,8 +61,7 @@ import java.util.Set;
                 name=OuvrageImpl.QN.FIND_ALL_NOT_DISPO_BY_RESEARCH,
                 query="SELECT o " +
                         "FROM OuvrageImpl o " +
-                        "JOIN FETCH o.exemplaires e " +
-                        "JOIN FETCH o.reservations res "+
+                        "JOIN o.exemplaires e "+
                         "WHERE e.pret IS NOT NULL AND o.titre LIKE :liketitre "+
                         "GROUP BY o " +
                         "HAVING COUNT(e) = ( " +
