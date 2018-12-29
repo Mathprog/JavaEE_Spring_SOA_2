@@ -26,6 +26,7 @@ DROP TABLE IF EXISTS `exemplaire`;
 DROP TABLE IF EXISTS `pret`;
 DROP TABLE IF EXISTS `ouvrage`;
 DROP TABLE IF EXISTS `usager`;
+DROP TABLE IF EXISTS `reservation`;
 SET foreign_key_checks = 1;
 
 
@@ -140,5 +141,22 @@ CREATE TABLE `relance` (
   CONSTRAINT `FK_relance_pret` FOREIGN KEY (`pret_id`) REFERENCES `pret` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 ;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
+SET character_set_client = utf8mb4 ;
+CREATE TABLE reservation (
+id int NOT NULL,
+ouvrage_id int  NOT NULL,
+usager_id int  NOT NULL,
+date_reservation DATETIME NOT NULL,
+date_limite DATE,
+PRIMARY KEY(id),
+CONSTRAINT FK_ouvrage_reservation FOREIGN KEY (ouvrage_id) REFERENCES ouvrage(id),
+CONSTRAINT FK_usager_reservation FOREIGN KEY (usager_id) REFERENCES usager(id)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+
+
 
 -- Dump completed on 2018-12-21 22:47:36

@@ -8,7 +8,26 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-
+@NamedQueries(
+        {
+                @NamedQuery(name = ReservationImpl.QN.FIND_ALL,
+                        query = "SELECT r FROM ReservationImpl r"),
+                @NamedQuery( name = ReservationImpl.QN.FIND_ALL_BY_USAGER,
+                        query = "SELECT r FROM ReservationImpl r " +
+                                "WHERE r.usager = :usager"),
+                @NamedQuery( name = ReservationImpl.QN.FIND_ALL_BY_OUVRAGE,
+                        query = "SELECT r FROM ReservationImpl r " +
+                                "WHERE r.ouvrage = :ouvrage"),
+                @NamedQuery( name = ReservationImpl.QN.FIND_LAST_BY_OUVRAGE,
+                        query = "SELECT r FROM ReservationImpl r " +
+                                "WHERE r.ouvrage = :ouvrage " +
+                                "ORDER BY r.dateReservation DESC "),
+                @NamedQuery( name = ReservationImpl.QN.FIND_ALL_DISPOS,
+                        query = "SELECt r FROM ReservationImpl r " +
+                                "WHERE r.dateLimite IS NOT NULL " +
+                                "AND r.dateLimite <= :date")
+        }
+)
 @Entity
 @Table(name="reservation")
 public class ReservationImpl implements Reservation {
@@ -16,6 +35,10 @@ public class ReservationImpl implements Reservation {
 
     public static class QN {
         public static final String FIND_ALL = "ReservationImpl.findALL";
+        public static final String FIND_ALL_BY_USAGER = "ReservationImpl.findAllByUsager";
+        public static final String FIND_ALL_BY_OUVRAGE = "ReservationImpl.findAllByOuvrage";
+        public static final String FIND_LAST_BY_OUVRAGE = "ReservationImpl.findLastByOuvrage";
+        public static final String FIND_ALL_DISPOS = "ReservationImpl.findAllByDispo";
     }
 
     @Id

@@ -27,7 +27,7 @@ import java.util.List;
 @SpringBootTest
 @Transactional(propagation = Propagation.REQUIRED)
 @ActiveProfiles("test")
-@Sql({"classpath:sql/javaee_test_structure.sql","classpath:sql/javaee_test_data.sql"})
+@Sql({"classpath:sql/01_javaee_test_structure.sql","classpath:sql/02_javaee_test_data.sql"})
 public class ServiceImplTest {
 
     @Autowired
