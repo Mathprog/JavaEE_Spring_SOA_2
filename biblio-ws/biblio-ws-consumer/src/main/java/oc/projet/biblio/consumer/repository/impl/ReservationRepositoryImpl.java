@@ -6,6 +6,9 @@ import oc.projet.biblio.model.entity.Reservation;
 import oc.projet.biblio.model.entity.Usager;
 import oc.projet.biblio.model.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -13,6 +16,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository
+@Transactional(propagation = Propagation.MANDATORY)
 public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Autowired

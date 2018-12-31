@@ -45,6 +45,9 @@ public class ServiceImplTest {
     @Autowired
     private RelanceService relanceService;
 
+    @Autowired
+    private ReservationService reservationService;
+
     /*@Test
      @Rollback(false)
      public void populateBdd() {
@@ -243,5 +246,9 @@ public class ServiceImplTest {
         assertNotNull(exemplairePret);
     }
 
+    @Test
+    public void reservarion_findAll(){
+        assertNull(this.reservationService.findAll());
+    }
 
 }
