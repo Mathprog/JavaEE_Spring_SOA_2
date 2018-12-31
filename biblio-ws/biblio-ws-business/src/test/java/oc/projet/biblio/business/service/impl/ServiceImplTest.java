@@ -260,9 +260,13 @@ public class ServiceImplTest {
         assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(0, this.reservationService.findAllByUsager(usager).size());
 
+
+        assertNotNull(ouvrage.getId());
+
         ouvrage = this.ouvrageService.findWithExemplairesAndReservations(ouvrage);
 
         assertNotNull(exemplaire);
+        assertNotNull(ouvrage);
         assertNull(ouvrage.getReservations());
         assertNotNull(ouvrage.getExemplaires());
         //Reservation reservation = this.reservationService.create(usager, ouvrage);

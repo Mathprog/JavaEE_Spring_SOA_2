@@ -75,7 +75,7 @@ import java.util.Set;
                 query = "SELECT o FROM OuvrageImpl o " +
                         "JOIN FETCH o.exemplaires es " +
                         "JOIN FETCH o.reservations rs " +
-                        "WHERE o = :ouvrage"
+                        "WHERE o.id = :ouvrage_id"
         )
 })
 public class OuvrageImpl implements Ouvrage, Serializable {
