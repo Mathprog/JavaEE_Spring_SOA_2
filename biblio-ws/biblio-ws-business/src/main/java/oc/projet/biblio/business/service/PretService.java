@@ -1,6 +1,7 @@
 package oc.projet.biblio.business.service;
 
 import oc.projet.biblio.model.entity.Exemplaire;
+import oc.projet.biblio.model.entity.Ouvrage;
 import oc.projet.biblio.model.entity.Pret;
 import oc.projet.biblio.model.entity.Usager;
 
@@ -18,4 +19,6 @@ public interface PretService {
     Pret findByExemplaire(Exemplaire e);
 
     List<Pret> findAllByUsager(Usager u);
+
+    Pret findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage);
 }

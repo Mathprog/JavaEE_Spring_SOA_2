@@ -247,16 +247,25 @@ public class ServiceImplTest {
     }
 
     @Test
-    public void reservarion_findAll(){
+    public void reservarion_UsaCasesTests(){
         assertEquals(0, this.reservationService.findAll().size());
 
         String email = "mathieu-martinez@gmail.com";
         String titre = "Spring Framework 3";
         Usager usager = usagerService.createUsager(email);
         Ouvrage ouvrage = ouvrageService.createOuvrate(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
 
         assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(0, this.reservationService.findAllByUsager(usager).size());
+
+
+        Reservation reservation = this.reservationService.create(usager, ouvrage);
+
+        assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
+        assertEquals(1, this.reservationService.findAllByUsager(usager).size());
+
+
     }
 
 }

@@ -1,6 +1,7 @@
 package oc.projet.biblio.business.service.impl;
 
 import oc.projet.biblio.business.service.PretService;
+import oc.projet.biblio.model.entity.Ouvrage;
 import oc.projet.biblio.model.repository.PretRepository;
 import oc.projet.biblio.model.entity.Exemplaire;
 import oc.projet.biblio.model.entity.Usager;
@@ -48,4 +49,10 @@ public class PretServiceImpl implements PretService {
     public List<Pret> findAllByUsager(Usager u){
         return this.pretRepository.findAllByUsager(u);
     }
+
+    @Override
+    public Pret findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage){
+        return this.pretRepository.findByUsagerAndOuvrage(usager, ouvrage);
+    }
+
 }

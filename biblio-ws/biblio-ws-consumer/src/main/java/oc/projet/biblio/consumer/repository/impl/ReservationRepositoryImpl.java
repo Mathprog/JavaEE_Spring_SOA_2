@@ -39,6 +39,23 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     }
 
     @Override
+    public Reservation create(Usager usager, Ouvrage ouvrage){
+        Reservation reservation = null;
+        List<Reservation> reservationList = this.findAllByOuvrage(ouvrage);
+        reservation = new ReservationImpl();
+        reservation.setDateReservation(LocalDateTime.now());
+        reservation.setOuvrage(ouvrage);
+        reservation.setUsager(usager);
+        if (reservationList.size() == 0){
+            reservation.setDateLimite(LocalDate.now().plusDays(2));
+        } else {
+            reservation.setDateLimite(null);
+        }
+        this.entityManager.persist(reservation);
+        return reservation;
+    }
+
+    @Override
     public Reservation findLastByOuvrage(Ouvrage ouvrage){
         Reservation reservation;
         try {
@@ -54,22 +71,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         return this.entityManager.createNamedQuery(ReservationImpl.QN.FIND_ALL_DISPOS, Reservation.class).setParameter("date", LocalDate.now().plusDays(2L)).getResultList();
     }
 
-    @Override
-    public Reservation create(Usager usager, Ouvrage ouvrage){
-        Reservation reservation = null;
-        List<Reservation> reservationList = this.findAllByOuvrage(ouvrage);
-        reservation = new ReservationImpl();
-        reservation.setDateReservation(LocalDateTime.now());
-        reservation.setOuvrage(ouvrage);
-        reservation.setUsager(usager);
-        if (reservationList == null){
-            reservation.setDateLimite(LocalDate.now().plusDays(2));
-        } else {
-            reservation.setDateLimite(null);
-        }
-        this.entityManager.persist(reservation);
-        return reservation;
-    }
+
 
     @Override
     public Reservation delete(Reservation reservation){
