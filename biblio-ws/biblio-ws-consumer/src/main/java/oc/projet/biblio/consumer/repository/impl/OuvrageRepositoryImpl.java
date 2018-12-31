@@ -73,7 +73,7 @@ public class OuvrageRepositoryImpl implements OuvrageRepository {
     public Ouvrage findOuvrageWithExemplairesAndReservations(Ouvrage ouvrage){
         Ouvrage ouvrage1;
         try {
-            ouvrage1 = this.entityManager.createNamedQuery(OuvrageImpl.QN.FIND_OUVRAGE_EXEMPLAIRES_RESERVATIONS, Ouvrage.class).setParameter("ouvrage", ouvrage.getId()).getSingleResult();
+            ouvrage1 = this.entityManager.createNamedQuery(OuvrageImpl.QN.FIND_OUVRAGE_EXEMPLAIRES_RESERVATIONS, Ouvrage.class).setParameter("ouvrage_id", ouvrage.getId()).getSingleResult();
         } catch (NoResultException nre){
             ouvrage1 = null;
         }
