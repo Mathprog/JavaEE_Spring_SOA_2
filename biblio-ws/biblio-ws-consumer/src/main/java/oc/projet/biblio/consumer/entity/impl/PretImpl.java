@@ -28,7 +28,7 @@ import java.time.LocalDate;
         @NamedQuery(
                 name = PretImpl.QN.FIND_BY_USAGER_AND_OUVRAGE,
                 query = "SELECT p FROM PretImpl p " +
-                        "JOIN p.exemplary e " +
+                        "JOIN p.exemplaire e " +
                         "WHERE p.usager = :usager " +
                         "AND e.ouvrage = :ouvrage"
         )
