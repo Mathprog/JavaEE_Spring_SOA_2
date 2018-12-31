@@ -67,6 +67,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         } else {
             reservation.setDateLimite(null);
         }
+        this.entityManager.persist(reservation);
         return reservation;
     }
 
