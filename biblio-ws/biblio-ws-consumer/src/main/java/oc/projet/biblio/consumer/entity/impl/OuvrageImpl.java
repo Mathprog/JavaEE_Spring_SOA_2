@@ -69,6 +69,13 @@ import java.util.Set;
                         "FROM ExemplaireImpl e2 " +
                         "JOIN e2.ouvrage o2 " +
                         "WHERE o = o2)"
+        ),
+        @NamedQuery(
+                name = OuvrageImpl.QN.FIND_OUVRAGE_EXEMPLAIRES_RESERVATIONS,
+                query = "SELECT o FROM OuvrageImpl o " +
+                        "JOIN FETCH o.exemplaires es " +
+                        "JOIN FETCH o.reservations rs " +
+                        "WHERE o = :ouvrage"
         )
 })
 public class OuvrageImpl implements Ouvrage, Serializable {
@@ -80,6 +87,7 @@ public class OuvrageImpl implements Ouvrage, Serializable {
         public static final String FIND_ALL_BY_RESEARCH = "OuvrageImpl.findAllByResearch";
         public static final String FIND_ALL_DISPO_BY_RESEARCH = "OuvrageImpl.findAllWithDispoBySearch";
         public static final String FIND_ALL_NOT_DISPO_BY_RESEARCH = "OuvrageImpl.findAllWithNoDispoByResearch";
+        public static final String FIND_OUVRAGE_EXEMPLAIRES_RESERVATIONS = "OuvrageImpl.findOuvrageWithExemplairesAndReservations";
     }
 
 

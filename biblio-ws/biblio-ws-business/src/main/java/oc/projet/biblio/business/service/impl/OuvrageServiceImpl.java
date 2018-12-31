@@ -48,5 +48,10 @@ public class OuvrageServiceImpl implements OuvrageService {
         return this.ouvrageRepository.findAllOuvrageByResearch(titre);
     }
 
+    @Override
+    public Ouvrage findWithExemplairesAndReservations(Ouvrage ouvrage){
+        return this.ouvrageRepository.findOuvrageWithExemplairesAndReservations(ouvrage);
+    }
+
 
 }

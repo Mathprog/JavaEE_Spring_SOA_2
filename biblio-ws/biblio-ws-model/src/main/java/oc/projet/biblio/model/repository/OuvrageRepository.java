@@ -18,4 +18,6 @@ public interface OuvrageRepository {
     List<Ouvrage> findAllWithNoDispo();
 
     List<Ouvrage> findAllOuvrageByResearch(String titre);
+
+    Ouvrage findOuvrageWithExemplairesAndReservations(Ouvrage ouvrage);
 }

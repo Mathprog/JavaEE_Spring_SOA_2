@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -68,6 +69,17 @@ public class OuvrageRepositoryImpl implements OuvrageRepository {
         return result;
     }
 
+    @Override
+    public Ouvrage findOuvrageWithExemplairesAndReservations(Ouvrage ouvrage){
+        Ouvrage ouvrage1;
+        try {
+            ouvrage1 = this.entityManager.createNamedQuery(OuvrageImpl.QN.FIND_OUVRAGE_EXEMPLAIRES_RESERVATIONS, Ouvrage.class).setParameter("ouvrage", ouvrage).getSingleResult();
+        } catch (NoResultException nre){
+            ouvrage1 = null;
+        }
+        return ouvrage1;
+    }
+
     private List<Ouvrage> utilsCount(List<Object[]> ouvrages){
         List<Ouvrage> ouvragesReturn = new ArrayList<>();
         for (Object[] o : ouvrages){
@@ -80,4 +92,6 @@ public class OuvrageRepositoryImpl implements OuvrageRepository {
         }
         return ouvragesReturn;
     }
+
+
 }

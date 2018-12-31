@@ -260,8 +260,7 @@ public class ServiceImplTest {
         assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(0, this.reservationService.findAllByUsager(usager).size());
 
-        Hibernate.initialize(ouvrage.getExemplaires());
-        Hibernate.initialize(ouvrage.getReservations());
+        ouvrage = this.ouvrageService.findWithExemplairesAndReservations(ouvrage);
 
         assertNotNull(exemplaire);
         assertNull(ouvrage.getReservations());
