@@ -44,12 +44,12 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public Reservation create(Usager usager, Ouvrage ouvrage){
-        Pret pret = this.pretService.findByUsagerAndOuvrage(usager, ouvrage);
+        Pret pret = this.pretService.findByUsagerAndOuvrage(usager, ouvrage); // On récupére un Pret potentiellement existant entre l'usager et l'ouvrage.
         ouvrage.getExemplaires();
         ouvrage.getReservations();
         ouvrage.calculReservable();
         Reservation reservation;
-        if( pret != null && ouvrage.isReservable()){
+        if( pret != null && ouvrage.isReservable()){ // S'il n'y a pas de prêt et que les conditions de réservations de l'ouvrage sont bonnes.
             reservation = this.reservationRepository.create(usager, ouvrage);
         } else {
             reservation = null;

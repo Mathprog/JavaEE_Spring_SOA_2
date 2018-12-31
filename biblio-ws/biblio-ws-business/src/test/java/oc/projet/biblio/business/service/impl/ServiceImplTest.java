@@ -262,6 +262,8 @@ public class ServiceImplTest {
 
         Reservation reservation = this.reservationService.create(usager, ouvrage);
 
+        assertNotNull(reservation);
+
         assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager).size());
 
