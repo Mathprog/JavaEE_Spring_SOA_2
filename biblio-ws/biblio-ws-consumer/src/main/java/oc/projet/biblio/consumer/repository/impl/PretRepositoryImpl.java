@@ -1,5 +1,7 @@
 package oc.projet.biblio.consumer.repository.impl;
 
+
+import oc.projet.biblio.model.entity.Ouvrage;
 import oc.projet.biblio.model.repository.PretRepository;
 import oc.projet.biblio.model.entity.Exemplaire;
 import oc.projet.biblio.model.entity.Pret;
@@ -41,7 +43,7 @@ public class PretRepositoryImpl implements PretRepository {
     }
 
     @Override
-    public List<Pret> findall(){
+    public List<Pret> findAll(){
         return this.entityManager.createNamedQuery(PretImpl.QN.FIND_ALL, Pret.class).getResultList();
     }
 
@@ -61,5 +63,15 @@ public class PretRepositoryImpl implements PretRepository {
         return this.entityManager.createNamedQuery(PretImpl.QN.FIND_ALL_BY_USAGER, Pret.class).setParameter("usager", u).getResultList();
     }
 
+    @Override
+    public Pret findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage){
+        Pret pret;
+        try {
+            pret = this.entityManager.createNamedQuery(PretImpl.QN.FIND_BY_USAGER_AND_OUVRAGE, Pret.class).setParameter("usager", usager).setParameter("ouvrage", ouvrage).getSingleResult();
+        } catch (NoResultException nre){
+            pret = null;
+        }
+        return pret;
+    }
 
 }

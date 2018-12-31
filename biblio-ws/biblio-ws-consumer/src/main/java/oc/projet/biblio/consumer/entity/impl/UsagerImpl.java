@@ -52,8 +52,6 @@ import java.util.Set;
                         "JOIN r2.pret p2 " +
                         "WHERE p2.id = p.id)"
         )
-
-
 })
 public class UsagerImpl implements Usager, Serializable {
 

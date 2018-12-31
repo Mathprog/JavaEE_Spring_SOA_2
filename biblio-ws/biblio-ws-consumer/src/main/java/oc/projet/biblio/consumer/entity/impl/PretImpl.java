@@ -24,6 +24,12 @@ import java.time.LocalDate;
                 name = PretImpl.QN.FIND_BY_EXEMPLAIRE,
                 query = "SELECT p FROM PretImpl p " +
                         "WHERE p.exemplaire = :exemplaire"
+        ),
+        @NamedQuery(
+                name = PretImpl.QN.FIND_BY_USAGER_AND_OUVRAGE,
+                query = "SELECT p FROM PretImpl p " +
+                        "WHERE p.usager = :usager " +
+                        "AND p.ouvrage = :ouvrage"
         )
 })
 
@@ -35,6 +41,7 @@ public class PretImpl implements Pret, Serializable {
         public static final String FIND_ALL = "PretImpl.findAll";
         public static final String FIND_ALL_BY_USAGER = "PretImpl.findByUsager";
         public static final String FIND_BY_EXEMPLAIRE = "PretImpl.findByExemplaire";
+        public static final String FIND_BY_USAGER_AND_OUVRAGE = "PretImpl.findByUsagerAndOuvrage";
     }
 
     @Id

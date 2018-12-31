@@ -1,6 +1,7 @@
 package oc.projet.biblio.model.repository;
 
 import oc.projet.biblio.model.entity.Exemplaire;
+import oc.projet.biblio.model.entity.Ouvrage;
 import oc.projet.biblio.model.entity.Pret;
 import oc.projet.biblio.model.entity.Usager;
 
@@ -13,9 +14,11 @@ public interface PretRepository {
 
     Pret create(Exemplaire exemplaire, Usager usager, LocalDate date_pret, LocalDate date_fin);
 
-    List<Pret> findall();
+    List<Pret> findAll();
 
     Pret findByExemplaire(Exemplaire e);
 
     List<Pret> findAllByUsager(Usager u);
+
+    Pret findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage);
 }

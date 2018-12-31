@@ -36,7 +36,7 @@ public class PretServiceImpl implements PretService {
 
     @Override
     public List<Pret> findAll(){
-        return this.pretRepository.findall();
+        return this.pretRepository.findAll();
     }
 
     @Override

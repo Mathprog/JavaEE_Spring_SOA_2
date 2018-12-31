@@ -42,5 +42,7 @@ public interface Ouvrage {
 
     boolean isReservable();
 
-    void setReservable(boolean reservable);
+    abstract void setReservable(boolean reservable);
+
+    void calculReservable();
 }

@@ -230,4 +230,13 @@ public class OuvrageImpl implements Ouvrage, Serializable {
     public void setReservable(boolean reservable) {
         isReservable = reservable;
     }
+
+    @Override
+    public void calculReservable(){
+        if( this.reservations.size() >= this.exemplaires.size() * 2){
+            this.isReservable = false;
+        } else {
+            this.isReservable = true;
+        }
+    }
 }

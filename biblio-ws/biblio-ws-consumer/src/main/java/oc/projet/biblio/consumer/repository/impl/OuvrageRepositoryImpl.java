@@ -45,13 +45,18 @@ public class OuvrageRepositoryImpl implements OuvrageRepository {
     @Override
     public List<Ouvrage> findAllWithDispo(){
         List<Object[]> ouvrages = entityManager.createNamedQuery(OuvrageImpl.QN.FIND_ALL_DISPO, Object[].class).getResultList();
-
         return this.utilsCount(ouvrages);
     }
 
     @Override
     public List<Ouvrage> findAllWithNoDispo(){
-        return entityManager.createNamedQuery(OuvrageImpl.QN.FIND_ALL_NOT_DISPO, Ouvrage.class).getResultList();
+        List<Ouvrage> ouvrageList = entityManager.createNamedQuery(OuvrageImpl.QN.FIND_ALL_NOT_DISPO, Ouvrage.class).getResultList();
+        for(Ouvrage ouvrage : ouvrageList){
+            ouvrage.getReservations();
+            ouvrage.getExemplaires();
+            ouvrage.calculReservable();
+        }
+        return ouvrageList;
     }
 
     @Override
@@ -67,6 +72,9 @@ public class OuvrageRepositoryImpl implements OuvrageRepository {
         List<Ouvrage> ouvragesReturn = new ArrayList<>();
         for (Object[] o : ouvrages){
             Ouvrage ouvrage = (Ouvrage) o[0];
+            ouvrage.getExemplaires();
+            ouvrage.getReservations();
+            ouvrage.calculReservable();
             ouvrage.setNbDispo((Long) o[1]);
             ouvragesReturn.add(ouvrage);
         }
