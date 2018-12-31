@@ -263,6 +263,7 @@ public class ServiceImplTest {
         Hibernate.initialize(ouvrage.getExemplaires());
         Hibernate.initialize(ouvrage.getReservations());
 
+        assertNotNull(exemplaire);
         assertNull(ouvrage.getReservations());
         assertNotNull(ouvrage.getExemplaires());
         //Reservation reservation = this.reservationService.create(usager, ouvrage);
