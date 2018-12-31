@@ -19,6 +19,8 @@ public interface ReservationRepository {
 
     List<Reservation> findAllDispos();
 
+    Reservation findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage);
+
     Reservation create(Usager usager, Ouvrage ouvrage);
 
     Reservation delete(Reservation reservation);

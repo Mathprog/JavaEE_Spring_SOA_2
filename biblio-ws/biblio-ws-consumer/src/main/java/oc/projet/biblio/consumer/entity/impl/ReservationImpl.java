@@ -31,7 +31,11 @@ import java.time.LocalDateTime;
                         query = "SELECT r FROM ReservationImpl r " +
                                 "JOIN FETCH r.usager u " +
                                 "WHERE r.ouvrage = :ouvrage " +
-                                "ORDER BY r.dateReservation DESC")
+                                "ORDER BY r.dateReservation DESC"),
+                @NamedQuery( name = ReservationImpl.QN.FIND_BY_USAGER_AND_OUVRAGE,
+                            query = "SELECT r FROM ReservationImpl r " +
+                                    "WHERE r.usager = :usager " +
+                                    "AND r.ouvrage = :ouvrage")
         }
 )
 @Entity
@@ -46,6 +50,7 @@ public class ReservationImpl implements Reservation {
         public static final String FIND_LAST_BY_OUVRAGE = "ReservationImpl.findLastByOuvrage";
         public static final String FIND_ALL_DISPOS = "ReservationImpl.findAllByDispo";
         public static final String FIND_NEXT_RESA = "ReservationImpl.findNextResa";
+        public static final String FIND_BY_USAGER_AND_OUVRAGE = "ReservationImpl.findByUsagerAndOuvrage";
     }
 
     @Id

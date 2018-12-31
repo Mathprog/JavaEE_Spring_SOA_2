@@ -39,6 +39,17 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     }
 
     @Override
+    public Reservation findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage){
+        Reservation reservation;
+        try {
+            reservation = this.entityManager.createNamedQuery(ReservationImpl.QN.FIND_BY_USAGER_AND_OUVRAGE, Reservation.class).setParameter("usager", usager).setParameter("ouvrage", ouvrage).getSingleResult();
+        } catch (NoResultException nre){
+            reservation = null;
+        }
+        return  reservation;
+    }
+
+    @Override
     public Reservation create(Usager usager, Ouvrage ouvrage){
         Reservation reservation = null;
         List<Reservation> reservationList = this.findAllByOuvrage(ouvrage);

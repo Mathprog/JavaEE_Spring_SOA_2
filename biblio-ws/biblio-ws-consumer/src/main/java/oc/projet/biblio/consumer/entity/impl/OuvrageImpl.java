@@ -233,10 +233,16 @@ public class OuvrageImpl implements Ouvrage, Serializable {
 
     @Override
     public void calculReservable(){
-        if( this.reservations.size() >= this.exemplaires.size() * 2){
-            this.isReservable = false;
-        } else {
+        if(this.reservations == null && this.exemplaires != null){ // S'il n'y a pas de réservation et des exemplaires.
             this.isReservable = true;
+        } else if (this.reservations != null && this.exemplaires != null){ // S'il y a des réservations et des exemplaires.
+            if( this.reservations.size() >= this.exemplaires.size() * 2){ // Si la condition du nombre maximale de résa est atteinte.
+                this.isReservable = false;
+            } else {
+                this.isReservable = true;
+            }
+        } else { // Il n'y a pas d'exemplaires disponibles.
+            this.isReservable = false;
         }
     }
 }
