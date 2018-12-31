@@ -248,7 +248,7 @@ public class ServiceImplTest {
 
     @Test
     public void reservarion_findAll(){
-        assertNull(this.reservationService.findAll());
+        assertEquals(0, this.relanceService.findAll().size());
     }
 
 }
