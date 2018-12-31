@@ -7,6 +7,7 @@ import oc.projet.biblio.model.entity.Pret;
 import oc.projet.biblio.model.entity.Reservation;
 import oc.projet.biblio.model.entity.Usager;
 import oc.projet.biblio.model.repository.ReservationRepository;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -45,8 +46,8 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation create(Usager usager, Ouvrage ouvrage){
         Pret pret = this.pretService.findByUsagerAndOuvrage(usager, ouvrage); // On récupére un Pret potentiellement existant entre l'usager et l'ouvrage.
-        ouvrage.setExemplaires(ouvrage.getExemplaires());
-        ouvrage.setReservations(ouvrage.getReservations());
+        Hibernate.initialize(ouvrage.getExemplaires());
+        Hibernate.initialize(ouvrage.getReservations());
         ouvrage.calculReservable();
         Reservation reservation;
         if( pret == null && ouvrage.isReservable()){ // S'il n'y a pas de prêt et que les conditions de réservations de l'ouvrage sont bonnes.

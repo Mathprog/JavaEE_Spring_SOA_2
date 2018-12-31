@@ -5,6 +5,7 @@ import oc.projet.biblio.model.entity.*;
 
 import static org.junit.Assert.*;
 
+import org.hibernate.Hibernate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -259,11 +260,14 @@ public class ServiceImplTest {
         assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(0, this.reservationService.findAllByUsager(usager).size());
 
+        Hibernate.initialize(ouvrage.getExemplaires());
+        Hibernate.initialize(ouvrage.getReservations());
 
-        Reservation reservation = this.reservationService.create(usager, ouvrage);
-
-        assertNotNull(ouvrage.getExemplaires());
         assertNull(ouvrage.getReservations());
+        assertNotNull(ouvrage.getExemplaires());
+        //Reservation reservation = this.reservationService.create(usager, ouvrage);
+
+
 
         /*assertNotNull(reservation);
 
