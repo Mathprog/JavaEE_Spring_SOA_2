@@ -269,8 +269,8 @@ public class ServiceImplTest {
         ouvrage.setExemplaires(new HashSet<>(this.exemplaireService.findAllByBook(ouvrage)));
         assertNotNull(exemplaire);
         assertNotNull(ouvrage);
-        assertNull(ouvrage.getReservations());
-        assertNotNull(ouvrage.getExemplaires());
+        assertEquals(0, ouvrage.getReservations().size());
+        assertEquals(1, ouvrage.getReservations().size());
         //Reservation reservation = this.reservationService.create(usager, ouvrage);
 
 
