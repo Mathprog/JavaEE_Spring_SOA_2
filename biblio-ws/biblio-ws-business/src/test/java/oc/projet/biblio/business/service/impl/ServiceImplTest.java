@@ -283,12 +283,14 @@ public class ServiceImplTest {
         assertEquals(1, this.reservationService.findAllByUsager(usager).size());
 
         Reservation reservation2 = this.reservationService.create(usager2, ouvrage);
-
+        ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
+        
         assertNotNull(reservation2);
         assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
 
         Reservation reservation3 = this.reservationService.create(usager3, ouvrage);
+        ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
 
         assertNull(reservation3);
         assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
