@@ -254,8 +254,12 @@ public class ServiceImplTest {
         assertEquals(0, this.reservationService.findAll().size());
 
         String email = "mathieu-martinez@gmail.com";
+        String email2 = "mathieu-martinez2@gmail.com";
+        String email3 = "mathieu-martinez3@gmail.com";
         String titre = "Spring Framework 3";
         Usager usager = usagerService.createUsager(email);
+        Usager usager2 = usagerService.createUsager(email2);
+        Usager usager3 = usagerService.createUsager(email3);
         Ouvrage ouvrage = ouvrageService.createOuvrate(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
         Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
 
@@ -278,6 +282,17 @@ public class ServiceImplTest {
         assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager).size());
 
+        Reservation reservation2 = this.reservationService.create(usager2, ouvrage);
+
+        assertNotNull(reservation2);
+        assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
+        assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
+
+        Reservation reservation3 = this.reservationService.create(usager3, ouvrage);
+
+        assertNull(reservation3);
+        assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
+        assertEquals(0, this.reservationService.findAllByUsager(usager3).size());
 
     }
 
