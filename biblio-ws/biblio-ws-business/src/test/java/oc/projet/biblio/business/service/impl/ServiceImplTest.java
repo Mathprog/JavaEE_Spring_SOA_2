@@ -270,7 +270,7 @@ public class ServiceImplTest {
         assertNotNull(exemplaire);
         assertNotNull(ouvrage);
         assertEquals(0, ouvrage.getReservations().size());
-        assertEquals(1, ouvrage.getReservations().size());
+        assertEquals(1, ouvrage.getExemplaires().size());
         //Reservation reservation = this.reservationService.create(usager, ouvrage);
 
 
