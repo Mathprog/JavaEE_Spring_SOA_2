@@ -21,6 +21,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -263,8 +265,8 @@ public class ServiceImplTest {
 
         assertNotNull(ouvrage.getId());
 
-        ouvrage = this.ouvrageService.findWithExemplairesAndReservations(ouvrage);
-
+        ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
+        ouvrage.setExemplaires(new HashSet<>(this.exemplaireService.findAllByBook(ouvrage)));
         assertNotNull(exemplaire);
         assertNotNull(ouvrage);
         assertNull(ouvrage.getReservations());
