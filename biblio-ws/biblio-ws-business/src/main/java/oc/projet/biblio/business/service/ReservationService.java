@@ -14,4 +14,6 @@ public interface ReservationService {
     List<Reservation> findAllByUsager(Usager usager);
 
     Reservation create(Usager usager, Ouvrage ouvrage);
+
+    Reservation delete(Reservation reservation, Ouvrage ouvrage);
 }

@@ -58,4 +58,14 @@ public class ReservationServiceImpl implements ReservationService {
         }
         return reservation;
     }
+
+    @Override
+    public Reservation delete(Reservation reservation, Ouvrage ouvrage){
+        this.reservationRepository.delete(reservation);
+
+        Reservation nextReservation = this.reservationRepository.findNextResa(ouvrage);
+        this.reservationRepository.updateDateLimite(nextReservation);
+
+        return nextReservation;
+    }
 }

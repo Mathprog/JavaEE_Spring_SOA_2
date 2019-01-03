@@ -79,7 +79,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public List<Reservation> findAllDispos(){
-        return this.entityManager.createNamedQuery(ReservationImpl.QN.FIND_ALL_DISPOS, Reservation.class).setParameter("date", LocalDate.now().plusDays(2L)).getResultList();
+        return this.entityManager.createNamedQuery(ReservationImpl.QN.FIND_ALL_ACUTAL_RESA, Reservation.class).setParameter("date", LocalDate.now().plusDays(2L)).getResultList();
     }
 
 

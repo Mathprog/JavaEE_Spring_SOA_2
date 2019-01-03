@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
                         query = "SELECT r FROM ReservationImpl r " +
                                 "WHERE r.ouvrage = :ouvrage " +
                                 "ORDER BY r.dateReservation DESC "),
-                @NamedQuery( name = ReservationImpl.QN.FIND_ALL_DISPOS,
+                @NamedQuery( name = ReservationImpl.QN.FIND_ALL_ACUTAL_RESA,
                         query = "SELECT r FROM ReservationImpl r " +
                                 "JOIN FETCH r.usager u " +
                                 "WHERE r.dateLimite IS NOT NULL " +
@@ -31,6 +31,7 @@ import java.time.LocalDateTime;
                         query = "SELECT r FROM ReservationImpl r " +
                                 "JOIN FETCH r.usager u " +
                                 "WHERE r.ouvrage = :ouvrage " +
+                                "AND r.dateLimite IS NULL " +
                                 "ORDER BY r.dateReservation DESC"),
                 @NamedQuery( name = ReservationImpl.QN.FIND_BY_USAGER_AND_OUVRAGE,
                             query = "SELECT r FROM ReservationImpl r " +
@@ -48,7 +49,7 @@ public class ReservationImpl implements Reservation {
         public static final String FIND_ALL_BY_USAGER = "ReservationImpl.findAllByUsager";
         public static final String FIND_ALL_BY_OUVRAGE = "ReservationImpl.findAllByOuvrage";
         public static final String FIND_LAST_BY_OUVRAGE = "ReservationImpl.findLastByOuvrage";
-        public static final String FIND_ALL_DISPOS = "ReservationImpl.findAllByDispo";
+        public static final String FIND_ALL_ACUTAL_RESA = "ReservationImpl.findAllByDispo";
         public static final String FIND_NEXT_RESA = "ReservationImpl.findNextResa";
         public static final String FIND_BY_USAGER_AND_OUVRAGE = "ReservationImpl.findByUsagerAndOuvrage";
     }
