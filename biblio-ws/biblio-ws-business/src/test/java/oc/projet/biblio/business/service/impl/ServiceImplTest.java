@@ -327,14 +327,16 @@ public class ServiceImplTest {
         assertEquals(0, this.reservationService.findAllByUsager(usager3).size());
 
         /**
-         * On supprime la réservation suite à un délai dépassé.
+         * On supprime la réservation suite à un délai dépassé. La réservation d'après est automatiquement augmentée.
          */
 
         Reservation reservationSupprime = this.reservationService.delete(reservation, ouvrage);
         assertNotNull(reservationSupprime);
-        assertNotNull(reservationSupprime.getDateLimite());
-        assertEquals(reservationSupprime.getDateLimite(), LocalDate.now().plusDays(2));
-        assertEquals(reservationSupprime.getId(), reservation2.getId());
+
+        Reservation nextReservationUpdated = this.reservationService.updateDateLimiteNextResa(ouvrage);
+        assertNotNull(nextReservationUpdated.getDateLimite());
+        assertEquals(nextReservationUpdated.getDateLimite(), LocalDate.now().plusDays(2));
+        assertEquals(nextReservationUpdated.getId(), reservation2.getId());
 
 
         /**

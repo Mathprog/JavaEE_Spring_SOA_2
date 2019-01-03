@@ -16,4 +16,6 @@ public interface ReservationService {
     Reservation create(Usager usager, Ouvrage ouvrage);
 
     Reservation delete(Reservation reservation, Ouvrage ouvrage);
+
+    Reservation updateDateLimiteNextResa(Ouvrage ouvrage);
 }
