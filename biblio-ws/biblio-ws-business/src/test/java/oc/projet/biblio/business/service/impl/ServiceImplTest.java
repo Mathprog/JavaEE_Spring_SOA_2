@@ -292,6 +292,18 @@ public class ServiceImplTest {
         assertEquals(1, this.reservationService.findAllByUsager(usager).size());
 
         /**
+         * Ici on test une réservation alors qu'une réservation est déjà en cours. Cela devrait donc échouer.
+         */
+
+        Reservation reservation1 = this.reservationService.create(usager, ouvrage);
+
+        assertNull(reservation1);
+
+        //Ici, l'ancience réservation existe toujours.
+        assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
+        assertEquals(1, this.reservationService.findAllByUsager(usager).size());
+
+        /**
          * On test ici pour deux réservations. Cela doit marcher.
          */
 

@@ -46,11 +46,12 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation create(Usager usager, Ouvrage ouvrage){
         Pret pret = this.pretService.findByUsagerAndOuvrage(usager, ouvrage); // On récupére un Pret potentiellement existant entre l'usager et l'ouvrage.
+        Reservation reservationFound = this.reservationRepository.findByUsagerAndOuvrage(usager, ouvrage);
         Hibernate.initialize(ouvrage.getExemplaires());
         Hibernate.initialize(ouvrage.getReservations());
         ouvrage.calculReservable();
         Reservation reservation;
-        if( pret == null && ouvrage.isReservable()){ // S'il n'y a pas de prêt et que les conditions de réservations de l'ouvrage sont bonnes.
+        if( pret == null && reservationFound == null && ouvrage.isReservable()){ // S'il n'y a pas de prêt et que les conditions de réservations de l'ouvrage sont bonnes.
             reservation = this.reservationRepository.create(usager, ouvrage);
         } else {
             reservation = null;
