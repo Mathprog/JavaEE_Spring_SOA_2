@@ -287,7 +287,7 @@ public class ServiceImplTest {
         Reservation reservation = this.reservationService.create(usager, ouvrage);
 
         assertNotNull(reservation);
-
+        assertEquals(reservation.getDateLimite(), LocalDate.now().plusDays(2));
         assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager).size());
 
@@ -310,6 +310,7 @@ public class ServiceImplTest {
         Reservation reservation2 = this.reservationService.create(usager2, ouvrage);
         ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
 
+        assertNull(reservation2.getDateLimite());
         assertNotNull(reservation2);
         assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
