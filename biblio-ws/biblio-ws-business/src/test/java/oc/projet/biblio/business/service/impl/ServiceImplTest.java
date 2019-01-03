@@ -256,12 +256,18 @@ public class ServiceImplTest {
         String email = "mathieu-martinez@gmail.com";
         String email2 = "mathieu-martinez2@gmail.com";
         String email3 = "mathieu-martinez3@gmail.com";
+        String email4 = "mathieu-martinez4@gmail.com";
         String titre = "Spring Framework 3";
+        String titre2 = "Spring Framework 4";
         Usager usager = usagerService.createUsager(email);
         Usager usager2 = usagerService.createUsager(email2);
         Usager usager3 = usagerService.createUsager(email3);
+        Usager usager4 = usagerService.createUsager(email4);
         Ouvrage ouvrage = ouvrageService.createOuvrate(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage2 = ouvrageService.createOuvrate(titre2, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
         Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
+        Exemplaire exemplaire2 = exemplaireService.createExemplaire(ouvrage2);
+        Pret pret = this.pretService.createPret(exemplaire2, usager4, LocalDate.now(), LocalDate.now().plusWeeks(4));
 
         assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(0, this.reservationService.findAllByUsager(usager).size());
@@ -275,6 +281,9 @@ public class ServiceImplTest {
         assertNotNull(ouvrage);
         assertEquals(0, ouvrage.getReservations().size());
         assertEquals(1, ouvrage.getExemplaires().size());
+        /**
+         * On test Ici pour une réservation. Cela doit marcher.
+         */
         Reservation reservation = this.reservationService.create(usager, ouvrage);
 
         assertNotNull(reservation);
@@ -282,12 +291,20 @@ public class ServiceImplTest {
         assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager).size());
 
+        /**
+         * On test ici pour deux réservations. Cela doit marcher.
+         */
+
         Reservation reservation2 = this.reservationService.create(usager2, ouvrage);
         ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
-        
+
         assertNotNull(reservation2);
         assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
+
+        /**
+         * On test ici pour trois réservations. Cela doit échouer car il n'y a qu'un seul exemplaire de disponible.
+         */
 
         Reservation reservation3 = this.reservationService.create(usager3, ouvrage);
         ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
@@ -295,6 +312,16 @@ public class ServiceImplTest {
         assertNull(reservation3);
         assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(0, this.reservationService.findAllByUsager(usager3).size());
+
+        /**
+         * On test ici une réservation alors qu'un prêt est en cours. Cela doit donc échouer.
+         */
+        Reservation reservation4 = this.reservationService.create(usager4, ouvrage2);
+
+        assertNull(reservation4);
+        assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage2).size());
+        assertEquals(0, this.reservationService.findAllByUsager(usager4).size());
+
 
     }
 
