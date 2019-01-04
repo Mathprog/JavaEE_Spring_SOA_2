@@ -18,4 +18,8 @@ public interface ReservationService {
     Reservation delete(Reservation reservation, Ouvrage ouvrage);
 
     Reservation updateDateLimiteNextResa(Ouvrage ouvrage);
+
+    List<Reservation> findAllLateResa();
+
+    Reservation update(Reservation reservation);
 }

@@ -4,6 +4,7 @@ import oc.projet.biblio.model.entity.Ouvrage;
 import oc.projet.biblio.model.entity.Reservation;
 import oc.projet.biblio.model.entity.Usager;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ReservationRepository {
@@ -27,5 +28,9 @@ public interface ReservationRepository {
 
     Reservation updateDateLimite(Reservation reservation);
 
+    Reservation update(Reservation reservation);
+
     Reservation findNextResa(Ouvrage ouvrage);
+
+    List<Reservation> findAllLateResa(LocalDate date);
 }

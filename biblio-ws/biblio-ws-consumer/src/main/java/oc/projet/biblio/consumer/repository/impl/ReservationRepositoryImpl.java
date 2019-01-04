@@ -98,6 +98,12 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     }
 
     @Override
+    public Reservation update(Reservation reservation){
+        this.entityManager.merge(reservation);
+        return reservation;
+    }
+
+    @Override
     public Reservation findNextResa(Ouvrage ouvrage){
         Reservation reservation;
         try {
@@ -106,6 +112,11 @@ public class ReservationRepositoryImpl implements ReservationRepository {
             reservation = null;
         }
         return reservation;
+    }
+
+    @Override
+    public List<Reservation> findAllLateResa(LocalDate date){
+        return this.entityManager.createNamedQuery(ReservationImpl.QN.FIND_LATE_RESA, Reservation.class).setParameter("date", date).getResultList();
     }
 
 }

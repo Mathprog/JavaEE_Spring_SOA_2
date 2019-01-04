@@ -257,16 +257,21 @@ public class ServiceImplTest {
         String email2 = "mathieu-martinez2@gmail.com";
         String email3 = "mathieu-martinez3@gmail.com";
         String email4 = "mathieu-martinez4@gmail.com";
+        String email5 = "mathieu-martinez4@gmail.com";
         String titre = "Spring Framework 3";
         String titre2 = "Spring Framework 4";
+        String titre3 = "Spring Framework 5";
         Usager usager = usagerService.createUsager(email);
         Usager usager2 = usagerService.createUsager(email2);
         Usager usager3 = usagerService.createUsager(email3);
         Usager usager4 = usagerService.createUsager(email4);
+        Usager usager5 = usagerService.createUsager(email5);
         Ouvrage ouvrage = ouvrageService.createOuvrate(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
         Ouvrage ouvrage2 = ouvrageService.createOuvrate(titre2, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage3 = ouvrageService.createOuvrate(titre3, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
         Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
         Exemplaire exemplaire2 = exemplaireService.createExemplaire(ouvrage2);
+        Exemplaire exemplaire3 = exemplaireService.createExemplaire(ouvrage3);
         Pret pret = this.pretService.createPret(exemplaire2, usager4, LocalDate.now(), LocalDate.now().plusWeeks(4));
 
         assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage).size());
@@ -349,6 +354,19 @@ public class ServiceImplTest {
         assertEquals(0, this.reservationService.findAllByUsager(usager4).size());
 
 
+        /**
+         * Ici, nous allons tester la détection et la suppression des réservation en retard.
+         */
+
+        Reservation reservation5 = this.reservationService.create(usager5, ouvrage3);
+        reservation5.setDateLimite(LocalDate.now().minusDays(1));
+        reservation5 = this.reservationService.update(reservation5);
+
+        List<Reservation> reservationLateList = this.reservationService.findAllLateResa();
+
+        assertNotNull(reservationLateList);
+        assertEquals(1, reservationLateList.size());
+        assertEquals(reservation5.getId(), reservationLateList.get(0).getId());
     }
 
 }

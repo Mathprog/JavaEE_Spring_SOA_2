@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -67,7 +68,19 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation updateDateLimiteNextResa(Ouvrage ouvrage){
         Reservation nextReservation = this.reservationRepository.findNextResa(ouvrage);
-        this.reservationRepository.updateDateLimite(nextReservation);
+        if( nextReservation != null){
+            this.reservationRepository.updateDateLimite(nextReservation);
+        }
         return  nextReservation;
+    }
+
+    @Override
+    public List<Reservation> findAllLateResa(){
+        return this.reservationRepository.findAllLateResa(LocalDate.now());
+    }
+
+    @Override
+    public Reservation update(Reservation reservation){
+        return this.reservationRepository.update(reservation);
     }
 }
