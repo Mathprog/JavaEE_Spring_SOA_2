@@ -257,7 +257,7 @@ public class ServiceImplTest {
         String email2 = "mathieu-martinez2@gmail.com";
         String email3 = "mathieu-martinez3@gmail.com";
         String email4 = "mathieu-martinez4@gmail.com";
-        String email5 = "mathieu-martinez4@gmail.com";
+        String email5 = "mathieu-martinez5@gmail.com";
         String titre = "Spring Framework 3";
         String titre2 = "Spring Framework 4";
         String titre3 = "Spring Framework 5";
@@ -359,6 +359,8 @@ public class ServiceImplTest {
          */
 
         Reservation reservation5 = this.reservationService.create(usager5, ouvrage3);
+        ouvrage3.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage3)));
+
         reservation5.setDateLimite(LocalDate.now().minusDays(1));
         reservation5 = this.reservationService.update(reservation5);
 
