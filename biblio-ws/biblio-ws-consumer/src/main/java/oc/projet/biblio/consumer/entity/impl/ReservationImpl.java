@@ -41,6 +41,7 @@ import java.time.LocalDateTime;
                 @NamedQuery( name = ReservationImpl.QN.FIND_LATE_RESA,
                             query = "SELECT r FROM ReservationImpl r " +
                                     "JOIN FETCH r.usager u " +
+                                    "JOIN FETCH r.ouvrage o " +
                                     "WHERE r.dateLimite > :date")
         }
 )

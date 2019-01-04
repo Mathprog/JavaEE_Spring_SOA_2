@@ -7,7 +7,6 @@ import oc.projet.biblio.model.entity.Pret;
 import oc.projet.biblio.model.entity.Reservation;
 import oc.projet.biblio.model.entity.Usager;
 import oc.projet.biblio.model.repository.ReservationRepository;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -59,7 +58,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Reservation delete(Reservation reservation, Ouvrage ouvrage){
+    public Reservation delete(Reservation reservation){
         return this.reservationRepository.delete(reservation);
     }
 
@@ -70,6 +69,14 @@ public class ReservationServiceImpl implements ReservationService {
             this.reservationRepository.updateDateLimite(nextReservation);
         }
         return  nextReservation;
+    }
+
+    @Override
+    public void deleteLateResa(List<Reservation> reservationLlateList){
+        for (Reservation reservation : reservationLlateList){
+            this.delete(reservation);
+            this.updateDateLimiteNextResa(reservation.getOuvrage());
+        }
     }
 
     @Override

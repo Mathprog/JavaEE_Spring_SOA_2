@@ -15,9 +15,11 @@ public interface ReservationService {
 
     Reservation create(Usager usager, Ouvrage ouvrage);
 
-    Reservation delete(Reservation reservation, Ouvrage ouvrage);
+    Reservation delete(Reservation reservation);
 
     Reservation updateDateLimiteNextResa(Ouvrage ouvrage);
+
+    void deleteLateResa(List<Reservation> reservationLlateList);
 
     List<Reservation> findAllLateResa();
 
