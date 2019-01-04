@@ -5,7 +5,6 @@ import oc.projet.biblio.model.entity.*;
 
 import static org.junit.Assert.*;
 
-import org.hibernate.Hibernate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -60,12 +58,12 @@ public class ServiceImplTest {
          /*
              Ouvrage non disponible
           * /
-        Ouvrage ouvrage = ouvrageService.createOuvrate(titre, "Eh oui il est partout ce petit binoclard.","Harry Potter" ,"sample-1.jpg" , LocalDate.now().minusYears(4) );
+        Ouvrage ouvrage = ouvrageService.createOuvrage(titre, "Eh oui il est partout ce petit binoclard.","Harry Potter" ,"sample-1.jpg" , LocalDate.now().minusYears(4) );
 
         /*
             Ouvrage avec 1 pret et 1 disponible.
          * /
-        Ouvrage ouvrage2 = ouvrageService.createOuvrate("Spring Framework 2", "Je suis ton père.","Luc","spring.jpg" , LocalDate.now().minusYears(4));
+        Ouvrage ouvrage2 = ouvrageService.createOuvrage("Spring Framework 2", "Je suis ton père.","Luc","spring.jpg" , LocalDate.now().minusYears(4));
         Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
         Exemplaire exemplaire2 = exemplaireService.createExemplaire(ouvrage2);
         Exemplaire exemplaire3 = exemplaireService.createExemplaire(ouvrage2);
@@ -76,7 +74,7 @@ public class ServiceImplTest {
         /*
          * Ouvrage avec deux exemplaires disponibles et pas de pret
          * /
-        Ouvrage ouvrageDispo = ouvrageService.createOuvrate("Ouvrage disponible", "La communauté de l'anneau doit être préservée.", "Aragorn","apache-maven.jpg" ,  LocalDate.now().minusYears(4));
+        Ouvrage ouvrageDispo = ouvrageService.createOuvrage("Ouvrage disponible", "La communauté de l'anneau doit être préservée.", "Aragorn","apache-maven.jpg" ,  LocalDate.now().minusYears(4));
         Exemplaire exemplaireDispo = exemplaireService.createExemplaire(ouvrageDispo);
         Exemplaire exemplaireDispo2 = exemplaireService.createExemplaire(ouvrageDispo);
 
@@ -129,7 +127,7 @@ public class ServiceImplTest {
         String email = "mathieu-martinez@gmail.com";
         String titre = "Spring Framework 3";
         Usager usager = usagerService.createUsager(email);
-        Ouvrage ouvrage = ouvrageService.createOuvrate(titre,"Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage = ouvrageService.createOuvrage(titre,"Je suis ton père.","Luc", LocalDate.now().minusYears(4));
         Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
         Exemplaire exemplairePretLate = exemplaireService.createExemplaire(ouvrage);
         Exemplaire exemplaireRelanceLate = exemplaireService.createExemplaire(ouvrage);
@@ -193,7 +191,7 @@ public class ServiceImplTest {
         String email = "mathieu-martinez@gmail.com";
         String titre = "Spring Framework 3";
         Usager usager = usagerService.createUsager(email);
-        Ouvrage ouvrage = ouvrageService.createOuvrate(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage = ouvrageService.createOuvrage(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
         Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
         Pret pret = pretService.createPret(exemplaire, usager, LocalDate.now(), LocalDate.now().plusWeeks(4));
         Relance relance = relanceService.createRelance(pret, LocalDate.now().plusWeeks(8));
@@ -212,7 +210,7 @@ public class ServiceImplTest {
         String email = "mathieu-martinez@gmail.com";
         String titre = "Spring Framework 3";
         Usager usager = usagerService.createUsager(email);
-        Ouvrage ouvrage = ouvrageService.createOuvrate(titre,"Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage = ouvrageService.createOuvrage(titre,"Je suis ton père.","Luc", LocalDate.now().minusYears(4));
         Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
         Pret pret = pretService.createPret(exemplaire, usager, LocalDate.now(), LocalDate.now().plusWeeks(4));
 
@@ -232,7 +230,7 @@ public class ServiceImplTest {
         String email = "mathieu-martinez@gmail.com";
         String titre = "Spring Framework 3";
         Usager usager = usagerService.createUsager(email);
-        Ouvrage ouvrage = ouvrageService.createOuvrate(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage = ouvrageService.createOuvrage(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
         Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
         Pret pret = pretService.createPret(exemplaire, usager, LocalDate.now(), LocalDate.now().plusWeeks(4));
 
@@ -266,9 +264,9 @@ public class ServiceImplTest {
         Usager usager3 = usagerService.createUsager(email3);
         Usager usager4 = usagerService.createUsager(email4);
         Usager usager5 = usagerService.createUsager(email5);
-        Ouvrage ouvrage = ouvrageService.createOuvrate(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
-        Ouvrage ouvrage2 = ouvrageService.createOuvrate(titre2, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
-        Ouvrage ouvrage3 = ouvrageService.createOuvrate(titre3, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage = ouvrageService.createOuvrage(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage2 = ouvrageService.createOuvrage(titre2, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage3 = ouvrageService.createOuvrage(titre3, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
         Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
         Exemplaire exemplaire2 = exemplaireService.createExemplaire(ouvrage2);
         Exemplaire exemplaire3 = exemplaireService.createExemplaire(ouvrage3);
@@ -355,9 +353,9 @@ public class ServiceImplTest {
 
 
         /**
-         * Ici, nous allons tester la détection et la suppression des réservation en retard.
+         * Ici, nous allons tester la détection et la suppression des réservations en retard.
          */
-
+        ouvrage3.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage3)));
         Reservation reservation5 = this.reservationService.create(usager5, ouvrage3);
         assertNotNull(reservation5);
         reservation5.setDateLimite(LocalDate.now().minusDays(1));

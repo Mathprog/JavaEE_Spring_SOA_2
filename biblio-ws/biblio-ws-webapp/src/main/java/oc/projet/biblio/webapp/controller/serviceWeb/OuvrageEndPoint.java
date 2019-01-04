@@ -54,7 +54,7 @@ public class OuvrageEndPoint {
     @ResponsePayload
     public GetOuvrageCreateResponse getOuvrageCreate(@RequestPayload GetOuvrageCreateRequest request){
         GetOuvrageCreateResponse ouvrageResponse = new GetOuvrageCreateResponse();
-        Ouvrage ouvrage = this.ouvrageService.createOuvrate(request.getTitre(), request.getResume(), request.getAuteur() , LocalDate.now().minusYears(8));
+        Ouvrage ouvrage = this.ouvrageService.createOuvrage(request.getTitre(), request.getResume(), request.getAuteur() , LocalDate.now().minusYears(8));
         OuvrageWS ouvrageWS = null;
         if( ouvrage != null ){
             ouvrageWS = new OuvrageWS();

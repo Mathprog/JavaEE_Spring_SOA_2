@@ -24,7 +24,7 @@ public class OuvrageServiceImpl implements OuvrageService {
     }
 
     @Override
-    public Ouvrage createOuvrate(String titre, String resume, String auteur, LocalDate publication) {
+    public Ouvrage createOuvrage(String titre, String resume, String auteur, LocalDate publication) {
         return this.ouvrageRepository.create(titre, resume , auteur , publication );
     }
 
