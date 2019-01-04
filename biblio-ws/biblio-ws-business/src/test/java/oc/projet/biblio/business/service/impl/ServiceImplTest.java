@@ -359,8 +359,7 @@ public class ServiceImplTest {
          */
 
         Reservation reservation5 = this.reservationService.create(usager5, ouvrage3);
-        ouvrage3.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage3)));
-
+        assertNotNull(reservation5);
         reservation5.setDateLimite(LocalDate.now().minusDays(1));
         reservation5 = this.reservationService.update(reservation5);
 
