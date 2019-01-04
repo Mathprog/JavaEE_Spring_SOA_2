@@ -356,6 +356,7 @@ public class ServiceImplTest {
          * Ici, nous allons tester la détection et la suppression des réservations en retard.
          */
         ouvrage3.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage3)));
+        ouvrage3.setExemplaires(new HashSet<>(this.exemplaireService.findAllByBook(ouvrage3)));
         Reservation reservation5 = this.reservationService.create(usager5, ouvrage3);
         assertNotNull(reservation5);
         reservation5.setDateLimite(LocalDate.now().minusDays(1));
