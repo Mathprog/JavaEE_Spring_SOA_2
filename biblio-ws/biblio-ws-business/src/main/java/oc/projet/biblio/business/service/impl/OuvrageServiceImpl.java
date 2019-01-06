@@ -71,4 +71,9 @@ public class OuvrageServiceImpl implements OuvrageService {
         return (pretFirstDate.isAfter(relanceFirstDAte)) ? relanceFirstDAte : pretFirstDate;
     }
 
+    @Override
+    public Long countResa(Ouvrage ouvrage){
+        return this.ouvrageRepository.countResa(ouvrage);
+    }
+
 }

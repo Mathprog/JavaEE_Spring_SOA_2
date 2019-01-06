@@ -80,6 +80,11 @@ public class OuvrageRepositoryImpl implements OuvrageRepository {
         return ouvrage1;
     }
 
+    @Override
+    public Long countResa(Ouvrage ouvrage){
+        return this.entityManager.createNamedQuery(OuvrageImpl.QN.COUNT_RESA, Long.class).setParameter("ouvrage", ouvrage).getSingleResult();
+    }
+
     private List<Ouvrage> utilsCount(List<Object[]> ouvrages){
         List<Ouvrage> ouvragesReturn = new ArrayList<>();
         for (Object[] o : ouvrages){

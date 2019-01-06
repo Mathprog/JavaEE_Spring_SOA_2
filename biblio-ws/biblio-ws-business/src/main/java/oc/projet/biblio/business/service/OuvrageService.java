@@ -22,4 +22,6 @@ public interface OuvrageService {
     Ouvrage findWithExemplairesAndReservations(Ouvrage ouvrage);
 
     LocalDate firstDispoDate(Ouvrage ouvrage);
+
+    Long countResa(Ouvrage ouvrage);
 }

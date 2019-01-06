@@ -305,6 +305,7 @@ public class ServiceImplTest {
         //Ici, l'ancience réservation existe toujours.
         assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager).size());
+        assertEquals(this.ouvrageService.countResa(ouvrage), (Long) 1L);
 
         /**
          * On test ici pour deux réservations. Cela doit marcher.
@@ -317,6 +318,7 @@ public class ServiceImplTest {
         assertNotNull(reservation2);
         assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
+        assertEquals(this.ouvrageService.countResa(ouvrage), (Long) 2L);
 
         /**
          * On test ici pour trois réservations. Cela doit échouer car il n'y a qu'un seul exemplaire de disponible.
@@ -375,6 +377,9 @@ public class ServiceImplTest {
         assertEquals(0, reservationLateList.size());
     }
 
+    /**
+     * On test ici ue le programme retrouve bien la date de rendue la plus proche quelle soit de prêt ou de relance.
+     */
     @Test
     public void findFirstDateOuvrage_UsesCases(){
         String email = "mathieu-martinez@gmail.com";

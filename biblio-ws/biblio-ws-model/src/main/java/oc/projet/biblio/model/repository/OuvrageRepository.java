@@ -20,4 +20,6 @@ public interface OuvrageRepository {
     List<Ouvrage> findAllOuvrageByResearch(String titre);
 
     Ouvrage findOuvrageWithExemplairesAndReservations(Ouvrage ouvrage);
+
+    Long countResa(Ouvrage ouvrage);
 }

@@ -76,6 +76,12 @@ import java.util.Set;
                         "JOIN FETCH o.exemplaires es " +
                         "JOIN FETCH o.reservations rs " +
                         "WHERE o.id = :ouvrage_id"
+        ),
+        @NamedQuery(
+                name = OuvrageImpl.QN.COUNT_RESA,
+                query = "SELECT COUNT(rs) FROM OuvrageImpl o " +
+                        "JOIN o.reservations rs " +
+                        "WHERE o = :ouvrage"
         )
 })
 public class OuvrageImpl implements Ouvrage, Serializable {
@@ -88,6 +94,7 @@ public class OuvrageImpl implements Ouvrage, Serializable {
         public static final String FIND_ALL_DISPO_BY_RESEARCH = "OuvrageImpl.findAllWithDispoBySearch";
         public static final String FIND_ALL_NOT_DISPO_BY_RESEARCH = "OuvrageImpl.findAllWithNoDispoByResearch";
         public static final String FIND_OUVRAGE_EXEMPLAIRES_RESERVATIONS = "OuvrageImpl.findOuvrageWithExemplairesAndReservations";
+        public static final String COUNT_RESA = "OuvrageImpl.CountResa";
     }
 
 
