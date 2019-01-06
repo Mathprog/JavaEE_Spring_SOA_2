@@ -42,7 +42,7 @@ import java.time.LocalDateTime;
                             query = "SELECT r FROM ReservationImpl r " +
                                     "JOIN FETCH r.usager u " +
                                     "JOIN FETCH r.ouvrage o " +
-                                    "WHERE r.dateLimite > :date")
+                                    "WHERE r.dateLimite < :date")
         }
 )
 @Entity

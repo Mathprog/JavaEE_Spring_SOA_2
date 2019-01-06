@@ -346,8 +346,8 @@ public class ServiceImplTest {
         assertEquals(nextReservationUpdated.getId(), reservation2.getId());
         assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
 
-        /*Pret pret2 = this.pretService.createPret(exemplaire, usager2, LocalDate.now(), LocalDate.now().plusWeeks(4));
-        assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage).size());*/
+        Pret pret2 = this.pretService.createPret(exemplaire, usager2, LocalDate.now(), LocalDate.now().plusWeeks(4));
+        assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage).size());
 
         /**
          * On test ici une réservation alors qu'un prêt est en cours. Cela doit donc échouer.
@@ -373,6 +373,7 @@ public class ServiceImplTest {
 
         assertNotNull(reservationLateList);
         assertEquals(1, reservationLateList.size());
+        assertTrue(reservationLateList.get(0).getDateLimite().isBefore(LocalDate.now()));
 
         this.reservationService.deleteLateResa(reservationLateList);
 
