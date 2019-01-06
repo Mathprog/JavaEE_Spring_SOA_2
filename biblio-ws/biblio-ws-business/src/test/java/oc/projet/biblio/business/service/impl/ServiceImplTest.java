@@ -411,6 +411,11 @@ public class ServiceImplTest {
         Pret pret2 = this.pretService.createPret(exemplaire2, usager, LocalDate.now(), LocalDate.now().plusWeeks(3));
         firstDispo = this.ouvrageService.firstDispoDate(ouvrage);
         assertEquals(firstDispo, pret2.getDateFin());
+
+        Relance relance2 = this.relanceService.createRelance(pret2, LocalDate.now().plusWeeks(2));
+        firstDispo = this.ouvrageService.firstDispoDate(ouvrage);
+        assertEquals(firstDispo, relance2.getDateFin());
+
     }
 
 }
