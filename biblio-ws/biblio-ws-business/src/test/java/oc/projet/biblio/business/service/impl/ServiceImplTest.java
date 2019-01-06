@@ -400,6 +400,10 @@ public class ServiceImplTest {
 
         LocalDate firstDispo = this.pretService.findFirstDispo(ouvrage);
         assertEquals(firstDispo, pret.getDateFin());
+
+        Relance relance = this.relanceService.createRelance(pret, pret.getDateFin().plusWeeks(4));
+        firstDispo = this.relanceService.findFirstDispo(ouvrage);
+        assertEquals(firstDispo, relance.getDateFin());
     }
 
 }
