@@ -407,6 +407,10 @@ public class ServiceImplTest {
 
         firstDispo = this.ouvrageService.firstDispoDate(ouvrage);
         assertEquals(firstDispo, pret.getDateFin());
+
+        Pret pret2 = this.pretService.createPret(exemplaire2, usager, LocalDate.now(), LocalDate.now().plusWeeks(3));
+        firstDispo = this.ouvrageService.firstDispoDate(ouvrage);
+        assertEquals(firstDispo, pret2.getDateFin());
     }
 
 }
