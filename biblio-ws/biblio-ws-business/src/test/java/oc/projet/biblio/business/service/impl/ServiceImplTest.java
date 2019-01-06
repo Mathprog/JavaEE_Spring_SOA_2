@@ -404,6 +404,9 @@ public class ServiceImplTest {
         Relance relance = this.relanceService.createRelance(pret, pret.getDateFin().plusWeeks(4));
         firstDispo = this.relanceService.findFirstDispo(ouvrage);
         assertEquals(firstDispo, relance.getDateFin());
+
+        firstDispo = this.ouvrageService.firstDispoDate(ouvrage);
+        assertEquals(firstDispo, pret.getDateFin());
     }
 
 }
