@@ -1,11 +1,9 @@
 package oc.projet.biblio.business.service.impl;
 
 import oc.projet.biblio.business.service.PretService;
-import oc.projet.biblio.model.entity.Ouvrage;
+import oc.projet.biblio.business.service.ReservationService;
+import oc.projet.biblio.model.entity.*;
 import oc.projet.biblio.model.repository.PretRepository;
-import oc.projet.biblio.model.entity.Exemplaire;
-import oc.projet.biblio.model.entity.Usager;
-import oc.projet.biblio.model.entity.Pret;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,6 +19,9 @@ public class PretServiceImpl implements PretService {
     @Autowired
     private PretRepository pretRepository;
 
+    @Autowired
+    private ReservationService reservationService;
+
     @Override
     public Pret find(int id){
         return pretRepository.find(id);
@@ -28,6 +29,10 @@ public class PretServiceImpl implements PretService {
 
     @Override
     public Pret createPret(Exemplaire exemplaire, Usager usager, LocalDate date_pret, LocalDate date_fin) {
+        Reservation reservation = this.reservationService.findByUsagerAndOuvrage(usager, exemplaire.getOuvrage());
+        if( reservation != null ){
+
+        }
         Pret pret = this.pretRepository.create(exemplaire, usager, date_pret, date_fin);
         if( pret != null ){
             exemplaire.setPret(pret);

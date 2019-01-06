@@ -13,6 +13,8 @@ public interface ReservationService {
 
     List<Reservation> findAllByUsager(Usager usager);
 
+    Reservation findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage);
+
     Reservation create(Usager usager, Ouvrage ouvrage);
 
     Reservation delete(Reservation reservation);
@@ -24,4 +26,6 @@ public interface ReservationService {
     List<Reservation> findAllLateResa();
 
     Reservation update(Reservation reservation);
+
+    Reservation deleteAndUpdateDateLimiteNextResa(Reservation reservation, Ouvrage ouvrage);
 }

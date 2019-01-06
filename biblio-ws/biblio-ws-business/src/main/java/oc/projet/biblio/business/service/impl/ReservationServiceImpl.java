@@ -41,6 +41,10 @@ public class ReservationServiceImpl implements ReservationService {
         return this.reservationRepository.findAllByUsager(usager);
     }
 
+    @Override
+    public Reservation findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage){
+        return this.reservationRepository.findByUsagerAndOuvrage(usager, ouvrage);
+    }
 
 
     @Override
@@ -87,5 +91,11 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation update(Reservation reservation){
         return this.reservationRepository.update(reservation);
+    }
+
+    @Override
+    public Reservation deleteAndUpdateDateLimiteNextResa(Reservation reservation, Ouvrage ouvrage){
+        this.delete(reservation);
+        return updateDateLimiteNextResa(ouvrage);
     }
 }
