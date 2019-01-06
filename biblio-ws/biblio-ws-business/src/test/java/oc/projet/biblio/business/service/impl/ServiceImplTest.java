@@ -344,7 +344,10 @@ public class ServiceImplTest {
         assertNotNull(nextReservationUpdated.getDateLimite());
         assertEquals(nextReservationUpdated.getDateLimite(), LocalDate.now().plusDays(2));
         assertEquals(nextReservationUpdated.getId(), reservation2.getId());
+        assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
 
+        Pret pret2 = this.pretService.createPret(exemplaire, usager2, LocalDate.now(), LocalDate.now().plusWeeks(4));
+        assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage).size());
 
         /**
          * On test ici une réservation alors qu'un prêt est en cours. Cela doit donc échouer.
