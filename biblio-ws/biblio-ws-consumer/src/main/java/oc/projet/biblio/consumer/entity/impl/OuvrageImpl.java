@@ -118,6 +118,12 @@ public class OuvrageImpl implements Ouvrage, Serializable {
     @Transient
     private boolean isReservable;
 
+    @Transient
+    private LocalDate dateDispo;
+
+    @Transient
+    private Long nbReservation;
+
     @Lob
     @Column(name = "imageb", columnDefinition="BLOB")
     private byte[] imageb;
@@ -252,5 +258,25 @@ public class OuvrageImpl implements Ouvrage, Serializable {
         } else { // Il n'y a pas d'exemplaires disponibles.
             this.isReservable = false;
         }
+    }
+
+    @Override
+    public LocalDate getDateDispo() {
+        return dateDispo;
+    }
+
+    @Override
+    public void setDateDispo(LocalDate dateDispo) {
+        this.dateDispo = dateDispo;
+    }
+
+    @Override
+    public Long getNbReservation() {
+        return nbReservation;
+    }
+
+    @Override
+    public void setNbReservation(Long nbReservation) {
+        this.nbReservation = nbReservation;
     }
 }

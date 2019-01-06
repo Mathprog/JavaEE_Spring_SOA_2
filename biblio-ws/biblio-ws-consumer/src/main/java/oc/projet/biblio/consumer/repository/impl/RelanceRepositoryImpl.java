@@ -1,5 +1,6 @@
 package oc.projet.biblio.consumer.repository.impl;
 
+import oc.projet.biblio.model.entity.Ouvrage;
 import oc.projet.biblio.model.entity.Usager;
 import oc.projet.biblio.model.repository.RelanceRepository;
 import oc.projet.biblio.model.entity.Pret;
@@ -63,5 +64,16 @@ public class RelanceRepositoryImpl implements RelanceRepository {
     @Override
     public List<Relance> findAllByUsager(Usager usager){
         return this.entityManager.createNamedQuery(RelanceImpl.QN.FIND_ALL_BY_USAGER, Relance.class).setParameter("usager", usager).getResultList();
+    }
+
+    @Override
+    public LocalDate findFirstDispoDate(Ouvrage ouvrage){
+        LocalDate date;
+        try {
+            date = this.entityManager.createNamedQuery(RelanceImpl.QN.FIND_FIRST_DISPO_DATE, LocalDate.class).setParameter("ouvrage", ouvrage).setMaxResults(1).getSingleResult();
+        } catch (NoResultException nre){
+            date = null;
+        }
+        return date;
     }
 }

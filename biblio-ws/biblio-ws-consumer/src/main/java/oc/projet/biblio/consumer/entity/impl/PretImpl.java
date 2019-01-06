@@ -31,6 +31,13 @@ import java.time.LocalDate;
                         "JOIN p.exemplaire e " +
                         "WHERE p.usager = :usager " +
                         "AND e.ouvrage = :ouvrage"
+        ),
+        @NamedQuery(
+                name = PretImpl.QN.FIND_FIRST_DISPO_DATE,
+                query = "SELECT MIN(p.dateFin) FROM PretImpl p " +
+                        "JOIN p.exemplaire e " +
+                        "JOIN e.ouvrage o " +
+                        "WHERE o = :ouvrage"
         )
 })
 
@@ -43,6 +50,7 @@ public class PretImpl implements Pret, Serializable {
         public static final String FIND_ALL_BY_USAGER = "PretImpl.findByUsager";
         public static final String FIND_BY_EXEMPLAIRE = "PretImpl.findByExemplaire";
         public static final String FIND_BY_USAGER_AND_OUVRAGE = "PretImpl.findByUsagerAndOuvrage";
+        public static final String FIND_FIRST_DISPO_DATE = "PretImpl.FindFirstDispoDate";
     }
 
     @Id

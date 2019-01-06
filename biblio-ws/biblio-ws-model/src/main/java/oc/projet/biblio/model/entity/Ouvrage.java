@@ -45,4 +45,12 @@ public interface Ouvrage {
     abstract void setReservable(boolean reservable);
 
     void calculReservable();
+
+    LocalDate getDateDispo();
+
+    void setDateDispo(LocalDate dateDispo);
+
+    Long getNbReservation();
+
+    void setNbReservation(Long nbReservation);
 }

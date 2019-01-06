@@ -1,11 +1,13 @@
 package oc.projet.biblio.business.service.impl;
 
 import oc.projet.biblio.business.service.RelanceService;
+import oc.projet.biblio.model.entity.Ouvrage;
 import oc.projet.biblio.model.entity.Usager;
 import oc.projet.biblio.model.repository.RelanceRepository;
 import oc.projet.biblio.model.entity.Pret;
 import oc.projet.biblio.model.entity.Relance;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,5 +45,10 @@ public class RelanceServiceImpl implements RelanceService {
     @Override
     public List<Relance> findAllByUsager(Usager usager){
         return this.relanceRepository.findAllByUsager(usager);
+    }
+
+    @Override
+    public LocalDate findFirstDispo(Ouvrage ouvrage){
+        return this.relanceRepository.findFirstDispoDate(ouvrage);
     }
 }

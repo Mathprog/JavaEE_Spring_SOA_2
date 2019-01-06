@@ -1,5 +1,6 @@
 package oc.projet.biblio.model.repository;
 
+import oc.projet.biblio.model.entity.Ouvrage;
 import oc.projet.biblio.model.entity.Pret;
 import oc.projet.biblio.model.entity.Relance;
 import oc.projet.biblio.model.entity.Usager;
@@ -18,4 +19,6 @@ public interface RelanceRepository {
     Relance findByPret(Pret pret);
 
     List<Relance> findAllByUsager(Usager usager);
+
+    LocalDate findFirstDispoDate(Ouvrage ouvrage);
 }

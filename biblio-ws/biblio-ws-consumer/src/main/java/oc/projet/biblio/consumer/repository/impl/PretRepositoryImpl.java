@@ -74,4 +74,15 @@ public class PretRepositoryImpl implements PretRepository {
         return pret;
     }
 
+    @Override
+    public LocalDate findFirstDate(Ouvrage ouvrage){
+        LocalDate date;
+        try {
+            date = this.entityManager.createNamedQuery(PretImpl.QN.FIND_FIRST_DISPO_DATE, LocalDate.class).setParameter("ouvrage", ouvrage).setMaxResults(1).getSingleResult();
+        } catch (NoResultException nre){
+            date = null;
+        }
+        return date;
+    }
+
 }

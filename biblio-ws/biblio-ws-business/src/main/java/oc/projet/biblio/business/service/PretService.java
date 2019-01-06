@@ -21,4 +21,6 @@ public interface PretService {
     List<Pret> findAllByUsager(Usager u);
 
     Pret findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage);
+
+    LocalDate findFirstDispo(Ouvrage ouvrage);
 }

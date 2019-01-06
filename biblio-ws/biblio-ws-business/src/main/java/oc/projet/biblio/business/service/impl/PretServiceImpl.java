@@ -55,4 +55,9 @@ public class PretServiceImpl implements PretService {
         return this.pretRepository.findByUsagerAndOuvrage(usager, ouvrage);
     }
 
+    @Override
+    public LocalDate findFirstDispo(Ouvrage ouvrage){
+        return this.pretRepository.findFirstDate(ouvrage);
+    }
+
 }

@@ -20,4 +20,6 @@ public interface OuvrageService {
     List<Ouvrage> findAllByTitreResearch(String titre);
 
     Ouvrage findWithExemplairesAndReservations(Ouvrage ouvrage);
+
+    LocalDate firstDispoDate(Ouvrage ouvrage);
 }

@@ -375,4 +375,31 @@ public class ServiceImplTest {
         assertEquals(0, reservationLateList.size());
     }
 
+    @Test
+    public void findFirstDateOuvrage_UsesCases(){
+        String email = "mathieu-martinez@gmail.com";
+        String email2 = "mathieu-martinez2@gmail.com";
+        String email3 = "mathieu-martinez3@gmail.com";
+        String email4 = "mathieu-martinez4@gmail.com";
+        String email5 = "mathieu-martinez5@gmail.com";
+        String titre = "Spring Framework 3";
+        String titre2 = "Spring Framework 4";
+        String titre3 = "Spring Framework 5";
+        Usager usager = usagerService.createUsager(email);
+        Usager usager2 = usagerService.createUsager(email2);
+        Usager usager3 = usagerService.createUsager(email3);
+        Usager usager4 = usagerService.createUsager(email4);
+        Usager usager5 = usagerService.createUsager(email5);
+        Ouvrage ouvrage = ouvrageService.createOuvrage(titre, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage2 = ouvrageService.createOuvrage(titre2, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Ouvrage ouvrage3 = ouvrageService.createOuvrage(titre3, "Je suis ton père.","Luc", LocalDate.now().minusYears(4));
+        Exemplaire exemplaire = exemplaireService.createExemplaire(ouvrage);
+        Exemplaire exemplaire2 = exemplaireService.createExemplaire(ouvrage);
+        Exemplaire exemplaire3 = exemplaireService.createExemplaire(ouvrage);
+        Pret pret = this.pretService.createPret(exemplaire, usager4, LocalDate.now(), LocalDate.now().plusWeeks(4));
+
+        LocalDate firstDispo = this.pretService.findFirstDispo(ouvrage);
+        assertEquals(firstDispo, pret.getDateFin());
+    }
+
 }
