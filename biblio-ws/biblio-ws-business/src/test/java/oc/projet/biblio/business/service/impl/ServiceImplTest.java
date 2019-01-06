@@ -374,7 +374,7 @@ public class ServiceImplTest {
         assertNotNull(reservationLateList);
         assertEquals(1, reservationLateList.size());
         assertTrue(reservationLateList.get(0).getDateLimite().isBefore(LocalDate.now()));
-
+        assertEquals(usager5.getEmail(), reservationLateList.get(0).getUsager().getEmail());
         this.reservationService.deleteLateResa(reservationLateList);
 
         reservationLateList = this.reservationService.findAllLateResa();
