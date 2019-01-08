@@ -51,7 +51,7 @@ public class UsagerController {
                 pretWS.setExemplaire(exemplaireWS);
                 if(pretWS.getDateFin().isBefore(LocalDate.now())){
                     pretWS.setReservable(false);
-                } else {
+                } else { 
                     pretWS.setReservable(true);
                 }
 
