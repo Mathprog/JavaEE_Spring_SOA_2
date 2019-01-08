@@ -62,6 +62,7 @@
             <xs:element name="relance" type="tns:relanceWS" />
             <xs:element name="datePret" type="xs:date" />
             <xs:element name="dateFin" type="xs:date" />
+            <xs:element name="reservable" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
 
