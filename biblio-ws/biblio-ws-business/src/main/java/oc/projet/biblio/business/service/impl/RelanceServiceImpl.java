@@ -27,7 +27,13 @@ public class RelanceServiceImpl implements RelanceService {
 
     @Override
     public Relance createRelance(Pret pret, LocalDate date_fin) {
-        return this.relanceRepository.create(pret, date_fin);
+        Relance relance ;
+        if( pret.getDateFin().isAfter(LocalDate.now())){
+            relance = null;
+        } else {
+            relance = this.relanceRepository.create(pret, date_fin);
+        }
+        return relance;
     }
 
     @Override
