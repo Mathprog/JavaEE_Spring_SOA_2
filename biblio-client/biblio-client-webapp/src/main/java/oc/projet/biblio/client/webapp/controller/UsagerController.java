@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -48,6 +49,11 @@ public class UsagerController {
                 RelanceWS relanceWS = this.relanceService.findByPret(pretWS);
                 pretWS.setRelance(relanceWS);
                 pretWS.setExemplaire(exemplaireWS);
+                if(pretWS.getDateFin().isBefore(LocalDate.now())){
+                    pretWS.setReservable(false);
+                } else {
+                    pretWS.setReservable(true);
+                }
 
             }
         } else {

@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.12.14 à 04:45:04 PM CET 
+// Généré le : 2019.01.08 à 04:20:45 PM CET 
 //
 
 
@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="relance" type="{http://biblio.io/api/biblio-web-service}relanceWS"/&gt;
  *         &lt;element name="datePret" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *         &lt;element name="dateFin" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="reservable" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -48,7 +49,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "ouvrage",
     "relance",
     "datePret",
-    "dateFin"
+    "dateFin",
+    "reservable"
 })
 public class PretWS {
 
@@ -67,6 +69,7 @@ public class PretWS {
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "date")
     protected LocalDate dateFin;
+    protected boolean reservable;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -202,6 +205,22 @@ public class PretWS {
      */
     public void setDateFin(LocalDate value) {
         this.dateFin = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété reservable.
+     * 
+     */
+    public boolean isReservable() {
+        return reservable;
+    }
+
+    /**
+     * Définit la valeur de la propriété reservable.
+     * 
+     */
+    public void setReservable(boolean value) {
+        this.reservable = value;
     }
 
 }

@@ -30,7 +30,7 @@
                 <td><date:localDate date="${pret.datePret}"  pattern="dd/MM/yyyy"/> </td>
                 <td><date:localDate date="${pret.dateFin}" pattern="dd/MM/yyyy"/></td>
                 <c:choose>
-                    <c:when test="${empty pret.relance}">
+                    <c:when test="${empty pret.relance && pret.reservable}">
                 <td>
                         <form class="col m6 s12" method = "POST" action = "${contextPath}/relance/add">
                             <div class="row" style="margin-bottom: 0;">
@@ -51,6 +51,11 @@
                             </div>
                         </form>
                 </td>
+                    </c:when>
+                    <c:when test="${!pret.reservable && empty pret.relance}">
+                        <td>
+                            Vous ne pouvez plus prolonger votre prêt.
+                        </td>
                     </c:when>
                     <c:otherwise>
                         <td> <date:localDate date="${pret.relance.dateFin}"  pattern="dd/MM/yyyy"/></td>
