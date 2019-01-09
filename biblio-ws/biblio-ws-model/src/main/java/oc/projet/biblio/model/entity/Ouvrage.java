@@ -50,7 +50,7 @@ public interface Ouvrage {
 
     void setDateDispo(LocalDate dateDispo);
 
-    Long getNbReservation();
+    int getNbReservation();
 
-    void setNbReservation(Long nbReservation);
+    void setNbReservation(int nbReservation);
 }

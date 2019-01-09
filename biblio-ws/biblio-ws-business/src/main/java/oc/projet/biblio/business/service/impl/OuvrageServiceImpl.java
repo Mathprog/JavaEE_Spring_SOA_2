@@ -1,18 +1,15 @@
 package oc.projet.biblio.business.service.impl;
 
-import oc.projet.biblio.business.service.OuvrageService;
-import oc.projet.biblio.business.service.PretService;
-import oc.projet.biblio.business.service.RelanceService;
+import oc.projet.biblio.business.service.*;
 import oc.projet.biblio.model.repository.OuvrageRepository;
 import oc.projet.biblio.model.entity.Ouvrage;
-import oc.projet.biblio.model.repository.PretRepository;
-import oc.projet.biblio.model.repository.RelanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -27,6 +24,12 @@ public class OuvrageServiceImpl implements OuvrageService {
 
     @Autowired
     private RelanceService relanceService;
+
+    @Autowired
+    private ReservationService reservationService;
+
+    @Autowired
+    private ExemplaireService exemplaireService;
 
     @Override
     public Ouvrage find(int id){
@@ -50,7 +53,15 @@ public class OuvrageServiceImpl implements OuvrageService {
 
     @Override
     public List<Ouvrage> findAllWithNoDispo(){
-        return this.ouvrageRepository.findAllWithNoDispo();
+        List<Ouvrage> allNoDispo = this.ouvrageRepository.findAllWithNoDispo();
+        for (Ouvrage ouvrage: allNoDispo){
+            ouvrage.setDateDispo(firstDispoDate(ouvrage));
+            ouvrage.setNbReservation(this.countResa(ouvrage));
+            ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
+            ouvrage.setExemplaires(new HashSet<>(this.exemplaireService.findAllByBook(ouvrage)));
+            ouvrage.calculReservable();
+        }
+        return allNoDispo;
     }
 
     @Override
@@ -72,7 +83,7 @@ public class OuvrageServiceImpl implements OuvrageService {
     }
 
     @Override
-    public Long countResa(Ouvrage ouvrage){
+    public int countResa(Ouvrage ouvrage){
         return this.ouvrageRepository.countResa(ouvrage);
     }
 

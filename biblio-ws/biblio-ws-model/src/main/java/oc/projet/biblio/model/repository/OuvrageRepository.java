@@ -21,5 +21,5 @@ public interface OuvrageRepository {
 
     Ouvrage findOuvrageWithExemplairesAndReservations(Ouvrage ouvrage);
 
-    Long countResa(Ouvrage ouvrage);
+    int countResa(Ouvrage ouvrage);
 }

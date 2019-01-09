@@ -2,16 +2,13 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.08 à 04:06:05 PM CET 
+// Généré le : 2019.01.09 à 11:20:12 PM CET 
 //
 
 
 package io.biblio.api.biblio_web_service;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
-import javax.xml.namespace.QName;
 
 
 /**
@@ -31,7 +28,6 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _OuvrageWSNbDispo_QNAME = new QName("http://biblio.io/api/biblio-web-service", "nbDispo");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: io.biblio.api.biblio_web_service
@@ -65,6 +61,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetReservationRequest }
+     * 
+     */
+    public GetReservationRequest createGetReservationRequest() {
+        return new GetReservationRequest();
+    }
+
+    /**
      * Create an instance of {@link GetExemplaireByPretRequest }
      * 
      */
@@ -81,6 +85,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetReservationDeletesResponse }
+     * 
+     */
+    public GetReservationDeletesResponse createGetReservationDeletesResponse() {
+        return new GetReservationDeletesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReservationWS }
+     * 
+     */
+    public ReservationWS createReservationWS() {
+        return new ReservationWS();
+    }
+
+    /**
      * Create an instance of {@link GetOuvrageByTitreResponse }
      * 
      */
@@ -94,6 +114,22 @@ public class ObjectFactory {
      */
     public OuvrageWS createOuvrageWS() {
         return new OuvrageWS();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByUsagerAndOuvrageRequest }
+     * 
+     */
+    public GetReservationByUsagerAndOuvrageRequest createGetReservationByUsagerAndOuvrageRequest() {
+        return new GetReservationByUsagerAndOuvrageRequest();
+    }
+
+    /**
+     * Create an instance of {@link UsagerWS }
+     * 
+     */
+    public UsagerWS createUsagerWS() {
+        return new UsagerWS();
     }
 
     /**
@@ -121,19 +157,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UsagerWS }
-     * 
-     */
-    public UsagerWS createUsagerWS() {
-        return new UsagerWS();
-    }
-
-    /**
      * Create an instance of {@link GetPretsResponse }
      * 
      */
     public GetPretsResponse createGetPretsResponse() {
         return new GetPretsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationLateResponse }
+     * 
+     */
+    public GetReservationLateResponse createGetReservationLateResponse() {
+        return new GetReservationLateResponse();
     }
 
     /**
@@ -174,6 +210,14 @@ public class ObjectFactory {
      */
     public GetPretByIdResponse createGetPretByIdResponse() {
         return new GetPretByIdResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByOuvrageResponse }
+     * 
+     */
+    public GetReservationByOuvrageResponse createGetReservationByOuvrageResponse() {
+        return new GetReservationByOuvrageResponse();
     }
 
     /**
@@ -249,6 +293,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetReservationCreateResponse }
+     * 
+     */
+    public GetReservationCreateResponse createGetReservationCreateResponse() {
+        return new GetReservationCreateResponse();
+    }
+
+    /**
      * Create an instance of {@link GetOuvrageRequest }
      * 
      */
@@ -286,6 +338,30 @@ public class ObjectFactory {
      */
     public GetPretByIdRequest createGetPretByIdRequest() {
         return new GetPretByIdRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByUsagerResponse }
+     * 
+     */
+    public GetReservationByUsagerResponse createGetReservationByUsagerResponse() {
+        return new GetReservationByUsagerResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationDeleteLateRequest }
+     * 
+     */
+    public GetReservationDeleteLateRequest createGetReservationDeleteLateRequest() {
+        return new GetReservationDeleteLateRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationDeleteLateResponse }
+     * 
+     */
+    public GetReservationDeleteLateResponse createGetReservationDeleteLateResponse() {
+        return new GetReservationDeleteLateResponse();
     }
 
     /**
@@ -345,6 +421,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetReservationByUsagerAndOuvrageResponse }
+     * 
+     */
+    public GetReservationByUsagerAndOuvrageResponse createGetReservationByUsagerAndOuvrageResponse() {
+        return new GetReservationByUsagerAndOuvrageResponse();
+    }
+
+    /**
      * Create an instance of {@link GetOuvrageByDispoRequest }
      * 
      */
@@ -377,6 +461,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetReservationCreateRequest }
+     * 
+     */
+    public GetReservationCreateRequest createGetReservationCreateRequest() {
+        return new GetReservationCreateRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationLateRequest }
+     * 
+     */
+    public GetReservationLateRequest createGetReservationLateRequest() {
+        return new GetReservationLateRequest();
+    }
+
+    /**
      * Create an instance of {@link GetUsagerByIdResponse }
      * 
      */
@@ -390,6 +490,14 @@ public class ObjectFactory {
      */
     public GetRelanceByUsagerResponse createGetRelanceByUsagerResponse() {
         return new GetRelanceByUsagerResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationResponse }
+     * 
+     */
+    public GetReservationResponse createGetReservationResponse() {
+        return new GetReservationResponse();
     }
 
     /**
@@ -441,6 +549,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetReservationByOuvrageRequest }
+     * 
+     */
+    public GetReservationByOuvrageRequest createGetReservationByOuvrageRequest() {
+        return new GetReservationByOuvrageRequest();
+    }
+
+    /**
      * Create an instance of {@link GetUsagerByEmailResponse }
      * 
      */
@@ -454,6 +570,14 @@ public class ObjectFactory {
      */
     public GetPretCreateRequest createGetPretCreateRequest() {
         return new GetPretCreateRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByUsagerRequest }
+     * 
+     */
+    public GetReservationByUsagerRequest createGetReservationByUsagerRequest() {
+        return new GetReservationByUsagerRequest();
     }
 
     /**
@@ -513,6 +637,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetReservationDeleteRequest }
+     * 
+     */
+    public GetReservationDeleteRequest createGetReservationDeleteRequest() {
+        return new GetReservationDeleteRequest();
+    }
+
+    /**
      * Create an instance of {@link GetExemplaireByUsagerResponse }
      * 
      */
@@ -550,15 +682,6 @@ public class ObjectFactory {
      */
     public PretWSAlone createPretWSAlone() {
         return new PretWSAlone();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://biblio.io/api/biblio-web-service", name = "nbDispo", scope = OuvrageWS.class)
-    public JAXBElement<Long> createOuvrageWSNbDispo(Long value) {
-        return new JAXBElement<Long>(_OuvrageWSNbDispo_QNAME, Long.class, OuvrageWS.class, value);
     }
 
 }

@@ -23,5 +23,5 @@ public interface OuvrageService {
 
     LocalDate firstDispoDate(Ouvrage ouvrage);
 
-    Long countResa(Ouvrage ouvrage);
+    int countResa(Ouvrage ouvrage);
 }

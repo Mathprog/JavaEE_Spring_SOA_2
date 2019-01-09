@@ -29,7 +29,10 @@
             <xs:element name="date" type="xs:date" nillable="true"/>
             <xs:element name="imageb" type="xs:base64Binary" nillable="true"/>
             <xs:element name="ImageBase64DataString" type="xs:string" nillable="true"/>
-            <xs:element name="nbDispo" type="xs:long" minOccurs="0" nillable="true"/>
+            <xs:element name="nbDispo" type="xs:int"/>
+            <xs:element name="reservable" type="xs:boolean"/>
+            <xs:element name="dateDispo" type="xs:date"/>
+            <xs:element name="nbReservation" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -95,6 +98,19 @@
         </xs:sequence>
     </xs:complexType>
 
+    <!--
+  ============== RESERVATION ===================
+   -->
+
+    <xs:complexType name="reservationWS">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="ouvrage" type="tns:ouvrageWS"/>
+            <xs:element name="usager" type="tns:usagerWS"/>
+            <xs:element name="dateReservation" type="xs:date" />
+            <xs:element name="dateLimite" type="xs:date" />
+        </xs:sequence>
+    </xs:complexType>
 
     <!--
     ==============================================================
@@ -662,5 +678,167 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <!--
+  ==============================================================
+  ================= RESERVATION METHOD ============================
+  =============================================================
+  -->
+
+    <!--
+        ============== GET ALL RESERVATION ===================
+        -->
+
+    <xs:element name="getReservationRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getReservationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="tns:reservationWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+       ============== GET RESERVATION BY OUVRAGE ===================
+       -->
+
+    <xs:element name="getReservationByOuvrageRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ouvrage" type="tns:ouvrageWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getReservationByOuvrageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="tns:reservationWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+       ============== GET RESERVATION BY USAGER ===================
+       -->
+
+    <xs:element name="getReservationByUsagerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getReservationByUsagerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="tns:reservationWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+       ============== GET RESERVATION BY USAGER AND OUVRAGE===================
+       -->
+
+    <xs:element name="getReservationByUsagerAndOuvrageRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+                <xs:element name="ouvrage" type="tns:ouvrageWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getReservationByUsagerAndOuvrageResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="tns:reservationWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+       ============== CREATE RESERVATION ===================
+       -->
+
+    <xs:element name="getReservationCreateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="usager" type="tns:usagerWS"/>
+                <xs:element name="ouvrage" type="tns:ouvrageWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getReservationCreateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="tns:reservationWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+       ============== DELETE RESERVATION ===================
+       -->
+
+    <xs:element name="getReservationDeleteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="tns:reservationWS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getReservationDeletesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="tns:reservationWS" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+       ============== GET RESERVATION LATE LIST ===================
+       -->
+
+    <xs:element name="getReservationLateRequest">
+        <xs:complexType/>
+
+    </xs:element>
+
+    <xs:element name="getReservationLateResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="tns:reservationWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--
+       ============== GET RESERVATION DELETE LATE LIST ===================
+       -->
+
+    <xs:element name="getReservationDeleteLateRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="reservation" type="tns:reservationWS" maxOccurs="unbounded" nillable="true"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getReservationDeleteLateResponse">
+        <xs:complexType>
+            <xs:sequence>
+            <xs:element name="nbReservationDeleted" type="xs:int" nillable="true"/>
+        </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
 
 </xs:schema>

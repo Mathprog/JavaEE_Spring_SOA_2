@@ -123,13 +123,13 @@ public class OuvrageImpl implements Ouvrage, Serializable {
     private Long nbDispo = 0L;
 
     @Transient
-    private boolean isReservable;
+    private boolean reservable = false;
 
     @Transient
     private LocalDate dateDispo;
 
     @Transient
-    private Long nbReservation;
+    private int nbReservation;
 
     @Lob
     @Column(name = "imageb", columnDefinition="BLOB")
@@ -244,26 +244,26 @@ public class OuvrageImpl implements Ouvrage, Serializable {
 
     @Override
     public boolean isReservable() {
-        return isReservable;
+        return reservable;
     }
 
     @Override
     public void setReservable(boolean reservable) {
-        isReservable = reservable;
+        this.reservable = reservable;
     }
 
     @Override
     public void calculReservable(){
         if(this.reservations == null && this.exemplaires != null){ // S'il n'y a pas de réservation et des exemplaires.
-            this.isReservable = true;
+            this.reservable = true;
         } else if (this.reservations != null && this.exemplaires != null){ // S'il y a des réservations et des exemplaires.
             if( this.reservations.size() >= this.exemplaires.size() * 2){ // Si la condition du nombre maximale de résa est atteinte.
-                this.isReservable = false;
+                this.reservable = false;
             } else {
-                this.isReservable = true;
+                this.reservable = true;
             }
         } else { // Il n'y a pas d'exemplaires disponibles.
-            this.isReservable = false;
+            this.reservable = false;
         }
     }
 
@@ -278,12 +278,12 @@ public class OuvrageImpl implements Ouvrage, Serializable {
     }
 
     @Override
-    public Long getNbReservation() {
+    public int getNbReservation() {
         return nbReservation;
     }
 
     @Override
-    public void setNbReservation(Long nbReservation) {
+    public void setNbReservation(int nbReservation) {
         this.nbReservation = nbReservation;
     }
 }

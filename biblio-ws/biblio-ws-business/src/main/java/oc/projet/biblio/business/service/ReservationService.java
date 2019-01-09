@@ -21,7 +21,7 @@ public interface ReservationService {
 
     Reservation updateDateLimiteNextResa(Ouvrage ouvrage);
 
-    void deleteLateResa(List<Reservation> reservationLlateList);
+    int deleteLateResa(List<Reservation> reservationLlateList);
 
     List<Reservation> findAllLateResa();
 

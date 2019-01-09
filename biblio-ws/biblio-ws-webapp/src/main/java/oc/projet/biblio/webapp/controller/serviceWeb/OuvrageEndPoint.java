@@ -11,6 +11,7 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import static java.lang.Math.toIntExact;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -41,12 +42,7 @@ public class OuvrageEndPoint {
     public GetOuvrageByIdResponse getOuvrageById(@RequestPayload GetOuvrageByIdRequest request) {
         GetOuvrageByIdResponse ouvrageResponseWS = new GetOuvrageByIdResponse();
         Ouvrage ouvrage = this.ouvrageService.find(request.getId());
-        OuvrageWS ouvrageWS  = null;
-        if( ouvrage != null){
-            ouvrageWS  = new OuvrageWS();
-            BeanUtils.copyProperties(ouvrage, ouvrageWS);
-        }
-        ouvrageResponseWS.setOuvrageWS(ouvrageWS);
+        ouvrageResponseWS.setOuvrageWS(createOuvrageWS(ouvrage));
         return ouvrageResponseWS;
     }
 
@@ -55,12 +51,7 @@ public class OuvrageEndPoint {
     public GetOuvrageCreateResponse getOuvrageCreate(@RequestPayload GetOuvrageCreateRequest request){
         GetOuvrageCreateResponse ouvrageResponse = new GetOuvrageCreateResponse();
         Ouvrage ouvrage = this.ouvrageService.createOuvrage(request.getTitre(), request.getResume(), request.getAuteur() , LocalDate.now().minusYears(8));
-        OuvrageWS ouvrageWS = null;
-        if( ouvrage != null ){
-            ouvrageWS = new OuvrageWS();
-            BeanUtils.copyProperties(ouvrage, ouvrageWS);
-        }
-        ouvrageResponse.setOuvrageWS(ouvrageWS);
+        ouvrageResponse.setOuvrageWS(createOuvrageWS(ouvrage));
         return ouvrageResponse;
     }
 
@@ -99,9 +90,20 @@ public class OuvrageEndPoint {
         for (Ouvrage ouvrage : ouvrageList){
             OuvrageWS ouvrageWS = new OuvrageWS();
             BeanUtils.copyProperties(ouvrage, ouvrageWS);
+            ouvrageWS.setNbDispo(toIntExact(ouvrage.getNbDispo()));
             ouvrageWSList.add(ouvrageWS);
         }
         return ouvrageWSList;
+    }
+
+    private OuvrageWS createOuvrageWS(Ouvrage ouvrage){
+        OuvrageWS ouvrageWS = null;
+        if( ouvrage != null ) {
+            ouvrageWS = new OuvrageWS();
+            BeanUtils.copyProperties(ouvrage, ouvrageWS);
+            ouvrageWS.setNbDispo(toIntExact(ouvrage.getNbDispo()));
+        }
+        return ouvrageWS;
     }
 
 }

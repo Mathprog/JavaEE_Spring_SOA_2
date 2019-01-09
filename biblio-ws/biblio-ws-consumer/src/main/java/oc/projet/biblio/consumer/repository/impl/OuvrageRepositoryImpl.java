@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-
+import static java.lang.Math.toIntExact;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,11 +52,11 @@ public class OuvrageRepositoryImpl implements OuvrageRepository {
     @Override
     public List<Ouvrage> findAllWithNoDispo(){
         List<Ouvrage> ouvrageList = entityManager.createNamedQuery(OuvrageImpl.QN.FIND_ALL_NOT_DISPO, Ouvrage.class).getResultList();
-        for(Ouvrage ouvrage : ouvrageList){
+        /*for(Ouvrage ouvrage : ouvrageList){
             ouvrage.getReservations();
             ouvrage.getExemplaires();
             ouvrage.calculReservable();
-        }
+        }*/
         return ouvrageList;
     }
 
@@ -81,8 +81,8 @@ public class OuvrageRepositoryImpl implements OuvrageRepository {
     }
 
     @Override
-    public Long countResa(Ouvrage ouvrage){
-        return this.entityManager.createNamedQuery(OuvrageImpl.QN.COUNT_RESA, Long.class).setParameter("ouvrage", ouvrage).getSingleResult();
+    public int countResa(Ouvrage ouvrage){
+        return toIntExact(this.entityManager.createNamedQuery(OuvrageImpl.QN.COUNT_RESA, Long.class).setParameter("ouvrage", ouvrage).getSingleResult());
     }
 
     private List<Ouvrage> utilsCount(List<Object[]> ouvrages){

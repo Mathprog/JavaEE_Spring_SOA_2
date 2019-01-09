@@ -76,11 +76,14 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void deleteLateResa(List<Reservation> reservationLlateList){
+    public int deleteLateResa(List<Reservation> reservationLlateList){
+        int i = 0;
         for (Reservation reservation : reservationLlateList){
             this.delete(reservation);
             this.updateDateLimiteNextResa(reservation.getOuvrage());
+            i ++;
         }
+        return i;
     }
 
     @Override

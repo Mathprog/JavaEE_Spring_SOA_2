@@ -305,7 +305,7 @@ public class ServiceImplTest {
         //Ici, l'ancience réservation existe toujours.
         assertEquals(1, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager).size());
-        assertEquals(this.ouvrageService.countResa(ouvrage), (Long) 1L);
+        assertEquals(this.ouvrageService.countResa(ouvrage), 1);
 
         /**
          * On test ici pour deux réservations. Cela doit marcher.
@@ -318,7 +318,7 @@ public class ServiceImplTest {
         assertNotNull(reservation2);
         assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
         assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
-        assertEquals(this.ouvrageService.countResa(ouvrage), (Long) 2L);
+        assertEquals(this.ouvrageService.countResa(ouvrage), 2);
 
         /**
          * On test ici pour trois réservations. Cela doit échouer car il n'y a qu'un seul exemplaire de disponible.
