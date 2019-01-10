@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 
@@ -320,6 +321,8 @@ public class ServiceImplTest {
         assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
         assertEquals(this.ouvrageService.countResa(ouvrage), 2);
 
+        reservation2.setDateReservation(LocalDateTime.now().minusDays(2));
+        this.reservationService.update(reservation2);
         int usager2Place = this.reservationService.calculateUsagerPlace(usager2, ouvrage);
         int usager1Place = this.reservationService.calculateUsagerPlace(usager, ouvrage);
         assertEquals(2, usager2Place);

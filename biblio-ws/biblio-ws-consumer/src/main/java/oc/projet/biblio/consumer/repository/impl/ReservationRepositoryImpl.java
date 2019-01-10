@@ -123,7 +123,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public int calculUsagerPosition(Usager usager, Ouvrage ouvrage){
-        return toIntExact(this.entityManager.createNamedQuery(ReservationImpl.QN.CALCUL_PLACE_USAGER, Long.class).setParameter("usager", usager).setParameter("ouvrage", ouvrage).setParameter("date", this.findByUsagerAndOuvrage(usager, ouvrage).getDateReservation()).getSingleResult());
+        return toIntExact(this.entityManager.createNamedQuery(ReservationImpl.QN.CALCUL_PLACE_USAGER, Long.class)/*.setParameter("usager", usager)*/.setParameter("ouvrage", ouvrage).setParameter("date", this.findByUsagerAndOuvrage(usager, ouvrage).getDateReservation()).getSingleResult());
     }
 
 }
