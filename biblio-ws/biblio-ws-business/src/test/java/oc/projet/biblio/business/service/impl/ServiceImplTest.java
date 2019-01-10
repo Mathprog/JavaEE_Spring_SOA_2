@@ -327,7 +327,7 @@ public class ServiceImplTest {
 
         int usager2Place = this.reservationService.calculateUsagerPlace(usager2, ouvrage);
         int usager1Place = this.reservationService.calculateUsagerPlace(usager, ouvrage);
-        assertEquals(1, usager2Place);
+        assertEquals(0, usager2Place);
         assertEquals(1, usager1Place);
 
         /**
