@@ -312,13 +312,10 @@ public class ServiceImplTest {
         /**
          * On test ici pour deux réservations. Cela doit marcher.
          */
-        try{
-            Thread.sleep(10000);
-        } catch (InterruptedException ie){
-            ie.printStackTrace();
-        }
 
         Reservation reservation2 = this.reservationService.create(usager2, ouvrage);
+        reservation2.setDateReservation(LocalDateTime.now().minusDays(1));
+        this.reservationService.update(reservation2);
         ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
 
         assertNull(reservation2.getDateLimite());
