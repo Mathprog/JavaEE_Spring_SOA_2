@@ -42,7 +42,13 @@ import java.time.LocalDateTime;
                             query = "SELECT r FROM ReservationImpl r " +
                                     "JOIN FETCH r.usager u " +
                                     "JOIN FETCH r.ouvrage o " +
-                                    "WHERE r.dateLimite < :date")
+                                    "WHERE r.dateLimite < :date"),
+                @NamedQuery( name = ReservationImpl.QN.CALCUL_PLACE_USAGER,
+                            query = "SELECT COUNT (rs) " +
+                                    "FROM ReservationImpl rs " +
+                                    "WHERE rs.ouvrage = :ouvrage " +
+                                    "AND rs.dateReservation <= ( SELECT rs2.dateReservation FROM ReservationImpl rs2 WHERE rs2.usager = :usager AND rs2.ouvrage = :ouvrage) " +
+                                    "ORDER BY rs.dateReservation")
         }
 )
 @Entity
@@ -59,6 +65,7 @@ public class ReservationImpl implements Reservation {
         public static final String FIND_NEXT_RESA = "ReservationImpl.findNextResa";
         public static final String FIND_BY_USAGER_AND_OUVRAGE = "ReservationImpl.findByUsagerAndOuvrage";
         public static final String FIND_LATE_RESA = "ReservationImpl.findLateResa";
+        public static final String CALCUL_PLACE_USAGER = "ReservationImpl.calculPlaceUsager";
     }
 
     @Id
@@ -79,6 +86,9 @@ public class ReservationImpl implements Reservation {
 
     @Column(name = "date_limite")
     private LocalDate dateLimite;
+
+    @Transient
+    private int usagerPlace;
 
 
     public ReservationImpl() {
@@ -132,5 +142,15 @@ public class ReservationImpl implements Reservation {
     @Override
     public void setDateLimite(LocalDate dateLimite) {
         this.dateLimite = dateLimite;
+    }
+
+    @Override
+    public int getUsagerPlace() {
+        return usagerPlace;
+    }
+
+    @Override
+    public void setUsagerPlace(int usagerPlace) {
+        this.usagerPlace = usagerPlace;
     }
 }

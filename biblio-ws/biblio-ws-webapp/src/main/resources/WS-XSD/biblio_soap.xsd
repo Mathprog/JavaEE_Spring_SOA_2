@@ -1,4 +1,5 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://biblio.io/api/biblio-web-service"
+           xmlns:cs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="http://biblio.io/api/biblio-web-service" elementFormDefault="qualified"
            xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
 
@@ -109,6 +110,7 @@
             <xs:element name="usager" type="tns:usagerWS"/>
             <xs:element name="dateReservation" type="xs:date" />
             <xs:element name="dateLimite" type="xs:date" />
+            <xs:element name="usagerPlace" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>
 

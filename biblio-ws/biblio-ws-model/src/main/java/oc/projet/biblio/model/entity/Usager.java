@@ -14,4 +14,8 @@ public interface Usager {
     Set<Pret> getPrets();
 
     void setPrets(Set<Pret> prets);
+
+    Set<Reservation> getReservations();
+
+    void setReservations(Set<Reservation> reservations);
 }

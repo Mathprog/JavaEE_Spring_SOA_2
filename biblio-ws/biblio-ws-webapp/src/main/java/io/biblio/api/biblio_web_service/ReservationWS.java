@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.09 à 11:20:12 PM CET 
+// Généré le : 2019.01.10 à 04:51:40 PM CET 
 //
 
 
@@ -33,6 +33,7 @@ import org.w3._2001.xmlschema.Adapter1;
  *         &lt;element name="usager" type="{http://biblio.io/api/biblio-web-service}usagerWS"/>
  *         &lt;element name="dateReservation" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *         &lt;element name="dateLimite" type="{http://www.w3.org/2001/XMLSchema}date"/>
+ *         &lt;element name="usagerPlace" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,7 +48,8 @@ import org.w3._2001.xmlschema.Adapter1;
     "ouvrage",
     "usager",
     "dateReservation",
-    "dateLimite"
+    "dateLimite",
+    "usagerPlace"
 })
 public class ReservationWS {
 
@@ -64,6 +66,7 @@ public class ReservationWS {
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "date")
     protected LocalDate dateLimite;
+    protected int usagerPlace;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -175,6 +178,22 @@ public class ReservationWS {
      */
     public void setDateLimite(LocalDate value) {
         this.dateLimite = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété usagerPlace.
+     * 
+     */
+    public int getUsagerPlace() {
+        return usagerPlace;
+    }
+
+    /**
+     * Définit la valeur de la propriété usagerPlace.
+     * 
+     */
+    public void setUsagerPlace(int value) {
+        this.usagerPlace = value;
     }
 
 }

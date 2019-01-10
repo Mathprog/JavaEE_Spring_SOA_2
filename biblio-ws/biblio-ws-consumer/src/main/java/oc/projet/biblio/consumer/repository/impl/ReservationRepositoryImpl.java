@@ -16,6 +16,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static java.lang.Math.toIntExact;
+
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
 public class ReservationRepositoryImpl implements ReservationRepository {
@@ -117,6 +119,11 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     @Override
     public List<Reservation> findAllLateResa(LocalDate date){
         return this.entityManager.createNamedQuery(ReservationImpl.QN.FIND_LATE_RESA, Reservation.class).setParameter("date", date).getResultList();
+    }
+
+    @Override
+    public int calculUsagerPosition(Usager usager, Ouvrage ouvrage){
+        return toIntExact(this.entityManager.createNamedQuery(ReservationImpl.QN.CALCUL_PLACE_USAGER, Long.class).setParameter("usager", usager).setParameter("ouvrage", ouvrage).getSingleResult());
     }
 
 }

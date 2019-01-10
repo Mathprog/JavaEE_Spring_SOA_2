@@ -1,6 +1,7 @@
 package oc.projet.biblio.consumer.entity.impl;
 
 
+import oc.projet.biblio.model.entity.Reservation;
 import oc.projet.biblio.model.entity.Usager;
 import oc.projet.biblio.model.entity.Pret;
 
@@ -31,6 +32,7 @@ import java.util.Set;
                 name = UsagerImpl.QN.FIND_PRETS_DETAILS ,
                 query ="SELECT u FROM UsagerImpl u " +
                         "JOIN FETCH u.prets p " +
+                        "JOIN FETCH u.reservations rs " +
                         "JOIN FETCH p.relance r " +
                         "JOIN FETCH p.exemplaire e " +
                         "JOIN FETCH e.ouvrage o " +
@@ -75,6 +77,9 @@ public class UsagerImpl implements Usager, Serializable {
     @OneToMany(mappedBy = "usager", fetch = FetchType.LAZY, targetEntity = PretImpl.class)
     private Set<Pret> prets;
 
+    @OneToMany(mappedBy = "usager", fetch = FetchType.LAZY, targetEntity = ReservationImpl.class)
+    private Set<Reservation> reservations;
+
     public UsagerImpl() {
     }
 
@@ -111,5 +116,15 @@ public class UsagerImpl implements Usager, Serializable {
     @Override
     public void setPrets(Set<Pret> prets) {
         this.prets = prets;
+    }
+
+    @Override
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    @Override
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

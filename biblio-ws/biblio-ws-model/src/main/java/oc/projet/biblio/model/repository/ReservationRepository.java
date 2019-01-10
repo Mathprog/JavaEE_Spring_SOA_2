@@ -33,4 +33,6 @@ public interface ReservationRepository {
     Reservation findNextResa(Ouvrage ouvrage);
 
     List<Reservation> findAllLateResa(LocalDate date);
+
+    int calculUsagerPosition(Usager usager, Ouvrage ouvrage);
 }

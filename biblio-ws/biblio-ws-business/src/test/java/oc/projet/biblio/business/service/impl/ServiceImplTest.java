@@ -320,6 +320,9 @@ public class ServiceImplTest {
         assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
         assertEquals(this.ouvrageService.countResa(ouvrage), 2);
 
+        int usager2Place = this.reservationService.calculateUsagerPlace(usager2, ouvrage);
+        assertEquals(2, usager2Place);
+
         /**
          * On test ici pour trois réservations. Cela doit échouer car il n'y a qu'un seul exemplaire de disponible.
          */
