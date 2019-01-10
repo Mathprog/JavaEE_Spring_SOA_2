@@ -317,7 +317,7 @@ public class ServiceImplTest {
         reservation2.setDateReservation(LocalDateTime.now().minusDays(1));
         this.reservationService.update(reservation2);
         ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
-
+        assertTrue(reservation.getDateReservation().isBefore(reservation2.getDateReservation()));
         assertNull(reservation2.getDateLimite());
         assertNotNull(reservation2);
         assertEquals(2, this.reservationService.findAllByOuvrage(ouvrage).size());
