@@ -139,7 +139,7 @@ public class ServiceImplTest {
         Relance relanceLate = relanceService.createRelance(pretRelanceLate, LocalDate.now().minusWeeks(1));
 
         List<Usager> usagerPretLate = this.usagerService.findAllByPretDate();
-        assertEquals(usagerPretLate.size(), 2);
+        assertEquals(usagerPretLate.size(), 1);
         assertEquals(usagerPretLate.get(0).getEmail(), email);
         List<Usager> usagerRelanceLate = this.usagerService.findAllByRelanceDate();
         assertEquals(usagerRelanceLate.size(), 1);
@@ -249,6 +249,7 @@ public class ServiceImplTest {
     }
 
     @Test
+    @Rollback(true)
     public void reservarion_UsaCasesTests(){
         assertEquals(0, this.reservationService.findAll().size());
 
@@ -321,12 +322,12 @@ public class ServiceImplTest {
         assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
         assertEquals(this.ouvrageService.countResa(ouvrage), 2);
 
-        //reservation2.setDateReservation(LocalDateTime.now().minusDays(2));
-        this.reservationService.update(reservation2);
+        reservation2.setDateReservation(LocalDateTime.now().minusDays(2));
+       this.reservationService.update(reservation2);
         int usager2Place = this.reservationService.calculateUsagerPlace(usager2, ouvrage);
         int usager1Place = this.reservationService.calculateUsagerPlace(usager, ouvrage);
-        assertEquals(2, usager2Place);
-        assertEquals(1, usager1Place);
+        assertEquals(1, usager2Place);
+        assertEquals(2, usager1Place);
 
         /**
          * On test ici pour trois réservations. Cela doit échouer car il n'y a qu'un seul exemplaire de disponible.
