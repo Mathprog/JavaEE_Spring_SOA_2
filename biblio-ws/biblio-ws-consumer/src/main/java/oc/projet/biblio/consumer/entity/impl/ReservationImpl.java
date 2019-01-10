@@ -48,7 +48,7 @@ import java.time.LocalDateTime;
                                     "FROM ReservationImpl rs " +
                                     "WHERE rs.ouvrage = :ouvrage " +
                                     "AND rs.dateReservation <= ( SELECT rs2.dateReservation FROM ReservationImpl rs2 WHERE rs2.usager = :usager AND rs2.ouvrage = :ouvrage) " +
-                                    "ORDER BY rs.dateReservation")
+                                    "ORDER BY rs.dateReservation DESC")
         }
 )
 @Entity
