@@ -312,6 +312,11 @@ public class ServiceImplTest {
         /**
          * On test ici pour deux réservations. Cela doit marcher.
          */
+        try{
+            Thread.sleep(10000);
+        } catch (InterruptedException ie){
+            ie.printStackTrace();
+        }
 
         Reservation reservation2 = this.reservationService.create(usager2, ouvrage);
         ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
