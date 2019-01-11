@@ -52,11 +52,11 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     }
 
     @Override
-    public Reservation create(Usager usager, Ouvrage ouvrage){
+    public Reservation create(Usager usager, Ouvrage ouvrage, LocalDateTime creationDate){
         Reservation reservation = null;
         List<Reservation> reservationList = this.findAllByOuvrage(ouvrage);
         reservation = new ReservationImpl();
-        reservation.setDateReservation(LocalDateTime.now());
+        reservation.setDateReservation(creationDate);
         reservation.setOuvrage(ouvrage);
         reservation.setUsager(usager);
         if (reservationList.size() == 0){

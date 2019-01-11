@@ -289,7 +289,7 @@ public class ServiceImplTest {
         /**
          * On test Ici pour une réservation. Cela doit marcher.
          */
-        Reservation reservation = this.reservationService.create(usager, ouvrage);
+        Reservation reservation = this.reservationService.create(usager, ouvrage, LocalDateTime.now());
 
         assertNotNull(reservation);
         assertEquals(reservation.getDateLimite(), LocalDate.now().plusDays(2));
@@ -300,7 +300,7 @@ public class ServiceImplTest {
          * Ici on test une réservation alors qu'une réservation est déjà en cours. Cela devrait donc échouer.
          */
 
-        Reservation reservation1 = this.reservationService.create(usager, ouvrage);
+        Reservation reservation1 = this.reservationService.create(usager, ouvrage, LocalDateTime.now());
 
         assertNull(reservation1);
 
@@ -313,9 +313,7 @@ public class ServiceImplTest {
          * On test ici pour deux réservations. Cela doit marcher.
          */
 
-        Reservation reservation2 = this.reservationService.create(usager2, ouvrage);
-        reservation2.setDateReservation(LocalDateTime.now().minusDays(1));
-        this.reservationService.update(reservation2);
+        Reservation reservation2 = this.reservationService.create(usager2, ouvrage, LocalDateTime.now().plusDays(2));
         ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
         assertTrue(reservation.getDateReservation().isAfter(reservation2.getDateReservation()));
         assertNull(reservation2.getDateLimite());
@@ -334,7 +332,7 @@ public class ServiceImplTest {
          * On test ici pour trois réservations. Cela doit échouer car il n'y a qu'un seul exemplaire de disponible.
          */
 
-        Reservation reservation3 = this.reservationService.create(usager3, ouvrage);
+        Reservation reservation3 = this.reservationService.create(usager3, ouvrage, LocalDateTime.now());
         ouvrage.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage)));
 
         assertNull(reservation3);
@@ -362,7 +360,7 @@ public class ServiceImplTest {
         /**
          * On test ici une réservation alors qu'un prêt est en cours. Cela doit donc échouer.
          */
-        Reservation reservation4 = this.reservationService.create(usager4, ouvrage2);
+        Reservation reservation4 = this.reservationService.create(usager4, ouvrage2, LocalDateTime.now() );
 
         assertNull(reservation4);
         assertEquals(0, this.reservationService.findAllByOuvrage(ouvrage2).size());
@@ -374,7 +372,7 @@ public class ServiceImplTest {
          */
         ouvrage3.setReservations(new HashSet<>(this.reservationService.findAllByOuvrage(ouvrage3)));
         ouvrage3.setExemplaires(new HashSet<>(this.exemplaireService.findAllByBook(ouvrage3)));
-        Reservation reservation5 = this.reservationService.create(usager5, ouvrage3);
+        Reservation reservation5 = this.reservationService.create(usager5, ouvrage3, LocalDateTime.now() );
         assertNotNull(reservation5);
         reservation5.setDateLimite(LocalDate.now().minusDays(1));
         reservation5 = this.reservationService.update(reservation5);

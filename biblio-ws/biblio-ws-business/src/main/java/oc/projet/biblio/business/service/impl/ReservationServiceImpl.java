@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -52,13 +53,13 @@ public class ReservationServiceImpl implements ReservationService {
 
 
     @Override
-    public Reservation create(Usager usager, Ouvrage ouvrage){
+    public Reservation create(Usager usager, Ouvrage ouvrage, LocalDateTime creationDate){
         Pret pret = this.pretService.findByUsagerAndOuvrage(usager, ouvrage); // On récupére un Pret potentiellement existant entre l'usager et l'ouvrage.
         Reservation reservationFound = this.reservationRepository.findByUsagerAndOuvrage(usager, ouvrage);
         ouvrage.calculReservable();
         Reservation reservation;
         if( pret == null && reservationFound == null && ouvrage.isReservable()){ // S'il n'y a pas de prêt et que les conditions de réservations de l'ouvrage sont bonnes.
-            reservation = this.reservationRepository.create(usager, ouvrage);
+            reservation = this.reservationRepository.create(usager, ouvrage, creationDate );
         } else {
             reservation = null;
         }

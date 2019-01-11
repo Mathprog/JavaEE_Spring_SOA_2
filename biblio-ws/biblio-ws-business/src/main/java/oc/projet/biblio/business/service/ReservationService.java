@@ -4,6 +4,7 @@ import oc.projet.biblio.model.entity.Ouvrage;
 import oc.projet.biblio.model.entity.Reservation;
 import oc.projet.biblio.model.entity.Usager;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ReservationService {
@@ -15,7 +16,7 @@ public interface ReservationService {
 
     Reservation findByUsagerAndOuvrage(Usager usager, Ouvrage ouvrage);
 
-    Reservation create(Usager usager, Ouvrage ouvrage);
+    Reservation create(Usager usager, Ouvrage ouvrage, LocalDateTime creationDate);
 
     Reservation delete(Reservation reservation);
 
