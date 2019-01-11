@@ -322,12 +322,12 @@ public class ServiceImplTest {
         assertEquals(1, this.reservationService.findAllByUsager(usager2).size());
         assertEquals(this.ouvrageService.countResa(ouvrage), 2);
 
-
-        int usager2Place = this.reservationService.calculateUsagerPlace(usager2, ouvrage);
         int usager1Place = this.reservationService.calculateUsagerPlace(usager, ouvrage);
-        assertEquals(2, usager2Place);
-        assertEquals(1, usager1Place);
+        int usager2Place = this.reservationService.calculateUsagerPlace(usager2, ouvrage);
 
+
+        assertEquals(1, usager1Place);
+        assertEquals(2, usager2Place);
         /**
          * On test ici pour trois réservations. Cela doit échouer car il n'y a qu'un seul exemplaire de disponible.
          */
@@ -394,7 +394,7 @@ public class ServiceImplTest {
     /**
      * On test ici ue le programme retrouve bien la date de rendue la plus proche quelle soit de prêt ou de relance.
      */
-    /*@Test
+    @Test
     public void findFirstDateOuvrage_UsesCases(){
         String email = "mathieu-martinez@gmail.com";
         String email2 = "mathieu-martinez2@gmail.com";
@@ -435,6 +435,6 @@ public class ServiceImplTest {
         firstDispo = this.ouvrageService.firstDispoDate(ouvrage);
         assertEquals(firstDispo, relance2.getDateFin());
 
-    }*/
+    }
 
 }
