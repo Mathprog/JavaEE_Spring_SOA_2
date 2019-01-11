@@ -46,8 +46,8 @@ import java.time.LocalDateTime;
                 @NamedQuery( name = ReservationImpl.QN.CALCUL_PLACE_USAGER,
                             query = "SELECT COUNT (rs) " +
                                     "FROM ReservationImpl rs " +
-                                    "WHERE rs.ouvrage = :ouvrage " +
-                                    "AND rs.dateReservation <= :date ") //( SELECT rs2.dateReservation FROM ReservationImpl rs2 WHERE rs2.usager = :usager AND rs2.ouvrage = :ouvrage)
+                                    "WHERE rs.ouvrage = :ouvrage " +s
+                                    "AND rs.dateReservation >= :date ") //( SELECT rs2.dateReservation FROM ReservationImpl rs2 WHERE rs2.usager = :usager AND rs2.ouvrage = :ouvrage)
         }
 )
 @Entity
