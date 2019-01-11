@@ -18,6 +18,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +89,7 @@ public class ReservationEndPoint {
         Usager usager = new UsagerImpl();
         BeanUtils.copyProperties(reservationCreateRequest.getOuvrage(), ouvrage);
         BeanUtils.copyProperties(reservationCreateRequest.getUsager(), usager);
-        Reservation reservation = this.reservationService.create(usager, ouvrage, );
+        Reservation reservation = this.reservationService.create(usager, ouvrage, LocalDateTime.now());
         reservationCreateResponse.setReservation(this.uniqueReservation(reservation));
         return reservationCreateResponse;
     }
