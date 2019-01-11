@@ -2,16 +2,13 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.08 à 04:20:45 PM CET 
+// Généré le : 2019.01.10 à 02:53:20 PM CET 
 //
 
 
 package oc.projet.biblio.client.consumer.generated;
 
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
-import javax.xml.namespace.QName;
 
 
 /**
@@ -31,7 +28,6 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _OuvrageWSNbDispo_QNAME = new QName("http://biblio.io/api/biblio-web-service", "nbDispo");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: oc.projet.biblio.client.consumer.generated
@@ -529,6 +525,142 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetReservationRequest }
+     * 
+     */
+    public GetReservationRequest createGetReservationRequest() {
+        return new GetReservationRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationResponse }
+     * 
+     */
+    public GetReservationResponse createGetReservationResponse() {
+        return new GetReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link ReservationWS }
+     * 
+     */
+    public ReservationWS createReservationWS() {
+        return new ReservationWS();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByOuvrageRequest }
+     * 
+     */
+    public GetReservationByOuvrageRequest createGetReservationByOuvrageRequest() {
+        return new GetReservationByOuvrageRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByOuvrageResponse }
+     * 
+     */
+    public GetReservationByOuvrageResponse createGetReservationByOuvrageResponse() {
+        return new GetReservationByOuvrageResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByUsagerRequest }
+     * 
+     */
+    public GetReservationByUsagerRequest createGetReservationByUsagerRequest() {
+        return new GetReservationByUsagerRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByUsagerResponse }
+     * 
+     */
+    public GetReservationByUsagerResponse createGetReservationByUsagerResponse() {
+        return new GetReservationByUsagerResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByUsagerAndOuvrageRequest }
+     * 
+     */
+    public GetReservationByUsagerAndOuvrageRequest createGetReservationByUsagerAndOuvrageRequest() {
+        return new GetReservationByUsagerAndOuvrageRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationByUsagerAndOuvrageResponse }
+     * 
+     */
+    public GetReservationByUsagerAndOuvrageResponse createGetReservationByUsagerAndOuvrageResponse() {
+        return new GetReservationByUsagerAndOuvrageResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationCreateRequest }
+     * 
+     */
+    public GetReservationCreateRequest createGetReservationCreateRequest() {
+        return new GetReservationCreateRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationCreateResponse }
+     * 
+     */
+    public GetReservationCreateResponse createGetReservationCreateResponse() {
+        return new GetReservationCreateResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationDeleteRequest }
+     * 
+     */
+    public GetReservationDeleteRequest createGetReservationDeleteRequest() {
+        return new GetReservationDeleteRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationDeletesResponse }
+     * 
+     */
+    public GetReservationDeletesResponse createGetReservationDeletesResponse() {
+        return new GetReservationDeletesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationLateRequest }
+     * 
+     */
+    public GetReservationLateRequest createGetReservationLateRequest() {
+        return new GetReservationLateRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationLateResponse }
+     * 
+     */
+    public GetReservationLateResponse createGetReservationLateResponse() {
+        return new GetReservationLateResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationDeleteLateRequest }
+     * 
+     */
+    public GetReservationDeleteLateRequest createGetReservationDeleteLateRequest() {
+        return new GetReservationDeleteLateRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationDeleteLateResponse }
+     * 
+     */
+    public GetReservationDeleteLateResponse createGetReservationDeleteLateResponse() {
+        return new GetReservationDeleteLateResponse();
+    }
+
+    /**
      * Create an instance of {@link ExemplaireWSAlone }
      * 
      */
@@ -550,15 +682,6 @@ public class ObjectFactory {
      */
     public RelanceWSAlone createRelanceWSAlone() {
         return new RelanceWSAlone();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Long }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://biblio.io/api/biblio-web-service", name = "nbDispo", scope = OuvrageWS.class)
-    public JAXBElement<Long> createOuvrageWSNbDispo(Long value) {
-        return new JAXBElement<Long>(_OuvrageWSNbDispo_QNAME, Long.class, OuvrageWS.class, value);
     }
 
 }

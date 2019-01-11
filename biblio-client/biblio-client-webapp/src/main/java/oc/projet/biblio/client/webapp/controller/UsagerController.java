@@ -3,7 +3,6 @@ package oc.projet.biblio.client.webapp.controller;
 
 import oc.projet.biblio.client.business.service.*;
 import oc.projet.biblio.client.consumer.generated.*;
-import oc.projet.biblio.client.consumer.ws.UsagerClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,6 +31,9 @@ public class UsagerController {
     @Autowired
     private RelanceService relanceService;
 
+    @Autowired
+    private ReservationService reservationService;
+
     @RequestMapping(value = { "/prets" }, method = RequestMethod.GET)
     public String pretsPage(ModelMap model) {
         return "prets";
@@ -41,9 +43,11 @@ public class UsagerController {
     public String showAllPretDetails(@RequestParam("email") String email, ModelMap modelMap){
         UsagerWS usagerWS = this.usagerService.findUsagerByEmail(email);
         List<PretWS> pretWSList = null;
+        List<ReservationWS> reservationWSList = null;
         String message = null;
         if(usagerWS != null){
             pretWSList = this.pretService.findAllByUsager(usagerWS );
+            reservationWSList = this.reservationService.findAllByUsager(usagerWS);
             for(PretWS pretWS : pretWSList){
                 ExemplaireWS exemplaireWS = this.exemplaireService.findByPret(pretWS);
                 RelanceWS relanceWS = this.relanceService.findByPret(pretWS);
@@ -51,7 +55,7 @@ public class UsagerController {
                 pretWS.setExemplaire(exemplaireWS);
                 if(pretWS.getDateFin().isBefore(LocalDate.now())){
                     pretWS.setReservable(false);
-                } else { 
+                } else {
                     pretWS.setReservable(true);
                 }
 
@@ -63,6 +67,7 @@ public class UsagerController {
 
         modelMap.addAttribute("usager", email);
         modelMap.addAttribute("prets", pretWSList);
+        modelMap.addAttribute("reservations", reservationWSList);
         modelMap.addAttribute("message", message);
 
         return "pretsDetails";

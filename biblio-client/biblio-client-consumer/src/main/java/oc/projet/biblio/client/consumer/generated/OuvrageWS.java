@@ -2,18 +2,16 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.08 à 04:20:45 PM CET 
+// Généré le : 2019.01.10 à 02:53:20 PM CET 
 //
 
 
 package oc.projet.biblio.client.consumer.generated;
 
 import java.time.LocalDate;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -36,7 +34,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *         &lt;element name="imageb" type="{http://www.w3.org/2001/XMLSchema}base64Binary"/&gt;
  *         &lt;element name="ImageBase64DataString" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="nbDispo" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *         &lt;element name="nbDispo" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="reservable" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="dateDispo" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="nbReservation" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -54,7 +55,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "date",
     "imageb",
     "imageBase64DataString",
-    "nbDispo"
+    "nbDispo",
+    "reservable",
+    "dateDispo",
+    "nbReservation"
 })
 public class OuvrageWS {
 
@@ -73,8 +77,13 @@ public class OuvrageWS {
     protected byte[] imageb;
     @XmlElement(name = "ImageBase64DataString", required = true, nillable = true)
     protected String imageBase64DataString;
-    @XmlElementRef(name = "nbDispo", namespace = "http://biblio.io/api/biblio-web-service", type = JAXBElement.class, required = false)
-    protected JAXBElement<Long> nbDispo;
+    protected int nbDispo;
+    protected boolean reservable;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "date")
+    protected LocalDate dateDispo;
+    protected int nbReservation;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -237,25 +246,73 @@ public class OuvrageWS {
     /**
      * Obtient la valeur de la propriété nbDispo.
      * 
-     * @return
-     *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
-     *     
      */
-    public JAXBElement<Long> getNbDispo() {
+    public int getNbDispo() {
         return nbDispo;
     }
 
     /**
      * Définit la valeur de la propriété nbDispo.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Long }{@code >}
+     */
+    public void setNbDispo(int value) {
+        this.nbDispo = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété reservable.
+     * 
+     */
+    public boolean isReservable() {
+        return reservable;
+    }
+
+    /**
+     * Définit la valeur de la propriété reservable.
+     * 
+     */
+    public void setReservable(boolean value) {
+        this.reservable = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété dateDispo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
      *     
      */
-    public void setNbDispo(JAXBElement<Long> value) {
-        this.nbDispo = value;
+    public LocalDate getDateDispo() {
+        return dateDispo;
+    }
+
+    /**
+     * Définit la valeur de la propriété dateDispo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDateDispo(LocalDate value) {
+        this.dateDispo = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété nbReservation.
+     * 
+     */
+    public int getNbReservation() {
+        return nbReservation;
+    }
+
+    /**
+     * Définit la valeur de la propriété nbReservation.
+     * 
+     */
+    public void setNbReservation(int value) {
+        this.nbReservation = value;
     }
 
 }
