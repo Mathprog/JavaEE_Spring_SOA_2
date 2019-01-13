@@ -14,6 +14,11 @@
             xmlType="xs:date"
             parseMethod="oc.projet.biblio.client.consumer.utils.LocalDateAdapter.unmarshal"
             printMethod="oc.projet.biblio.client.consumer.utils.LocalDateAdapter.marshal" />
+        <jaxb:javaType
+                name="java.time.LocalDateTime"
+                xmlType="xs:dateTime"
+                parseMethod="oc.projet.biblio.client.consumer.utils.LocalDateTimeAdapter.unmarshal"
+                printMethod="oc.projet.biblio.client.consumer.utils.LocalDateTimeAdapter.marshal" />
     </jaxb:globalBindings>
 
  </jaxb:bindings>

@@ -7,9 +7,10 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="date" tagdir="/WEB-INF/tags" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 
 <div class="row">
@@ -24,7 +25,13 @@
                     <span class="card-title"><c:out value="${ ouvrageDispo.titre }"/></span>
                     <p> Ecrit par : <i><c:out value="${ ouvrageDispo.auteur }"/></i></p>
                     <p><c:out value="${ ouvrageDispo.resume }"/></p>
-                    <p><c:out value="${ ouvrageDispo.nbDispo }" /> exemplaires disponibles.</p>
+                    <br/>
+                    <div class="card-action">
+                        <p><c:out value="${ ouvrageDispo.nbDispo }" /> exemplaires disponibles.</p>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -43,6 +50,19 @@
                     <p><c:out value="${ ouvrageNonDispo.resume }"/></p>
                     <p><c:out value="${ ouvrageNonDispo.nbDispo }"/> exemplaires disponibles.</p>
                 </div>
+                <c:choose>
+                    <c:when test="${ouvrageNonDispo.reservable}">
+                        <div class="card-action">
+                            <a href="${contextPath}/reservation/book/${ouvrageNonDispo.id}">Réserver</a>
+                            <p>Dispo le <date:localDate date="${ ouvrageNonDispo.dateDispo }" pattern="dd/MM/yyyy"/> </p>
+                        </div>
+                    </c:when>
+
+                    <c:otherwise>
+
+                    </c:otherwise>
+                </c:choose>
+
             </div>
         </div>
 </c:forEach>

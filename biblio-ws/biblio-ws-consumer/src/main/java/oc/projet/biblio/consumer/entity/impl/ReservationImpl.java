@@ -47,8 +47,9 @@ import java.time.LocalDateTime;
                             query = "SELECT COUNT (rs) " +
                                     "FROM ReservationImpl rs " +
                                     "WHERE rs.ouvrage = :ouvrage " +
-                                    "AND rs.dateReservation <= :date " +
-                                    "ORDER BY rs.id ASC") //( SELECT rs2.dateReservation FROM ReservationImpl rs2 WHERE rs2.usager = :usager AND rs2.ouvrage = :ouvrage)
+                                    "AND rs.dateReservation <= :date "+
+                                    "ORDER BY rs.dateReservation DESC ") //( SELECT rs2.dateReservation FROM ReservationImpl rs2 WHERE rs2.usager = :usager AND rs2.ouvrage = :ouvrage)
+
         }
 )
 @Entity
@@ -89,6 +90,9 @@ public class ReservationImpl implements Reservation {
 
     @Transient
     private int usagerPlace;
+
+    @Transient
+    private String dateReservationString;
 
 
     public ReservationImpl() {
@@ -152,5 +156,15 @@ public class ReservationImpl implements Reservation {
     @Override
     public void setUsagerPlace(int usagerPlace) {
         this.usagerPlace = usagerPlace;
+    }
+
+    @Override
+    public String getDateReservationString() {
+        return dateReservationString;
+    }
+
+    @Override
+    public void setDateReservationString(String dateReservationString) {
+        this.dateReservationString = dateReservationString;
     }
 }

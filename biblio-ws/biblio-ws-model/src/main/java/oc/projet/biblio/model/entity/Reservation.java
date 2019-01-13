@@ -27,4 +27,8 @@ public interface Reservation {
     int getUsagerPlace();
 
     void setUsagerPlace(int usagerPlace);
+
+    String getDateReservationString();
+
+    void setDateReservationString(String dateReservationString);
 }

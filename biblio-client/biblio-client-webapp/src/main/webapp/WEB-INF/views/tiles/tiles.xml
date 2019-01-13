@@ -34,7 +34,7 @@
 
     <definition name="ouvrages" extends="template-def">
         <put-attribute name="title" value="Tous les livres ! " />
-        <put-attribute name="secondtitle" value="Les voilà, ils sont là !." cascade="true"/>
+        <put-attribute name="secondtitle" value="Les voilà, ils sont là !" cascade="true"/>
         <put-attribute name="description" value="Naviguez, chercher votre bonheur nous l'avons." cascade="true"/>
         <put-attribute name="body"
                        value="/WEB-INF/views/pages/ouvrages.jsp" />
@@ -42,7 +42,7 @@
 
     <definition name="pretsDetails" extends="template-def">
         <put-attribute name="title" value="Mes prets en cours" />
-        <put-attribute name="secondtitle" value="Voici vos prêts !." cascade="true"/>
+        <put-attribute name="secondtitle" value="Voici vos prêts !" cascade="true"/>
         <put-attribute name="description" value="N'hésitez pas à effectuer une relance si jamais vous trouvez que la date de fin de prêt est trop proche." cascade="true" />
         <put-attribute name="body"
                        value="/WEB-INF/views/pages/pretsDetails.jsp" />
@@ -69,5 +69,19 @@
         <put-attribute name="description" value="" cascade="true"/>
         <put-attribute name="body"
                        value="/WEB-INF/views/pages/recherche_res.jsp" />
+    </definition>
+
+    <definition name="reservationForm" extends="template-def">
+        <put-attribute name="title" value="Saisissez votre mail :" />
+        <put-attribute name="secondtitle" value="" cascade="true"/>
+        <put-attribute name="body"
+                       value="/WEB-INF/views/pages/reservationForm.jsp" />
+    </definition>
+
+    <definition name="reservationDone" extends="template-def">
+        <put-attribute name="title" value="Résultat de votre réservation" />
+        <put-attribute name="secondtitle" value="" cascade="true"/>
+        <put-attribute name="body"
+                       value="/WEB-INF/views/pages/reservationDone.jsp" />
     </definition>
 </tiles-definitions>

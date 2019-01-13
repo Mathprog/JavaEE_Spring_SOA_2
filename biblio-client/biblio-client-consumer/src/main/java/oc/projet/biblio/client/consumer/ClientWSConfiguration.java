@@ -82,4 +82,15 @@ public class ClientWSConfiguration {
         relanceClient.setInterceptors(interceptors);
         return relanceClient;
     }
+
+    @Bean
+    public ReservationClient reservationClient(Jaxb2Marshaller marshaller){
+        ReservationClient reservationClient = new ReservationClient();
+        reservationClient.setDefaultUri("http://localhost:8080/soapws");
+        reservationClient.setMarshaller(marshaller);
+        reservationClient.setUnmarshaller(marshaller);
+        ClientInterceptor[] interceptors = new ClientInterceptor[] {securityInterceptor()};
+        reservationClient.setInterceptors(interceptors);
+        return reservationClient;
+    }
 }

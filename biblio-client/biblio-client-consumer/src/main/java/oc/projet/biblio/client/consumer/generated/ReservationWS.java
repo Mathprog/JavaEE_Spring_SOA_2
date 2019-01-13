@@ -2,13 +2,14 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.10 à 02:53:20 PM CET 
+// Généré le : 2019.01.12 à 06:56:13 PM CET 
 //
 
 
 package oc.projet.biblio.client.consumer.generated;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -30,8 +31,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="ouvrage" type="{http://biblio.io/api/biblio-web-service}ouvrageWS"/&gt;
  *         &lt;element name="usager" type="{http://biblio.io/api/biblio-web-service}usagerWS"/&gt;
- *         &lt;element name="dateReservation" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="dateReservation" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="dateReservationString" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="dateLimite" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="usagerPlace" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -46,7 +49,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "ouvrage",
     "usager",
     "dateReservation",
-    "dateLimite"
+    "dateReservationString",
+    "dateLimite",
+    "usagerPlace"
 })
 public class ReservationWS {
 
@@ -55,14 +60,18 @@ public class ReservationWS {
     protected OuvrageWS ouvrage;
     @XmlElement(required = true)
     protected UsagerWS usager;
-    @XmlElement(required = true, type = String.class)
+    @XmlElement(required = true, type = String.class, nillable = true)
     @XmlJavaTypeAdapter(Adapter1 .class)
-    @XmlSchemaType(name = "date")
-    protected LocalDate dateReservation;
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected LocalDateTime dateReservation;
+    @XmlElement(required = true, nillable = true)
+    protected String dateReservationString;
+    @XmlElement(required = true, type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected LocalDate dateLimite;
+    @XmlElement(required = true, type = Integer.class, nillable = true)
+    protected Integer usagerPlace;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -136,7 +145,7 @@ public class ReservationWS {
      *     {@link String }
      *     
      */
-    public LocalDate getDateReservation() {
+    public LocalDateTime getDateReservation() {
         return dateReservation;
     }
 
@@ -148,8 +157,32 @@ public class ReservationWS {
      *     {@link String }
      *     
      */
-    public void setDateReservation(LocalDate value) {
+    public void setDateReservation(LocalDateTime value) {
         this.dateReservation = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété dateReservationString.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDateReservationString() {
+        return dateReservationString;
+    }
+
+    /**
+     * Définit la valeur de la propriété dateReservationString.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDateReservationString(String value) {
+        this.dateReservationString = value;
     }
 
     /**
@@ -174,6 +207,30 @@ public class ReservationWS {
      */
     public void setDateLimite(LocalDate value) {
         this.dateLimite = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété usagerPlace.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getUsagerPlace() {
+        return usagerPlace;
+    }
+
+    /**
+     * Définit la valeur de la propriété usagerPlace.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setUsagerPlace(Integer value) {
+        this.usagerPlace = value;
     }
 
 }

@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.11 à 03:17:20 PM CET 
+// Généré le : 2019.01.13 à 11:15:06 AM CET 
 //
 
 
@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.w3._2001.xmlschema.Adapter1;
+import org.w3._2001.xmlschema.Adapter2;
 
 
 /**
@@ -48,7 +48,7 @@ public class RelanceWSAlone {
     @XmlElement(required = true, type = Integer.class, nillable = true)
     protected Integer id;
     @XmlElement(required = true, type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected LocalDate dateFin;
 

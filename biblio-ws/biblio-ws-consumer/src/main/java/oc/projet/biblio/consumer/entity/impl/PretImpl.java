@@ -37,7 +37,10 @@ import java.time.LocalDate;
                 query = "SELECT MIN(p.dateFin) FROM PretImpl p " +
                         "JOIN p.exemplaire e " +
                         "JOIN e.ouvrage o " +
-                        "WHERE o = :ouvrage"
+                        "WHERE o = :ouvrage " +
+                        "AND NOT EXISTS (SELECT r2 FROM RelanceImpl r2 " +
+                        "JOIN r2.pret p2 " +
+                        "WHERE p2.id = p.id)"
         )
 })
 

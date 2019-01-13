@@ -38,7 +38,7 @@
         <!--  Scripts-->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="<c:url value='/static/js/materialize.min.js' />"></script>
-        <script src="<c:url value='/static/js/init.js' />"></script>
+        <script src="<c:url value='/static/js/init-js.js' />"></script>
 
 
 </body>

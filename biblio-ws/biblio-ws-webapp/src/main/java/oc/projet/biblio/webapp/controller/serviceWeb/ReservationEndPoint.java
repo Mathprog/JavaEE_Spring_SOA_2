@@ -75,7 +75,10 @@ public class ReservationEndPoint {
         BeanUtils.copyProperties(reservationByUsagerAndOuvrageRequest.getOuvrage(), ouvrage);
         BeanUtils.copyProperties(reservationByUsagerAndOuvrageRequest.getUsager(), usager);
         Reservation reservation = this.reservationService.findByUsagerAndOuvrage(usager, ouvrage);
-        ReservationWS reservationWS = this.uniqueReservation(reservation);
+        ReservationWS reservationWS = null;
+        if(reservation != null){
+            reservationWS = this.uniqueReservation(reservation);
+        }
         reservationByUsagerAndOuvrageResponse.setReservation(reservationWS);
 
         return reservationByUsagerAndOuvrageResponse;
@@ -90,7 +93,9 @@ public class ReservationEndPoint {
         BeanUtils.copyProperties(reservationCreateRequest.getOuvrage(), ouvrage);
         BeanUtils.copyProperties(reservationCreateRequest.getUsager(), usager);
         Reservation reservation = this.reservationService.create(usager, ouvrage, LocalDateTime.now());
-        reservationCreateResponse.setReservation(this.uniqueReservation(reservation));
+        if(reservation != null) {
+            reservationCreateResponse.setReservation(this.uniqueReservation(reservation));
+        }
         return reservationCreateResponse;
     }
 
@@ -138,8 +143,10 @@ public class ReservationEndPoint {
         OuvrageWS ouvrageWS = new OuvrageWS();
         UsagerWS usagerWS = new UsagerWS();
         BeanUtils.copyProperties(reservation, reservationWS);
-        BeanUtils.copyProperties(reservation.getOuvrage(), ouvrageWS);
-        BeanUtils.copyProperties(reservation.getUsager(), usagerWS);
+        if(reservation.getOuvrage() != null)
+            BeanUtils.copyProperties(reservation.getOuvrage(), ouvrageWS);
+        if(reservation.getUsager() != null)
+            BeanUtils.copyProperties(reservation.getUsager(), usagerWS);
         reservationWS.setOuvrage(ouvrageWS);
         reservationWS.setUsager(usagerWS);
         return reservationWS;

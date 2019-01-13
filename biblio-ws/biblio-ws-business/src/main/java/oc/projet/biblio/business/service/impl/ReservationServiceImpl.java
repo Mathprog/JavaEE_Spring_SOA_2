@@ -1,5 +1,7 @@
 package oc.projet.biblio.business.service.impl;
 
+import oc.projet.biblio.business.service.ExemplaireService;
+import oc.projet.biblio.business.service.OuvrageService;
 import oc.projet.biblio.business.service.PretService;
 import oc.projet.biblio.business.service.ReservationService;
 import oc.projet.biblio.model.entity.Ouvrage;
@@ -14,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -26,6 +30,12 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     private PretService pretService;
+
+    @Autowired
+    private OuvrageService ouvrageService;
+
+    @Autowired
+    private ExemplaireService exemplaireService;
 
     @Override
     public List<Reservation> findAll(){
@@ -42,6 +52,11 @@ public class ReservationServiceImpl implements ReservationService {
         List<Reservation> reservationList = this.reservationRepository.findAllByUsager(usager);
         for (Reservation reservation : reservationList){
             reservation.setUsagerPlace(this.calculateUsagerPlace(usager, reservation.getOuvrage()));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            reservation.setDateReservationString(reservation.getDateReservation().format(formatter));
+            Ouvrage ouvrage = reservation.getOuvrage();
+            ouvrage.setDateDispo(ouvrageService.firstDispoDate(ouvrage));
+            reservation.setOuvrage(ouvrage);
         }
         return reservationList;
     }
@@ -56,6 +71,8 @@ public class ReservationServiceImpl implements ReservationService {
     public Reservation create(Usager usager, Ouvrage ouvrage, LocalDateTime creationDate){
         Pret pret = this.pretService.findByUsagerAndOuvrage(usager, ouvrage); // On récupére un Pret potentiellement existant entre l'usager et l'ouvrage.
         Reservation reservationFound = this.reservationRepository.findByUsagerAndOuvrage(usager, ouvrage);
+       ouvrage.setReservations(new HashSet<>(this.findAllByOuvrage(ouvrage)));
+        ouvrage.setExemplaires(new HashSet<>(this.exemplaireService.findAllByBook(ouvrage)));
         ouvrage.calculReservable();
         Reservation reservation;
         if( pret == null && reservationFound == null && ouvrage.isReservable()){ // S'il n'y a pas de prêt et que les conditions de réservations de l'ouvrage sont bonnes.

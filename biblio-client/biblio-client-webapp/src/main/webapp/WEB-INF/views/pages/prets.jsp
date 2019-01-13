@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <div class="row">
     <form class="col s12" method = "POST" action = "${contextPath}/usager/prets/details">

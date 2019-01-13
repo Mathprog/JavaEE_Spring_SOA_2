@@ -59,7 +59,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         reservation.setDateReservation(creationDate);
         reservation.setOuvrage(ouvrage);
         reservation.setUsager(usager);
-        if (reservationList.size() == 0){
+        if (reservationList != null && reservationList.size() == 0){
             reservation.setDateLimite(LocalDate.now().plusDays(2));
         } else {
             reservation.setDateLimite(null);

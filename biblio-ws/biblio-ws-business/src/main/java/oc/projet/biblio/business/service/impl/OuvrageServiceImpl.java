@@ -79,7 +79,18 @@ public class OuvrageServiceImpl implements OuvrageService {
     public LocalDate firstDispoDate(Ouvrage ouvrage){
         LocalDate pretFirstDate = this.pretService.findFirstDispo(ouvrage);
         LocalDate relanceFirstDAte = this.relanceService.findFirstDispo(ouvrage);
-        return (pretFirstDate.isAfter(relanceFirstDAte)) ? relanceFirstDAte : pretFirstDate;
+        if( pretFirstDate == null ){
+            if( relanceFirstDAte != null){
+                return relanceFirstDAte;
+            } else {
+                return pretFirstDate;
+            }
+        } else if (relanceFirstDAte != null){
+            return (pretFirstDate.isAfter(relanceFirstDAte)) ? relanceFirstDAte : pretFirstDate;
+        } else {
+            return pretFirstDate;
+        }
+
     }
 
     @Override

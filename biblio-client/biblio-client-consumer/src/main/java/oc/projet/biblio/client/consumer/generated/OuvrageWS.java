@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.10 à 02:53:20 PM CET 
+// Généré le : 2019.01.12 à 06:56:13 PM CET 
 //
 
 
@@ -70,7 +70,7 @@ public class OuvrageWS {
     @XmlElement(required = true)
     protected String resume;
     @XmlElement(required = true, type = String.class, nillable = true)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected LocalDate date;
     @XmlElement(required = true, nillable = true)
@@ -79,8 +79,8 @@ public class OuvrageWS {
     protected String imageBase64DataString;
     protected int nbDispo;
     protected boolean reservable;
-    @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlElement(required = true, type = String.class, nillable = true)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected LocalDate dateDispo;
     protected int nbReservation;

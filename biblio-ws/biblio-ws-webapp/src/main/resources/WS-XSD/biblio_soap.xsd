@@ -32,7 +32,7 @@
             <xs:element name="ImageBase64DataString" type="xs:string" nillable="true"/>
             <xs:element name="nbDispo" type="xs:int"/>
             <xs:element name="reservable" type="xs:boolean"/>
-            <xs:element name="dateDispo" type="xs:date"/>
+            <xs:element name="dateDispo" type="xs:date" nillable="true"/>
             <xs:element name="nbReservation" type="xs:int"/>
         </xs:sequence>
     </xs:complexType>
@@ -108,9 +108,10 @@
             <xs:element name="id" type="xs:int"/>
             <xs:element name="ouvrage" type="tns:ouvrageWS"/>
             <xs:element name="usager" type="tns:usagerWS"/>
-            <xs:element name="dateReservation" type="xs:date" />
-            <xs:element name="dateLimite" type="xs:date" />
-            <xs:element name="usagerPlace" type="xs:int"/>
+            <xs:element name="dateReservation" type="xs:dateTime" nillable="true"/>
+            <xs:element name="dateReservationString" type="xs:string" nillable="true"/>
+            <xs:element name="dateLimite" type="xs:date" nillable="true"/>
+            <xs:element name="usagerPlace" type="xs:int" nillable="true"/>
         </xs:sequence>
     </xs:complexType>
 
