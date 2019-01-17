@@ -18,4 +18,8 @@ public interface Usager {
     Set<Reservation> getReservations();
 
     void setReservations(Set<Reservation> reservations);
+
+    boolean isPretExpiration();
+
+    void setPretExpiration(boolean pretExpiration);
 }

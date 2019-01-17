@@ -5,7 +5,7 @@
 Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-Généré le : 2019.01.12 à 06:56:12 PM CET 
+Généré le : 2019.01.17 à 07:34:51 PM CET 
 
   -->
   <bindings xmlns:tns="http://biblio.io/api/biblio-web-service" if-exists="true" scd="x-schema::tns">
@@ -26,6 +26,12 @@ Généré le : 2019.01.12 à 06:56:12 PM CET
     </bindings>
     <bindings if-exists="true" scd="tns:getUsagerResponse">
       <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerUpdateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerUpdateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerUpdateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerUpdateResponse"/>
     </bindings>
     <bindings if-exists="true" scd="tns:getUsagerCreateRequest">
       <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerCreateRequest"/>
@@ -50,6 +56,12 @@ Généré le : 2019.01.12 à 06:56:12 PM CET
     </bindings>
     <bindings if-exists="true" scd="tns:getUsagerByRelanceDateResponse">
       <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByRelanceDateResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerByPretAndRelanceDateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByPretAndRelanceDateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getUsagerByPretAndRelanceDateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetUsagerByPretAndRelanceDateResponse"/>
     </bindings>
     <bindings if-exists="true" scd="tns:getOuvrageByIdRequest">
       <class ref="oc.projet.biblio.client.consumer.generated.GetOuvrageByIdRequest"/>
@@ -162,6 +174,12 @@ Généré le : 2019.01.12 à 06:56:12 PM CET
     <bindings if-exists="true" scd="tns:getPretByUsagerResponse">
       <class ref="oc.projet.biblio.client.consumer.generated.GetPretByUsagerResponse"/>
     </bindings>
+    <bindings if-exists="true" scd="tns:getPretByUsagerAndDateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretByUsagerAndDateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getPretByUsagerAndDateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetPretByUsagerAndDateResponse"/>
+    </bindings>
     <bindings if-exists="true" scd="tns:getRelanceByIdRequest">
       <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByIdRequest"/>
     </bindings>
@@ -194,6 +212,12 @@ Généré le : 2019.01.12 à 06:56:12 PM CET
     </bindings>
     <bindings if-exists="true" scd="tns:getRelanceByUsagerResponse">
       <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByUsagerResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceByUsagerAndDateRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByUsagerAndDateRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getRelanceByUsagerAndDateResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetRelanceByUsagerAndDateResponse"/>
     </bindings>
     <bindings if-exists="true" scd="tns:getReservationRequest">
       <class ref="oc.projet.biblio.client.consumer.generated.GetReservationRequest"/>
@@ -239,6 +263,12 @@ Généré le : 2019.01.12 à 06:56:12 PM CET
     </bindings>
     <bindings if-exists="true" scd="tns:getReservationLateResponse">
       <class ref="oc.projet.biblio.client.consumer.generated.GetReservationLateResponse"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getReservationDispoRequest">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetReservationDispoRequest"/>
+    </bindings>
+    <bindings if-exists="true" scd="tns:getReservationDispoResponse">
+      <class ref="oc.projet.biblio.client.consumer.generated.GetReservationDispoResponse"/>
     </bindings>
     <bindings if-exists="true" scd="tns:getReservationDeleteLateRequest">
       <class ref="oc.projet.biblio.client.consumer.generated.GetReservationDeleteLateRequest"/>

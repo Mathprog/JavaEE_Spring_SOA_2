@@ -67,4 +67,17 @@ public class PretClient extends WebServiceGatewaySupport{
         return pretByUsagerResponse.getPret();
     }
 
+    public List<PretWS> getAllPretBysUsagerAndDate(UsagerWS usagerWS, LocalDate date){
+        GetPretByUsagerAndDateRequest pretByUsagerAndDateRequest = new GetPretByUsagerAndDateRequest();
+        pretByUsagerAndDateRequest.setUsager(usagerWS);
+        pretByUsagerAndDateRequest.setDate(date);
+
+        GetPretByUsagerAndDateResponse pretByUsagerAndDateResponse = (GetPretByUsagerAndDateResponse) getWebServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8080/soapws/bibliosoap", pretByUsagerAndDateRequest,
+                        new SoapActionCallback(
+                                "http://biblio.io/api/biblio-web-service/GetPretByUsagerRequest"));
+
+        return pretByUsagerAndDateResponse.getPret();
+    }
+
 }

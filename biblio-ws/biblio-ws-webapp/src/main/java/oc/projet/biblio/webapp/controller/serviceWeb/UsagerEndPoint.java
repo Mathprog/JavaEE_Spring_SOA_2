@@ -3,6 +3,7 @@ package oc.projet.biblio.webapp.controller.serviceWeb;
 
 import io.biblio.api.biblio_web_service.*;
 import oc.projet.biblio.business.service.UsagerService;
+import oc.projet.biblio.consumer.entity.impl.UsagerImpl;
 import oc.projet.biblio.model.entity.Usager;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,16 +32,7 @@ public class UsagerEndPoint {
     public GetUsagerResponse getUsager(){
             GetUsagerResponse UsagerResponse = new GetUsagerResponse();
             List<Usager> usagers = this.usagerService.findAll();
-            List<UsagerWS> usagersWS = null;
-            if( usagers != null){
-                usagersWS = new ArrayList<>();
-                for (Usager usager : usagers){
-                    UsagerWS usagerws = new UsagerWS();
-                    BeanUtils.copyProperties(usager, usagerws);
-                    usagersWS.add(usagerws);
-                }
-                UsagerResponse.getUsagerWS().addAll(usagersWS);
-            }
+            UsagerResponse.getUsagerWS().addAll(this.populateUsagerWSList(usagers));
             return UsagerResponse;
     }
 
@@ -50,12 +42,7 @@ public class UsagerEndPoint {
     public GetUsagerByEmailResponse getUsagerByEmail(@RequestPayload GetUsagerByEmailRequest request){
         GetUsagerByEmailResponse usagerResponse = new GetUsagerByEmailResponse();
         Usager usager = this.usagerService.findUsagerByEmail(request.getEmail());
-        UsagerWS usagerWs = null;
-        if (usager != null){
-            usagerWs = new UsagerWS();
-            BeanUtils.copyProperties(usager, usagerWs);
-        }
-        usagerResponse.setUsagerWS(usagerWs);
+        usagerResponse.setUsagerWS(populateUsagerWS(usager));
         return usagerResponse;
     }
 
@@ -64,12 +51,7 @@ public class UsagerEndPoint {
     public GetUsagerCreateResponse getUsagerCreate(@RequestPayload GetUsagerCreateRequest request){
         Usager usager = this.usagerService.createUsager(request.getEmail());
         GetUsagerCreateResponse usagerResponse = new GetUsagerCreateResponse();
-        UsagerWS usagerWs = null;
-        if( usager != null ){
-            usagerWs = new UsagerWS();
-            BeanUtils.copyProperties(usager, usagerWs);
-        }
-        usagerResponse.setUsagerWS(usagerWs);
+        usagerResponse.setUsagerWS(populateUsagerWS(usager));
         return usagerResponse;
     }
 
@@ -92,17 +74,8 @@ public class UsagerEndPoint {
     public GetUsagerByPretDateResponse getUsagerByPretDate (){
         List<Usager> usagerList = this.usagerService.findAllByPretDate();
         GetUsagerByPretDateResponse usagerByPretDateResponse = new GetUsagerByPretDateResponse();
-        List<UsagerWS> usagerWSList = null;
-        if( usagerList != null ){
-            usagerWSList = new ArrayList<>();
-            for(Usager usager : usagerList){
-                UsagerWS usagerWS = new UsagerWS();
-                BeanUtils.copyProperties(usager, usagerWS);
-                usagerWSList.add(usagerWS);
-            }
-            usagerByPretDateResponse.getUsagerWS().addAll(usagerWSList);
-        }
 
+        usagerByPretDateResponse.getUsagerWS().addAll(this.populateUsagerWSList(usagerList));
         return usagerByPretDateResponse;
     }
 
@@ -111,6 +84,37 @@ public class UsagerEndPoint {
     public GetUsagerByRelanceDateResponse getUsagerByRelanceDate (){
         List<Usager> usagerList = this.usagerService.findAllByRelanceDate();
         GetUsagerByRelanceDateResponse usagerByRelanceDateResponse = new GetUsagerByRelanceDateResponse();
+
+
+        usagerByRelanceDateResponse.getUsagerWS().addAll(populateUsagerWSList(usagerList));
+        return usagerByRelanceDateResponse;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getUsagerByPretAndRelanceDateRequest")
+    @ResponsePayload
+    public GetUsagerByPretAndRelanceDateResponse getReservationByUsagerAndOuvrageResponse(@RequestPayload GetUsagerByPretAndRelanceDateRequest usagerByPretAndRelanceDateRequest){
+        GetUsagerByPretAndRelanceDateResponse usagerByPretAndRelanceDateResponse = new GetUsagerByPretAndRelanceDateResponse();
+        List<Usager> usagerList = this.usagerService.findAllByPretAndRelanceDate(usagerByPretAndRelanceDateRequest.getDate());
+        usagerByPretAndRelanceDateResponse.getUsagerWS().addAll( this.populateUsagerWSList(usagerList));
+        return usagerByPretAndRelanceDateResponse;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getUsagerUpdateRequest")
+    @ResponsePayload
+    public GetUsagerUpdateResponse usagerUpdateResponse(@RequestPayload GetUsagerUpdateRequest usagerUpdateRequest){
+        GetUsagerUpdateResponse usagerUpdateResponse = new GetUsagerUpdateResponse();
+        UsagerWS usagerWS = usagerUpdateRequest.getUsagerWS();
+        Usager usager = new UsagerImpl();
+        if(usagerWS != null){
+            BeanUtils.copyProperties(usagerWS, usager);
+            usager = this.usagerService.update(usager);
+            usagerWS = this.populateUsagerWS(usager);
+        }
+        usagerUpdateResponse.setUsagerWS(usagerWS);
+        return usagerUpdateResponse;
+    }
+
+    private List<UsagerWS> populateUsagerWSList(List<Usager> usagerList) {
         List<UsagerWS> usagerWSList = null;
         if( usagerList != null) {
             usagerWSList = new ArrayList<>();
@@ -119,9 +123,17 @@ public class UsagerEndPoint {
                 BeanUtils.copyProperties(usager, usagerWS);
                 usagerWSList.add(usagerWS);
             }
-            usagerByRelanceDateResponse.getUsagerWS().addAll(usagerWSList);
         }
-        return usagerByRelanceDateResponse;
+        return usagerWSList;
+    }
+
+    private UsagerWS populateUsagerWS(Usager usager){
+        UsagerWS usagerWs = null;
+        if( usager != null ){
+            usagerWs = new UsagerWS();
+            BeanUtils.copyProperties(usager, usagerWs);
+        }
+        return  usagerWs;
     }
 
 }

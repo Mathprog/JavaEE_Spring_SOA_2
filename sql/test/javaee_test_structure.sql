@@ -54,6 +54,7 @@ CREATE TABLE `ouvrage` (
 CREATE TABLE `usager` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
+	`pret_expiration` boolean,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 ;

@@ -53,7 +53,26 @@ import java.util.Set;
                         "AND NOT EXISTS (SELECT r2 FROM RelanceImpl r2 " +
                         "JOIN r2.pret p2 " +
                         "WHERE p2.id = p.id)"
+        ),
+        @NamedQuery(
+                name = UsagerImpl.QN.FIND_ALL_BY_PRET_5_EXPIRATION,
+                query = "SELECT distinct u FROM UsagerImpl u " +
+                        "JOIN u.prets p " +
+                        "WHERE (p.dateFin BETWEEN current_date AND :date) " +
+                        "AND u.pretExpiration = TRUE " +
+                        "AND NOT EXISTS (SELECT r2 FROM RelanceImpl r2 " +
+                        "JOIN r2.pret p2 " +
+                        "WHERE p2.id = p.id)"
+        ),
+        @NamedQuery(
+                name= UsagerImpl.QN.FIND_ALL_BY_RELANCE_5_EXPIRATION,
+                query = "SELECT distinct u FROM UsagerImpl u " +
+                        "JOIN u.prets p " +
+                        "JOIN p.relance r " +
+                        "WHERE (r.dateFin BETWEEN current_date AND :date) " +
+                        "AND u.pretExpiration = TRUE"
         )
+
 })
 public class UsagerImpl implements Usager, Serializable {
 
@@ -64,6 +83,8 @@ public class UsagerImpl implements Usager, Serializable {
         public static final String FIND_ALL = "UsagerImpl.findAll";
         public static final String FIND_ALL_BY_RELANCE_DATE = "UsagerImpl.findAllByRelanceDate";
         public static final String FIND_ALL_BY_PRET_DATE = "UsagerImpl.findAllByPretDate";
+        public static final String FIND_ALL_BY_PRET_5_EXPIRATION = "UsagerImpl.findAllByPret5Expiration";
+        public static final String FIND_ALL_BY_RELANCE_5_EXPIRATION = "UsagerImpl.findAllByRelance5Expiration";
     }
 
     @Id
@@ -73,6 +94,9 @@ public class UsagerImpl implements Usager, Serializable {
 
     @Column(name="email", length = 255, unique=true)
     private String email;
+
+    @Column(name = "pret_expiration")
+    private boolean pretExpiration;
 
     @OneToMany(mappedBy = "usager", fetch = FetchType.LAZY, targetEntity = PretImpl.class)
     private Set<Pret> prets;
@@ -126,5 +150,15 @@ public class UsagerImpl implements Usager, Serializable {
     @Override
     public void setReservations(Set<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    @Override
+    public boolean isPretExpiration() {
+        return pretExpiration;
+    }
+
+    @Override
+    public void setPretExpiration(boolean pretExpiration) {
+        this.pretExpiration = pretExpiration;
     }
 }

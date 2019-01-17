@@ -76,4 +76,9 @@ public class RelanceRepositoryImpl implements RelanceRepository {
         }
         return date;
     }
+
+    @Override
+    public List<Relance> findAllByUsagerAndDate(Usager usager, LocalDate date){
+        return this.entityManager.createNamedQuery(RelanceImpl.QN.FIND_ALL_BY_USAGER_AND_DATE, Relance.class).setParameter("usager", usager).setParameter("date", date).getResultList();
+    }
 }

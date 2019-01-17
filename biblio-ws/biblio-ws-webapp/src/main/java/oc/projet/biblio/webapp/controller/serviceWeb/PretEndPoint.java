@@ -50,12 +50,7 @@ public class PretEndPoint {
     public GetPretsResponse getAllPrets(){
         GetPretsResponse pretsResponse = new GetPretsResponse();
         List<Pret> prets = this.pretService.findAll();
-        List<PretWS> pretWSList = new ArrayList<>();
-        for(Pret pret : prets){
-            PretWS pretWS = new PretWS();
-            BeanUtils.copyProperties(pret, pretWS);
-            pretWSList.add(pretWS);
-        }
+        List<PretWS> pretWSList = this.populatePretWSList(prets);
         pretsResponse.getPret().addAll(pretWSList);
         return pretsResponse;
     }
@@ -116,14 +111,34 @@ public class PretEndPoint {
         if( usagerWS != null){
             BeanUtils.copyProperties(usagerWS, usager);
             List<Pret> prets = this.pretService.findAllByUsager(usager);
-            List<PretWS> pretWSList = new ArrayList<>();
-            for(Pret pret : prets){
-                PretWS pretWS = new PretWS();
-                BeanUtils.copyProperties(pret, pretWS);
-                pretWSList.add(pretWS);
-            }
+            List<PretWS> pretWSList = this.populatePretWSList(prets);
             pretResponse.getPret().addAll(pretWSList);
         }
         return pretResponse;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getPretByUsagerAndDateRequest")
+    @ResponsePayload
+    public GetPretByUsagerAndDateResponse pretByUsagerAndDateResponse (@RequestPayload GetPretByUsagerAndDateRequest pretByUsagerAndDateRequest){
+        GetPretByUsagerAndDateResponse pretByUsagerAndDateResponse = new GetPretByUsagerAndDateResponse();
+        UsagerWS usagerWS = pretByUsagerAndDateRequest.getUsager();
+        Usager usager = new UsagerImpl();
+        if(usagerWS != null){
+            BeanUtils.copyProperties(usagerWS, usager);
+        }
+        List<Pret> pretList = this.pretService.findAllByUsagerAndDate(usager, pretByUsagerAndDateRequest.getDate());
+        List<PretWS> pretWSList = this.populatePretWSList(pretList);
+        pretByUsagerAndDateResponse.getPret().addAll(pretWSList);
+        return pretByUsagerAndDateResponse;
+    }
+
+    private List<PretWS> populatePretWSList(List<Pret> pretList){
+        List<PretWS> pretWSList = new ArrayList<>();
+        for(Pret pret : pretList){
+            PretWS pretWS = new PretWS();
+            BeanUtils.copyProperties(pret, pretWS);
+            pretWSList.add(pretWS);
+        }
+        return pretWSList;
     }
 }

@@ -30,5 +30,7 @@ public interface ReservationService {
 
     Reservation deleteAndUpdateDateLimiteNextResa(Reservation reservation, Ouvrage ouvrage);
 
+    List<Reservation> findAllDispo();
+
     int calculateUsagerPlace(Usager usager, Ouvrage ouvrage);
 }

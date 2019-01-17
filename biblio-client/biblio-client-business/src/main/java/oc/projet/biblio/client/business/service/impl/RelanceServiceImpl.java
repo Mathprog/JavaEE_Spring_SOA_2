@@ -44,6 +44,11 @@ public class RelanceServiceImpl implements RelanceService {
         return this.relanceClient.relanceByUsagerClientRequest(usager);
     }
 
+    @Override
+    public List<RelanceWS> findAllByUsagerAndDate(UsagerWS usagerWS, LocalDate date){
+        return this.relanceClient.getAllRelanceByUsagerAndDate(usagerWS, date);
+    }
+
     /*@Bean
     public void setRelanceClient(RelanceClient relanceClient){
         this.relanceClient = relanceClient;

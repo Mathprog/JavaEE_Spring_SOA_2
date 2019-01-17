@@ -49,7 +49,8 @@
                     <div class="card-content">
                         <p> Ecrit par : <i><c:out value="${ ouvrageNonDispo.auteur }"/></i></p>
                         <p><c:out value="${ ouvrageNonDispo.resume }"/></p>
-                        <p><b><c:out value="${ ouvrageNonDispo.nbDispo }"/> exemplaires disponibles.</b></p>
+                        <p><b>Indisponible.</b></p>
+                        <p><b><c:out value="${ ouvrageNonDispo.nbReservation }"/> réservations.</b></p>
                     </div>
                     <c:choose>
                         <c:when test="${ouvrageNonDispo.reservable}">

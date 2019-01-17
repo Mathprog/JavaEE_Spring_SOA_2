@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.13 à 11:15:06 AM CET 
+// Généré le : 2019.01.17 à 07:59:55 PM CET 
 //
 
 
@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="pretExpiration" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,7 +38,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "usagerWS", propOrder = {
     "id",
-    "email"
+    "email",
+    "pretExpiration"
 })
 public class UsagerWS {
 
@@ -45,6 +47,7 @@ public class UsagerWS {
     protected Integer id;
     @XmlElement(required = true, nillable = true)
     protected String email;
+    protected boolean pretExpiration;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -92,6 +95,22 @@ public class UsagerWS {
      */
     public void setEmail(String value) {
         this.email = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété pretExpiration.
+     * 
+     */
+    public boolean isPretExpiration() {
+        return pretExpiration;
+    }
+
+    /**
+     * Définit la valeur de la propriété pretExpiration.
+     * 
+     */
+    public void setPretExpiration(boolean value) {
+        this.pretExpiration = value;
     }
 
 }

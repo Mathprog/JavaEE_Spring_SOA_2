@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -88,4 +89,21 @@ public class UsagerRepositoryImpl implements UsagerRepository {
     public List<Usager> findAllByPretDate(){
         return this.entityManager.createNamedQuery(UsagerImpl.QN.FIND_ALL_BY_PRET_DATE, Usager.class).getResultList();
     }
+
+
+    @Override
+    public List<Usager> findAllByPret5DayExpiration(LocalDate date){
+        return this.entityManager.createNamedQuery(UsagerImpl.QN.FIND_ALL_BY_PRET_5_EXPIRATION, Usager.class).setParameter("date", date).getResultList();
+    }
+
+    @Override
+    public List<Usager> findAllByRelance5DayExpiration(LocalDate date){
+        return this.entityManager.createNamedQuery(UsagerImpl.QN.FIND_ALL_BY_RELANCE_5_EXPIRATION, Usager.class).setParameter("date", date).getResultList();
+    }
+
+    @Override
+    public Usager update(Usager usager){
+        return this.entityManager.merge(usager);
+    }
+
 }

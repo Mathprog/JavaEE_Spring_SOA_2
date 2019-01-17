@@ -115,6 +115,7 @@ DROP TABLE IF EXISTS `usager`;
 CREATE TABLE `usager` (
   `id` int(11) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
+	`pret_expiration` boolean,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

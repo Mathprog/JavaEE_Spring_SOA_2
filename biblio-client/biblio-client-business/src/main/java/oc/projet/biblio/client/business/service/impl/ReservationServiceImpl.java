@@ -57,4 +57,9 @@ public class ReservationServiceImpl implements ReservationService {
         return this.reservationClient.getReservationDeleteLateRequestClient(reservationWSList);
     }
 
+    @Override
+    public List<ReservationWS> findAllDispo(){
+        return this.reservationClient.getReservationDispoRequestClient();
+    }
+
 }

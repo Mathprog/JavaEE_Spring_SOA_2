@@ -19,4 +19,6 @@ public interface PretService {
     PretWS findByExemplaire(ExemplaireWS e);
 
     List<PretWS> findAllByUsager(UsagerWS u);
+
+    List<PretWS> findAllPretByUsagerAndDate(UsagerWS usagerWS, LocalDate date);
 }

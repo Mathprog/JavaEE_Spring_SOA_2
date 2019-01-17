@@ -85,4 +85,9 @@ public class PretRepositoryImpl implements PretRepository {
         return date;
     }
 
+    @Override
+    public List<Pret> findAllByUsagerAndDate(Usager usager, LocalDate localDate){
+        return this.entityManager.createNamedQuery(PretImpl.QN.FIND_ALL_BY_USAGER_AND_DATE, Pret.class).setParameter("usager", usager).setParameter("date", localDate).getResultList();
+    }
+
 }

@@ -31,6 +31,14 @@ public class App
         return args -> {
                 System.err.println("Activation de la fonctionalité d'envoie de mail :");
                 detectLateUsager.sendEMail();
+            System.err.println("Détection des prêts arrivant à expiration. ");
+                detectLateUsager.sendMailAlert();
+
+                System.err.println("Détection des réservation à venir récupérer..");
+                detectLateUsager.sendMailReservationAlert();
+
+                System.err.println("\n\n Suppression des réservations en retard.");
+                detectLateUsager.deleteLateReservation();
 
         };
     }

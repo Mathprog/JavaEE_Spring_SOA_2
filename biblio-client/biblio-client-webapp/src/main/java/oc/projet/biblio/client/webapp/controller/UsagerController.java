@@ -61,16 +61,37 @@ public class UsagerController {
 
             }
         } else {
-            message = "Nous ne vous avons pas trouvé...";
+            message = "Nous ne vous avons pas trouvé avec l'email : "+ email;
         }
 
 
         modelMap.addAttribute("usager", email);
+        modelMap.addAttribute("usagerWS", usagerWS);
         modelMap.addAttribute("prets", pretWSList);
         modelMap.addAttribute("reservations", reservationWSList);
         modelMap.addAttribute("message", message);
 
         return "pretsDetails";
+    }
+
+    @PostMapping(path = "/update")
+    public String usagerUpdate(@RequestParam("email") String email, @RequestParam("expiration") String expiration, ModelMap modelMap){
+        UsagerWS usagerWS = this.usagerService.findUsagerByEmail(email);
+        String message;
+        if(usagerWS != null){
+            if(expiration.equals("checked")){
+                usagerWS.setPretExpiration(true);
+            } else {
+                usagerWS.setPretExpiration(false);
+            }
+            usagerService.update(usagerWS);
+            message = "Votre profil a bien été mis à jour.";
+        } else {
+            message = "Aucune utilisateur pour le mail: " + email;
+
+        }
+        modelMap.addAttribute("message", message);
+        return "updateConfirmation";
     }
 
 }

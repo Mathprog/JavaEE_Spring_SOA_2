@@ -41,6 +41,12 @@ import java.time.LocalDate;
                         "AND NOT EXISTS (SELECT r2 FROM RelanceImpl r2 " +
                         "JOIN r2.pret p2 " +
                         "WHERE p2.id = p.id)"
+        ),
+        @NamedQuery(
+                name = PretImpl.QN.FIND_ALL_BY_USAGER_AND_DATE,
+                query = "SELECT p FROM PretImpl p " +
+                        "WHERE p.usager = :usager " +
+                        "AND (p.dateFin BETWEEN current_date AND :date)"
         )
 })
 
@@ -54,6 +60,7 @@ public class PretImpl implements Pret, Serializable {
         public static final String FIND_BY_EXEMPLAIRE = "PretImpl.findByExemplaire";
         public static final String FIND_BY_USAGER_AND_OUVRAGE = "PretImpl.findByUsagerAndOuvrage";
         public static final String FIND_FIRST_DISPO_DATE = "PretImpl.FindFirstDispoDate";
+        public static final String FIND_ALL_BY_USAGER_AND_DATE = "PretImpl.findAllByUsagerAndDate";
     }
 
     @Id

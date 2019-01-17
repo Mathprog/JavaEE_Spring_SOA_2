@@ -32,7 +32,7 @@ public class PretServiceImpl implements PretService {
         Ouvrage ouvrage = exemplaire.getOuvrage();
         Reservation reservation = this.reservationService.findByUsagerAndOuvrage(usager, ouvrage);
         if( reservation != null ){
-            this.reservationService.deleteAndUpdateDateLimiteNextResa(reservation, ouvrage);
+            this.reservationService.delete(reservation);
         }
         Pret pret = this.pretRepository.create(exemplaire, usager, date_pret, date_fin);
         if( pret != null ){
@@ -64,6 +64,11 @@ public class PretServiceImpl implements PretService {
     @Override
     public LocalDate findFirstDispo(Ouvrage ouvrage){
         return this.pretRepository.findFirstDate(ouvrage);
+    }
+
+    @Override
+    public List<Pret> findAllByUsagerAndDate(Usager usager, LocalDate date){
+        return this.pretRepository.findAllByUsagerAndDate(usager, date);
     }
 
 }

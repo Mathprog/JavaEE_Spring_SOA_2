@@ -1,6 +1,7 @@
 package oc.projet.biblio.client.consumer.ws;
 
 import oc.projet.biblio.client.consumer.generated.*;
+import org.springframework.cglib.core.Local;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
@@ -69,4 +70,21 @@ public class RelanceClient extends WebServiceGatewaySupport {
 
         return relanceByPretResponse.getRelance();
     }
+    public List<RelanceWS> getAllRelanceByUsagerAndDate(UsagerWS usagerWS, LocalDate date){
+        GetRelanceByUsagerAndDateRequest relanceByUsagerAndDateRequest = new GetRelanceByUsagerAndDateRequest();
+        relanceByUsagerAndDateRequest.setUsager(usagerWS);
+        relanceByUsagerAndDateRequest.setDate(date);
+
+        GetRelanceByUsagerAndDateResponse relanceByUsagerAndDateResponse = (GetRelanceByUsagerAndDateResponse) getWebServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8080/soapws/bibliosoap", relanceByUsagerAndDateRequest,
+                        new SoapActionCallback(
+                                "http://biblio.io/api/biblio-web-service/GetRelanceByPretRequest"));
+
+        return relanceByUsagerAndDateResponse.getRelance();
+    }
+
+   /* public List<RelanceWS> getAllRelanceByusagerAndDate(UsagerWS usagerWS, LocalDate date){
+
+    }*/
+
 }

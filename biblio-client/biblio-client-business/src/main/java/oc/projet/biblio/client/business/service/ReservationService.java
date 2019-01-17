@@ -22,4 +22,6 @@ public interface ReservationService {
     List<ReservationWS> findAllLate();
 
     int deleteLateRequest(List<ReservationWS> reservationWSList);
+
+    List<ReservationWS> findAllDispo();
 }

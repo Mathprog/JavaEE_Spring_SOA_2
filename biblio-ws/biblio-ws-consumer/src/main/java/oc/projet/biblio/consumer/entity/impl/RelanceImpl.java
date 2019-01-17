@@ -33,6 +33,14 @@ import java.time.LocalDate;
                         "JOIN p.exemplaire e " +
                         "JOIN e.ouvrage o " +
                         "WHERE o = :ouvrage"
+        ),
+        @NamedQuery(
+                name = RelanceImpl.QN.FIND_ALL_BY_USAGER_AND_DATE,
+                query = "SELECT r FROM RelanceImpl r " +
+                        "JOIN r.pret p " +
+                        "JOIN p.usager u " +
+                        "WHERE u = :usager " +
+                        "AND (r.dateFin BETWEEN current_date AND :date)"
         )
 })
 @Entity
@@ -44,6 +52,7 @@ public class RelanceImpl implements Relance, Serializable {
         public static final String FIND_ALL_BY_PRET = "RelanceImpl.findAllByPret";
         public static final String FIND_ALL_BY_USAGER = "RelanceImpl.findAllByUsager";
         public static final String FIND_FIRST_DISPO_DATE = "RelanceImpl.findFirstDispoDate";
+        public static final String FIND_ALL_BY_USAGER_AND_DATE = "RelanceImpl.findAllByUsagerAndDate";
     }
 
     @Id

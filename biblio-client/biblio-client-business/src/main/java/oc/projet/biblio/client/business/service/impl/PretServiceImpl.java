@@ -5,6 +5,7 @@ import oc.projet.biblio.client.consumer.generated.ExemplaireWS;
 import oc.projet.biblio.client.consumer.generated.PretWS;
 import oc.projet.biblio.client.consumer.generated.UsagerWS;
 import oc.projet.biblio.client.consumer.ws.PretClient;
+import org.opensaml.xml.signature.P;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,11 @@ public class PretServiceImpl implements PretService {
     @Override
     public List<PretWS> findAllByUsager(UsagerWS usagerWS){
         return this.pretClient.getPretByUsagerClientRequest(usagerWS);
+    }
+
+    @Override
+    public List<PretWS> findAllPretByUsagerAndDate(UsagerWS usagerWS, LocalDate date){
+        return this.pretClient.getAllPretBysUsagerAndDate(usagerWS, date);
     }
 
     /*@Bean

@@ -20,4 +20,6 @@ public interface RelanceService {
     RelanceWS findByPret(PretWS pret);
 
     List<RelanceWS> findAllByUsager(UsagerWS usager);
+
+    List<RelanceWS> findAllByUsagerAndDate(UsagerWS usagerWS, LocalDate date);
 }

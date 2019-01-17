@@ -59,11 +59,11 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         reservation.setDateReservation(creationDate);
         reservation.setOuvrage(ouvrage);
         reservation.setUsager(usager);
-        if (reservationList != null && reservationList.size() == 0){
+       /* if (reservationList != null && reservationList.size() == 0){
             reservation.setDateLimite(LocalDate.now().plusDays(2));
         } else {
             reservation.setDateLimite(null);
-        }
+        }*/
         this.entityManager.persist(reservation);
         return reservation;
     }
@@ -81,14 +81,14 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public List<Reservation> findAllDispos(){
-        return this.entityManager.createNamedQuery(ReservationImpl.QN.FIND_ALL_ACUTAL_RESA, Reservation.class).setParameter("date", LocalDate.now().plusDays(2L)).getResultList();
+        return this.entityManager.createNamedQuery(ReservationImpl.QN.FIND_ALL_ACUTAL_RESA, Reservation.class).setParameter("date", LocalDate.now().plusDays(3)).getResultList();
     }
 
 
 
     @Override
     public Reservation delete(Reservation reservation){
-        this.entityManager.remove(reservation);
+        this.entityManager.remove(this.entityManager.contains(reservation) ? reservation :this.entityManager.merge(reservation));
         return reservation;
     }
 

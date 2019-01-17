@@ -117,7 +117,33 @@ public class RelanceEndPoint {
         }
         relanceResponse.getRelance().addAll(relanceWSList);
         return relanceResponse;
+    }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getRelanceByUsagerAndDateRequest")
+    @ResponsePayload
+    public GetRelanceByUsagerAndDateResponse relanceByUsagerAndDateResponse (@RequestPayload GetRelanceByUsagerAndDateRequest relanceByUsagerAndDateRequest){
+        GetRelanceByUsagerAndDateResponse relanceByUsagerAndDateResponse = new GetRelanceByUsagerAndDateResponse();
+        UsagerWS usagerWS = relanceByUsagerAndDateRequest.getUsager();
+        Usager usager = new UsagerImpl();
+        if (usagerWS != null){
+            BeanUtils.copyProperties(usagerWS, usager);
+        }
+        List<Relance> relanceList = this.relanceService.findAllByUsagerAndDate(usager, relanceByUsagerAndDateRequest.getDate());
+        List<RelanceWS> relanceWSList= this.populateRelanceWSList(relanceList);
+        relanceByUsagerAndDateResponse.getRelance().addAll(relanceWSList);
+        return relanceByUsagerAndDateResponse;
+
+    }
+
+
+    private List<RelanceWS> populateRelanceWSList(List<Relance> relanceList){
+        List<RelanceWS> relanceWSList = new ArrayList<>();
+        for(Relance relance : relanceList){
+            RelanceWS relanceWS = new RelanceWS();
+            BeanUtils.copyProperties(relance, relanceWS);
+            relanceWSList.add(relanceWS);
+        }
+        return relanceWSList;
     }
 
 }

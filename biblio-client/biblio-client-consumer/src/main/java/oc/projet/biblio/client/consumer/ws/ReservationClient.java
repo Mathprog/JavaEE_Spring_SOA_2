@@ -103,4 +103,15 @@ public class ReservationClient extends WebServiceGatewaySupport {
                                 "http://biblio.io/api/biblio-web-service/GetReservationDeleteRequest"));
         return reservationDeleteLateResponse.getNbReservationDeleted();
     }
+
+    public List<ReservationWS> getReservationDispoRequestClient(){
+        GetReservationDispoRequest reservationDispoRequest = new GetReservationDispoRequest();
+
+        GetReservationDispoResponse reservationDispoResponse = (GetReservationDispoResponse)  getWebServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8080/soapws/bibliosoap", reservationDispoRequest,
+                        new SoapActionCallback(
+                                "http://biblio.io/api/biblio-web-service/GetReservationDeleteRequest"));
+
+        return reservationDispoResponse.getReservation();
+    }
 }

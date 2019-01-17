@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2019.01.13 à 11:15:06 AM CET 
+// Généré le : 2019.01.17 à 07:59:55 PM CET 
 //
 
 
@@ -293,6 +293,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetRelanceByUsagerAndDateRequest }
+     * 
+     */
+    public GetRelanceByUsagerAndDateRequest createGetRelanceByUsagerAndDateRequest() {
+        return new GetRelanceByUsagerAndDateRequest();
+    }
+
+    /**
      * Create an instance of {@link GetReservationCreateResponse }
      * 
      */
@@ -389,6 +397,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetPretByUsagerAndDateResponse }
+     * 
+     */
+    public GetPretByUsagerAndDateResponse createGetPretByUsagerAndDateResponse() {
+        return new GetPretByUsagerAndDateResponse();
+    }
+
+    /**
      * Create an instance of {@link GetExemplaireResponse }
      * 
      */
@@ -434,6 +450,14 @@ public class ObjectFactory {
      */
     public GetOuvrageByDispoRequest createGetOuvrageByDispoRequest() {
         return new GetOuvrageByDispoRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetPretByUsagerAndDateRequest }
+     * 
+     */
+    public GetPretByUsagerAndDateRequest createGetPretByUsagerAndDateRequest() {
+        return new GetPretByUsagerAndDateRequest();
     }
 
     /**
@@ -509,6 +533,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetUsagerByPretAndRelanceDateRequest }
+     * 
+     */
+    public GetUsagerByPretAndRelanceDateRequest createGetUsagerByPretAndRelanceDateRequest() {
+        return new GetUsagerByPretAndRelanceDateRequest();
+    }
+
+    /**
      * Create an instance of {@link GetUsagerResponse }
      * 
      */
@@ -522,6 +554,22 @@ public class ObjectFactory {
      */
     public GetOuvrageResponse createGetOuvrageResponse() {
         return new GetOuvrageResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetUsagerUpdateRequest }
+     * 
+     */
+    public GetUsagerUpdateRequest createGetUsagerUpdateRequest() {
+        return new GetUsagerUpdateRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetRelanceByUsagerAndDateResponse }
+     * 
+     */
+    public GetRelanceByUsagerAndDateResponse createGetRelanceByUsagerAndDateResponse() {
+        return new GetRelanceByUsagerAndDateResponse();
     }
 
     /**
@@ -541,6 +589,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetReservationDispoResponse }
+     * 
+     */
+    public GetReservationDispoResponse createGetReservationDispoResponse() {
+        return new GetReservationDispoResponse();
+    }
+
+    /**
      * Create an instance of {@link GetRelanceByIdResponse }
      * 
      */
@@ -554,6 +610,14 @@ public class ObjectFactory {
      */
     public GetReservationByOuvrageRequest createGetReservationByOuvrageRequest() {
         return new GetReservationByOuvrageRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetUsagerByPretAndRelanceDateResponse }
+     * 
+     */
+    public GetUsagerByPretAndRelanceDateResponse createGetUsagerByPretAndRelanceDateResponse() {
+        return new GetUsagerByPretAndRelanceDateResponse();
     }
 
     /**
@@ -602,6 +666,14 @@ public class ObjectFactory {
      */
     public GetRelanceRequest createGetRelanceRequest() {
         return new GetRelanceRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetUsagerUpdateResponse }
+     * 
+     */
+    public GetUsagerUpdateResponse createGetUsagerUpdateResponse() {
+        return new GetUsagerUpdateResponse();
     }
 
     /**
@@ -658,6 +730,14 @@ public class ObjectFactory {
      */
     public GetExemplaireCreateRequest createGetExemplaireCreateRequest() {
         return new GetExemplaireCreateRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetReservationDispoRequest }
+     * 
+     */
+    public GetReservationDispoRequest createGetReservationDispoRequest() {
+        return new GetReservationDispoRequest();
     }
 
     /**

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -57,5 +58,18 @@ public class UsagerServiceImpl implements UsagerService {
     @Override
     public List<Usager> findAllByPretDate(){
         return this.usagerRepository.findAllByPretDate();
+    }
+
+
+    @Override
+    public List<Usager> findAllByPretAndRelanceDate(LocalDate date){
+        List<Usager> usagerList = this.usagerRepository.findAllByPret5DayExpiration(date);
+        usagerList.addAll(this.usagerRepository.findAllByRelance5DayExpiration(date));
+        return usagerList;
+    }
+
+    @Override
+    public Usager update(Usager usager){
+        return this.usagerRepository.update(usager);
     }
 }

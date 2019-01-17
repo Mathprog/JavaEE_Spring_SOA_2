@@ -11,6 +11,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <div class="row">
     <div class="col s12">
@@ -19,6 +20,7 @@
 
 
         <ul class="tabs">
+            <li class="tab col s3"><a href="#test3">Mon profil</a></li>
             <li class="tab col s3"><a class="active" href="#test1">Mes prêts</a></li>
             <li class="tab col s3"><a  href="#test2">Mes réservations</a></li>
         </ul>
@@ -107,6 +109,52 @@
 
             </tbody>
         </table></div>
+
+        <div id="test3" class="col s12">
+
+            <form method = "POST" action = "${contextPath}/usager/update">
+                <p>
+                    Fonction rappel de prêts 5 jours avant expiration :
+                </p>
+                <p>
+                    <label>
+
+                        <c:choose>
+                        <c:when test="${usagerWS.pretExpiration}">
+                            <input name="expiration" type="radio" value="checked" checked />
+                        </c:when>
+                            <c:otherwise>
+                                <input name="expiration" type="radio" value="checked" />
+                            </c:otherwise>
+                        </c:choose>
+
+                        <span>Activé</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+
+                        <c:choose>
+                            <c:when test="${usagerWS.pretExpiration}">
+                                <input name="expiration" type="radio" value="nonChecked" />
+                            </c:when>
+                            <c:otherwise>
+                                <input name="expiration" type="radio" value="nonChecked" checked/>
+                            </c:otherwise>
+                        </c:choose>
+
+                        <span>Désactivé</span>
+                    </label>
+                </p>
+                <input type="hidden" value="${usagerWS.email}" name="email">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Mes prêts
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+
+        </div>
+
+
 
 
     </div>

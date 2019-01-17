@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
                         query = "SELECT r FROM ReservationImpl r " +
                                 "JOIN FETCH r.usager u " +
                                 "WHERE r.dateLimite IS NOT NULL " +
-                                "AND r.dateLimite <= :date"),
+                                "AND r.dateLimite BETWEEN current_date AND :date"),
                 @NamedQuery( name = ReservationImpl.QN.FIND_NEXT_RESA,
                         query = "SELECT r FROM ReservationImpl r " +
                                 "JOIN FETCH r.usager u " +

@@ -15,7 +15,7 @@
     <a href="${contextPath}/"></a>
     <ul id="menu">
         <li><a href="${contextPath}/">Home</a></li>
-        <li><a href="${contextPath}/usager/prets">Voir mes prêts</a></li>
+        <li><a href="${contextPath}/usager/prets">Mon profil</a></li>
         <li><a href="${contextPath}/ouvrages/liste">Livres</a></li>
         <li><a href="${contextPath}/ouvrages/recherche">Recherche de livres</a></li>
     </ul>

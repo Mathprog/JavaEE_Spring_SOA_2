@@ -125,6 +125,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public List<Reservation> findAllDispo(){
+        return this.reservationRepository.findAllDispos();
+    }
+
+    @Override
     public int calculateUsagerPlace(Usager usager, Ouvrage ouvrage){
         return this.reservationRepository.calculUsagerPosition(usager, ouvrage);
     }

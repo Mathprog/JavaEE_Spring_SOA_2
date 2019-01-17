@@ -21,4 +21,6 @@ public interface RelanceRepository {
     List<Relance> findAllByUsager(Usager usager);
 
     LocalDate findFirstDispoDate(Ouvrage ouvrage);
+
+    List<Relance> findAllByUsagerAndDate(Usager usager, LocalDate date);
 }

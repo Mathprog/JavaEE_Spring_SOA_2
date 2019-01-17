@@ -4,6 +4,7 @@ import oc.projet.biblio.client.consumer.generated.*;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class UsagerClient extends WebServiceGatewaySupport {
@@ -71,6 +72,29 @@ public class UsagerClient extends WebServiceGatewaySupport {
                         new SoapActionCallback(
                                 "http://biblio.io/api/biblio-web-service/GetUsagerByRelanceDateRequest"));
         return usagerByRelanceDateResponse.getUsagerWS();
+    }
+
+    public List<UsagerWS> getAllUsagerByPretAndRelanceDate(LocalDate date){
+        GetUsagerByPretAndRelanceDateRequest usagerByPretAndRelanceDateRequest = new GetUsagerByPretAndRelanceDateRequest();
+        usagerByPretAndRelanceDateRequest.setDate(date);
+        GetUsagerByPretAndRelanceDateResponse usagerByPretAndRelanceDateResponse = (GetUsagerByPretAndRelanceDateResponse) getWebServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8080/soapws/bibliosoap", usagerByPretAndRelanceDateRequest,
+                        new SoapActionCallback(
+                                "http://biblio.io/api/biblio-web-service/GetUsagerByRelanceDateRequest"));
+
+        return usagerByPretAndRelanceDateResponse.getUsagerWS();
+    }
+
+    public UsagerWS getUsagerUpdateClientRequest(UsagerWS usagerWS){
+        GetUsagerUpdateRequest usagerUpdateRequest = new GetUsagerUpdateRequest();
+        usagerUpdateRequest.setUsagerWS(usagerWS);
+
+        GetUsagerUpdateResponse usagerUpdateResponse =(GetUsagerUpdateResponse)getWebServiceTemplate()
+                .marshalSendAndReceive("http://localhost:8080/soapws/bibliosoap", usagerUpdateRequest,
+                        new SoapActionCallback(
+                                "http://biblio.io/api/biblio-web-service/GetUsagerByRelanceDateRequest"));
+
+        return usagerUpdateResponse.getUsagerWS();
     }
 
 }

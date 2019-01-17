@@ -129,6 +129,16 @@ public class ReservationEndPoint {
         return reservationDeleteLateResponse;
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getReservationDispoRequest")
+    @ResponsePayload
+    public GetReservationDispoResponse getReservationDispoRequest(){
+        GetReservationDispoResponse reservationDispoResponse = new GetReservationDispoResponse();
+        List<Reservation> reservationList = this.reservationService.findAllDispo();
+        List<ReservationWS> reservationWSList = this.populateReservationWSList(reservationList);
+        reservationDispoResponse.getReservation().addAll(reservationWSList);
+        return reservationDispoResponse;
+     }
+
     private List<ReservationWS> populateReservationWSList(List<Reservation> reservationList) {
         List<ReservationWS> reservationWSList = new ArrayList<>();
         for(Reservation reservation: reservationList){

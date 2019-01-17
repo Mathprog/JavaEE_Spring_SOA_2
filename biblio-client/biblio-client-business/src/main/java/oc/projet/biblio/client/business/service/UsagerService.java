@@ -4,6 +4,7 @@ package oc.projet.biblio.client.business.service;
 
 import oc.projet.biblio.client.consumer.generated.UsagerWS;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UsagerService {
@@ -18,4 +19,8 @@ public interface UsagerService {
     List<UsagerWS> findAllByRelanceDate();
 
     List<UsagerWS> findAllByPretDate();
+
+    UsagerWS update(UsagerWS usagerWS);
+
+    List<UsagerWS> findAllByPretAndRelanceDate(LocalDate date);
 }

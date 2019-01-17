@@ -21,4 +21,6 @@ public interface RelanceService {
     List<Relance> findAllByUsager(Usager usager);
 
     LocalDate findFirstDispo (Ouvrage ouvrage);
+
+    List<Relance> findAllByUsagerAndDate(Usager usager, LocalDate date);
 }

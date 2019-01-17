@@ -2,6 +2,7 @@ package oc.projet.biblio.business.service;
 
 import oc.projet.biblio.model.entity.Usager;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UsagerService {
@@ -18,4 +19,8 @@ public interface UsagerService {
     List<Usager> findAllByRelanceDate();
 
     List<Usager> findAllByPretDate();
+
+    List<Usager> findAllByPretAndRelanceDate(LocalDate date);
+
+    Usager update(Usager usager);
 }

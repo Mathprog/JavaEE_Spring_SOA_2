@@ -57,4 +57,9 @@ public class RelanceServiceImpl implements RelanceService {
     public LocalDate findFirstDispo(Ouvrage ouvrage){
         return this.relanceRepository.findFirstDispoDate(ouvrage);
     }
+
+    @Override
+    public List<Relance> findAllByUsagerAndDate(Usager usager, LocalDate date){
+        return this.relanceRepository.findAllByUsagerAndDate(usager, date);
+    }
 }
