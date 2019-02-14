@@ -5,11 +5,11 @@
   <parent>
     <groupId>oc.projet.biblio.client</groupId>
     <artifactId>biblio-client</artifactId>
-    <version>2.0-SNAPSHOT</version>
+    <version>2.0-RELEASE</version>
   </parent>
   <groupId>oc.projet.biblio.client</groupId>
   <artifactId>biblio-client-consumer</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>2.0-RELEASE</version>
   <name>biblio-client-consumer</name>
   <url>http://maven.apache.org</url>
   <properties>
