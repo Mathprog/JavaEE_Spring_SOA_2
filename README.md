@@ -48,8 +48,6 @@ mvn spring-boot:run
 Le server tomcat embarqué va se lancer et l'application va se déployer sur le port 8080 du localhost. Attention à ce que ce port ne soit pas déjà utilisé.
 
 
-
-
 ################################################
 ########## Déploiement du client  ##############
 ################################################
@@ -70,7 +68,8 @@ L'application va se lancer sur le port 9090 du localhost. Rendez-vous sur http:/
 ########## Déploiement du Batch  ###############
 ################################################
 
-Pour le déploiement du batch, il suffit de taper : java -jar lenomdujar.jar.
+Pour le déploiement du batch, il suffit de se rendre dans le dossier batch à la racine du projet 
+et de taper: java -jar lenomdujar.jar.
 
 
 Bonne navigation ! 
