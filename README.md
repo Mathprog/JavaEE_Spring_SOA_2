@@ -1,5 +1,5 @@
-﻿# JavaEE_Spring_SOA
-Mise en oeuvre de la SOA pour le nouveau système d’information de la bibliothèque d’une grande ville.
+﻿# JavaEE_Spring_SOA v2.0
+Amélioration de la SOA pour le nouveau système d’information de la bibliothèque d’une grande ville.
 
 
 ################################################
@@ -9,7 +9,7 @@ Mise en oeuvre de la SOA pour le nouveau système d’information de la biblioth
 Une fois que vous avez décompressé le fichier zip, vous y trouverez trois répertoirs:
 -biblio-client: contient le client SOAP et l'IHM;
 -biblio-ws: contient le server SOAP;
--sql: contient le scripte de créations des bases dedonnées dev et test.
+-sql/dev: contient le scripte de créations des bases de données dev et test.
 
 Avant de commencer le déploiement, vous devez éxecuter dans votre base de données le script SQL présent dans le répertoire sql.
 Celui va crée l'architecture de la base de données nécessire au bon fonctionnement de l'application.
